@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>AirSen (.com) — Smart CO Protection</title>
+    <meta name="description" content="Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="AirSen — Smart Carbon Monoxide Protection">
+    <meta property="og:description" content="Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://airsen.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Client Translations Dictionary & Configurations -->
+    <script>
+        window.GOOGLE_PLAY_CONFIG = {
+            status: "moderation",
+            url: "https://play.google.com/store/apps/details?id=com.airsen.app"
+        };
+
+        window.AIRSEN_TRANSLATIONS = {
+            "az": {
+                "brand": "AirSen",
+                "tagline": "Smart CO Protection",
+                "nav_problem": "Problem",
+                "nav_how_it_works": "Necə İşləyir",
+                "nav_features": "Üstünlüklər",
+                "nav_team": "Komanda",
+                "nav_investors": "İnvestorlar",
+                "nav_reviews": "Rəylər",
+                "hero_badge": "Yeni Nəsil Təhlükəsizlik Sistemi",
+                "hero_title": "AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün",
+                "hero_subtitle": "Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.",
+                "cta_google_play": "Available on Google Play",
+                "cta_google_play_sub": "GET IT ON",
+                "cta_moderation_badge": "Tətbiq Moderasiyadadır",
+                "cta_moderation_info": "Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!",
+                "mockup_status_safe": "0–30 PPM • TƏHLÜKƏSİZ",
+                "mockup_status_warning": "31–69 PPM • XƏBƏRDARLIQ",
+                "mockup_status_danger": "70+ PPM • DƏM QAZI TƏHLÜKƏSİ",
+                "mockup_co_indicator": "CO İNDİKATORU",
+                "mockup_ppm": "ppm",
+                "mockup_home": "Mənzil (Qonaq otağı)",
+                "mockup_car": "Avtomobil (Prius 30)",
+                "mockup_family_title": "Qoşulmuş Ailə Üzvləri",
+                "mockup_family_active": "4 üzv aktiv nəzarətdə",
+                "mockup_simulate_safe": "Normal (12 ppm)",
+                "mockup_simulate_warn": "Xəbərdarlıq (42 ppm)",
+                "mockup_simulate_danger": "Təhlükə (110 ppm)",
+                "mockup_voice_confirm": "\"Hər şey yaxşıdır\" deyin və ya toxunun",
+                "mockup_sos_btn": "Təcili Kömək Çağır (103 / 112)",
+                "mockup_interactive_hint": "İnteraktiv Simulyator: Səviyyəni seçin və sınaqdan keçirin",
+                "problem_label": "Qlobal Problem",
+                "problem_title": "Standart detektorlar sadəcə boş mənzildə səs-küy salır.",
+                "problem_text": "Dəm qazını görmək, iyləmək və ya dadını hiss etmək qeyri-mümkündür. Evdə heç kim yoxdursa və ya insan artıq huşsuz vəziyyətdədirsə — adi siqnalı heç kim eşitməyəcək.",
+                "stat_badge": "Statistika",
+                "stat_number": "28 900",
+                "stat_label": "hər il dünyada ehtiyatsızlıqdan dəm qazından zəhərlənərək həyatını itirən insanların sayıdır. Bu ölümlərin böyük əksəriyyətinin vaxtında qarşısını almaq olardı.",
+                "how_label": "İş Prinsipi",
+                "how_title": "AirSen Necə Həyat Xilas Edir?",
+                "card1_title": "Bir Sensor — Bütün Ailə Şəbəkədə",
+                "card1_text": "Fiziki sensor otaqda və ya avtomobildə quraşdırılır və real vaxt göstəricilərini tətbiq vasitəsilə dərhal bütün qoşulmuş yaxınlarınıza ötürür.",
+                "card2_title": "Üçpilləli Nəzarət Sistemi (ppm)",
+                "card2_text": "Sistem təhlükə səviyyəsini rənglərlə və sensorun dəqiq göstəriciləri ilə kodlaşdırır:",
+                "card2_green": "Yaşıl — 0–30 ppm (Hər şey qaydasındadır. Hava təmizdir).",
+                "card2_yellow": "Sarı — 30–50 ppm (Yüksəlmiş səviyyə. Bütün ailənin smartfonuna bildiriş göndərilir).",
+                "card2_red": "Qırmızı — 50–150 ppm (Təhlükə! Dərhal siren, vibrasiya və həyəcan ekranı).",
+                "card3_title": "Ağıllı Təhlükəsizlik Təsdiqi",
+                "card3_text": "Təhlükə anında AirSen yaxşı olduğunuzu səsinizlə və ya düymə ilə təsdiq etməyinizi istəyir. Bu, yalançı həyəcan siqnallarını aradan qaldırır və vəziyyətinizi yoxlayır.",
+                "card4_title": "Avtomatik Eskalasiya",
+                "card4_text": "Əgər sistemə cavab verməsəniz, tətbiq kömək çağırmaq üçün dəqiq ünvanınızı və təcili xidmətlərin nömrələrini bir kliklə göstərəcək.",
+                "feat_label": "Texniki Üstünlüklər",
+                "feat_title": "Maksimum Etibarlılıq Üçün Mühəndislik",
+                "feat1_title": "Ev və Avtomobil Üçün",
+                "feat1_text": "Ev sensoru elektrik şəbəkəsi və Wi-Fi ilə işləyir. Avtomobil sensoru Bluetooth ilə işləyir və GPS koordinatlarını təyin edir — beləliklə mühafizə qapınızın ağzında bitmir.",
+                "feat2_title": "İnternetsiz Mühafizə",
+                "feat2_text": "Əsas təhlükəsizlik və yerli xəbərdarlıqlar Wi-Fi sönülü olsa belə avtonom şəkildə işləyir.",
+                "feat3_title": "Bir Hesab — Çoxsaylı Cihazlar",
+                "feat3_text": "Evinizi, ofisinizi və avtomobilinizi vahid müasir tətbiqdə bir-birindən asılı olmayaraq izləyin.",
+                "team_label": "Təsisçilər & Komanda",
+                "team_title": "Həyat Xilas Edən Vizyon",
+                "team_turan_name": "Turan Səfərli",
+                "team_turan_role": "Founder & CEO",
+                "team_turan_quote": "Biz AirSen-i təhlükəsizliyin baha olmaması üçün yaratdıq. Artıq həcmli qapalı sistemlər almağa ehtiyac yoxdur — yaxınlarınızı qorumaq üçün lazım olan hər şey artıq smartfonunuzdadır.",
+                "team_turan_tag": "Vizyon & Məhsul",
+                "team_tamerlan_name": "Tamerlan Səfərli",
+                "team_tamerlan_role": "Co-Founder & CFO",
+                "team_tamerlan_quote": "Bizim məqsədimiz şəffaf biznes modeli, effektiv sensor logistikası və dayanıqlı layihə miqyası quraraq sistemi hər bir ailə üçün maliyyə baxımından əlçatan etməkdir.",
+                "team_tamerlan_tag": "Maliyyə & Miqyas",
+                "investors_label": "Layihə Statusu & İnvestisiya",
+                "investors_title": "Böyümə & Gələcək Hədəflər",
+                "investors_badge": "İnvestisiya İmkanı",
+                "investors_card_title": "İnvestorlar Üçün Dəyər",
+                "investors_card_text": "AirSen Ağıllı Ev və fərdi təhlükəsizlik bazarlarının kəsişməsində oyun qaydalarını dəyişir. Biz dəm qazından mühafizə üçün sadəcə xəbərdarlıq edən deyil, həm də hərəkətə keçən əlçatan, vahid ekosistem yaradırıq.",
+                "investors_tag": "Ağıllı Ev & Təhlükəsizlik Ekosistemi",
+                "status_badge": "Android-də Başlanğıc",
+                "status_card_title": "Android-də Başlanğıc & Yol Xəritəsi",
+                "status_card_text": "İlkin versiya bazarın sürətli yoxlanılması və rəylərin toplanması üçün Android platformasında buraxılır, ardınca iOS üçün mərhələli şəkildə istifadəyə veriləcək.",
+                "status_tag": "Bazarın Yoxlanması & iOS Genişlənməsi",
+                "reviews_label": "İstifadəçi Rəyləri",
+                "reviews_title": "Startap İdeyası Haqqında Rəylər",
+                "reviews_empty": "Hələlik heç bir təsdiqlənmiş rəy yoxdur. İlk rəyi siz yazın!",
+                "btn_leave_review": "İdeya Haqqında Rəy Bildirin",
+                "modal_review_title": "AirSen İdeyası Haqqında Fikrinizi Bölüşün",
+                "modal_name": "Adınız və Soyadınız",
+                "modal_name_placeholder": "məs. Rəşad Əliyev",
+                "modal_rating_label": "Təhlükəsizlik ideyasını qiymətləndirin:",
+                "modal_rating": "Qiymətləndirmə (1–5 Ulduz)",
+                "modal_comment": "Rəyiniz və ya Təklifiniz",
+                "modal_comment_placeholder": "Layihə və təhlükəsizlik həlli haqqında fikirlərinizi yazın...",
+                "modal_submit": "Rəyi Göndər",
+                "modal_success": "Təşəkkür edirik! Rəyiniz qeydə alındı və moderator yoxlanışından sonra saytda dərc olunacaq.",
+                "modal_close": "Bağla",
+                "footer_copyright": "Bütün hüquqlar qorunur.",
+                "footer_admin_link": "Şəxsi Kabinet / Analitika"
+            },
+            "ru": {
+                "brand": "AirSen",
+                "tagline": "Smart CO Protection",
+                "nav_problem": "Проблема",
+                "nav_how_it_works": "Как это работает",
+                "nav_features": "Преимущества",
+                "nav_team": "Команда",
+                "nav_investors": "Инвесторам",
+                "nav_reviews": "Отзывы",
+                "hero_badge": "Система безопасности нового поколения",
+                "hero_title": "AirSen. Умная защита от угарного газа — для дома, офиса и авто",
+                "hero_subtitle": "Первое мобильное приложение, превращающее ваш смартфон в интеллектуальный щит от невидимого убийцы. Контролируйте безопасность близких из любой точки мира.",
+                "cta_google_play": "Available on Google Play",
+                "cta_google_play_sub": "ДОСТУПНО В",
+                "cta_moderation_badge": "Приложение на модерации",
+                "cta_moderation_info": "Приложение сейчас проходит финальную модерацию в Google Play Store (до 10–13 числа). Как только откроется доступ, ссылка станет активной!",
+                "mockup_status_safe": "0–30 PPM • БЕЗОПАСНО",
+                "mockup_status_warning": "31–69 PPM • ВНИМАНИЕ",
+                "mockup_status_danger": "70+ PPM • ОПАСНОСТЬ: CO",
+                "mockup_co_indicator": "ИНДИКАТОР CO",
+                "mockup_ppm": "ppm",
+                "mockup_home": "Квартира (Гостиная)",
+                "mockup_car": "Автомобиль (Prius 30)",
+                "mockup_family_title": "Семья в сети",
+                "mockup_family_active": "4 пользователя под защитой",
+                "mockup_simulate_safe": "Норма (12 ppm)",
+                "mockup_simulate_warn": "Тревога (42 ppm)",
+                "mockup_simulate_danger": "Опасность (110 ppm)",
+                "mockup_voice_confirm": "Скажите \"Все в порядке\" или нажмите",
+                "mockup_sos_btn": "Вызов экстренных служб (103 / 112)",
+                "mockup_interactive_hint": "Интерактивный симулятор: выберите уровень и протестируйте",
+                "problem_label": "Глобальная Проблема",
+                "problem_title": "Обычные детекторы просто пищат в пустой квартире.",
+                "problem_text": "Угарный газ невозможно увидеть, почувствовать по запаху или вкусу. Если дома никого нет или человек уже потерял сознание — обычный сигнал тревоги никто не услышит.",
+                "stat_badge": "Статистика",
+                "stat_number": "28 900",
+                "stat_label": "человек во всем мире ежегодно погибают от случайного отравления угарным газом. Большинство этих смертей можно было предотвратить вовремя.",
+                "how_label": "Принцип Работы",
+                "how_title": "Как AirSen спасает жизни?",
+                "card1_title": "Один датчик — вся семья на связи",
+                "card1_text": "Физический датчик устанавливается в помещении или автомобиле и мгновенно передает показания в реальном времени через приложение всем подключенным близким.",
+                "card2_title": "Три уровня контроля (ppm)",
+                "card2_text": "Система кодирует уровень опасности цветами и точными показаниями датчика:",
+                "card2_green": "Зеленый — 0–30 ppm (Все в порядке. Воздух чист).",
+                "card2_yellow": "Желтый — 30–50 ppm (Повышенный уровень. Уведомление на смартфоны всей семьи).",
+                "card2_red": "Красный — 50–150 ppm (Опасность! Мгновенная сирена, вибрация и экран тревоги).",
+                "card3_title": "Умное подтверждение безопасности",
+                "card3_text": "В момент опасности AirSen просит подтвердить голосом или кнопкой, что с вами все в порядке. Это исключает ложные срабатывания и проверяет ваше состояние.",
+                "card4_title": "Автоматическая эскалация",
+                "card4_text": "Если вы не ответите системе, приложение автоматически отобразит ваш точный адрес и номера экстренных служб для вызова помощи в один клик.",
+                "feat_label": "Технические Преимущества",
+                "feat_title": "Инженерия для абсолютной надежности",
+                "feat1_title": "Для дома и для авто",
+                "feat1_text": "Домашний датчик работает от розетки и Wi-Fi. Автомобильный — по Bluetooth и определяет координаты GPS, поэтому защита не заканчивается за порогом.",
+                "feat2_title": "Защита без интернета",
+                "feat2_text": "Базовая безопасность и локальные оповещения работают автономно, даже при отключении Wi-Fi.",
+                "feat3_title": "Один аккаунт — множество устройств",
+                "feat3_text": "Мониторьте дом, офис и автомобиль независимо друг от друга в одном стильном приложении.",
+                "team_label": "Основатели & Команда",
+                "team_title": "Видение, спасающее жизни",
+                "team_turan_name": "Туран Сафарли",
+                "team_turan_role": "Founder & CEO",
+                "team_turan_quote": "Мы создали AirSen для того, чтобы безопасность перестала быть дорогой. Больше не нужно покупать громоздкие закрытые системы — всё необходимое для защиты близких теперь в вашем смартфоне.",
+                "team_turan_tag": "Видение & Продукт",
+                "team_tamerlan_name": "Тамерлан Сафарли",
+                "team_tamerlan_role": "Co-Founder & CFO",
+                "team_tamerlan_quote": "Наша цель — сделать систему финансово доступной для каждой семьи за счет прозрачной бизнес-модели, эффективной логистики датчиков и устойчивого масштабирования проекта.",
+                "team_tamerlan_tag": "Финансы & Масштаб",
+                "investors_label": "Статус Проекта & Инвесторам",
+                "investors_title": "Рост и глобальные горизонты",
+                "investors_badge": "Инвестиционная возможность",
+                "investors_card_title": "Ценность для Инвесторов",
+                "investors_card_text": "AirSen меняет правила игры на стыке рынков Smart Home и персональной безопасности. Мы создаем доступную единую экосистему защиты от угарного газа, которая не просто предупреждает, но и действует.",
+                "investors_tag": "Экосистема умного дома и безопасности",
+                "status_badge": "Запуск на Android",
+                "status_card_title": "Запуск на Android & Roadmap",
+                "status_card_text": "Первая версия выходит на Android для быстрой валидации рынка и сбора обратной связи с последующим итеративным запуском на iOS.",
+                "status_tag": "Валидация рынка & Экспансия на iOS",
+                "reviews_label": "Отзывы пользователей",
+                "reviews_title": "Мнения о стартапе и концепте",
+                "reviews_empty": "Пока нет опубликованных отзывов. Будьте первым, кто оставит мнение!",
+                "btn_leave_review": "Оставить отзыв об идее",
+                "modal_review_title": "Поделитесь мнением об идее AirSen",
+                "modal_name": "Ваше Имя и Фамилия",
+                "modal_name_placeholder": "напр. Алексей Смирнов",
+                "modal_rating_label": "Оцените идею безопасности:",
+                "modal_rating": "Оценка (1–5 звезд)",
+                "modal_comment": "Ваш отзыв или предложение",
+                "modal_comment_placeholder": "Напишите ваши мысли о проекте и безопасности...",
+                "modal_submit": "Отправить отзыв",
+                "modal_success": "Спасибо! Ваш отзыв принят и будет опубликован после модерации.",
+                "modal_close": "Закрыть",
+                "footer_copyright": "Все права защищены.",
+                "footer_admin_link": "Кабинет / Аналитика"
+            },
+            "en": {
+                "brand": "AirSen",
+                "tagline": "Smart CO Protection",
+                "nav_problem": "Problem",
+                "nav_how_it_works": "How It Works",
+                "nav_features": "Features",
+                "nav_team": "Team",
+                "nav_investors": "Investors",
+                "nav_reviews": "Reviews",
+                "hero_badge": "Next-Gen Safety System",
+                "hero_title": "AirSen. Smart Carbon Monoxide Protection — For Home, Office, and Car",
+                "hero_subtitle": "The first mobile application that transforms your smartphone into an intelligent shield against the silent killer. Control the safety of your loved ones from anywhere in the world.",
+                "cta_google_play": "Available on Google Play",
+                "cta_google_play_sub": "GET IT ON",
+                "cta_moderation_badge": "App In Moderation",
+                "cta_moderation_info": "The app is currently undergoing Google Play Store review (until the 10th–13th). Direct download link will activate immediately upon store approval!",
+                "mockup_status_safe": "0–30 PPM • SAFE LEVEL",
+                "mockup_status_warning": "31–69 PPM • WARNING",
+                "mockup_status_danger": "70+ PPM • DANGER CO",
+                "mockup_co_indicator": "CO INDICATOR",
+                "mockup_ppm": "ppm",
+                "mockup_home": "Home (Living Room)",
+                "mockup_car": "Car (Prius 30)",
+                "mockup_family_title": "Family Connected",
+                "mockup_family_active": "4 family members monitored",
+                "mockup_simulate_safe": "Normal (12 ppm)",
+                "mockup_simulate_warn": "Warning (42 ppm)",
+                "mockup_simulate_danger": "Danger (110 ppm)",
+                "mockup_voice_confirm": "Say \"I am okay\" or tap button",
+                "mockup_sos_btn": "Emergency Dispatch (911 / 112)",
+                "mockup_interactive_hint": "Interactive Simulator: Choose a level to test response",
+                "problem_label": "The Global Problem",
+                "problem_title": "Standard detectors just beep in an empty apartment.",
+                "problem_text": "Carbon monoxide is impossible to see, smell, or taste. If no one is home or a person is already unconscious — no one will hear a regular alarm.",
+                "stat_badge": "Global Statistics",
+                "stat_number": "28 900",
+                "stat_label": "people worldwide die each year from unintentional carbon monoxide poisoning. Most of these deaths could have been prevented in time.",
+                "how_label": "How It Works",
+                "how_title": "How AirSen Protects Lives in Real-Time",
+                "card1_title": "One Sensor — Whole Family Connected",
+                "card1_text": "The physical sensor is installed in the room or car and instantly transmits real-time readings via the app to all connected loved ones.",
+                "card2_title": "Three Levels of Control (ppm)",
+                "card2_text": "The system encodes the danger level with colors and exact sensor readings:",
+                "card2_green": "Green — 0–30 ppm (Everything is fine. The air is clean).",
+                "card2_yellow": "Yellow — 30–50 ppm (Elevated level. Notification sent to the whole family's smartphones).",
+                "card2_red": "Red — 50–150 ppm (Danger! Instant siren, vibration, and alarm screen).",
+                "card3_title": "Smart Safety Confirmation",
+                "card3_text": "In a moment of danger, AirSen asks you to confirm with your voice or a button that you are okay. This eliminates false alarms and checks your condition.",
+                "card4_title": "Automatic Escalation",
+                "card4_text": "If you do not respond to the system, the app will automatically display your exact address and emergency services numbers to call for help in one click.",
+                "feat_label": "Technical Advantages",
+                "feat_title": "Engineered for Total Reliability",
+                "feat1_title": "For Home and For Car",
+                "feat1_text": "The home sensor operates via wall outlet and Wi-Fi. The car sensor operates via Bluetooth and determines GPS coordinates — so protection doesn't end at your doorstep.",
+                "feat2_title": "Protection Without Internet",
+                "feat2_text": "Basic safety and local alerts operate autonomously, even if Wi-Fi is disconnected.",
+                "feat3_title": "One Account — Multiple Devices",
+                "feat3_text": "Monitor your home, office, and car independently in one sleek application.",
+                "team_label": "Founders & Team",
+                "team_title": "Life-Saving Vision",
+                "team_turan_name": "Turan Safarli",
+                "team_turan_role": "Founder & CEO",
+                "team_turan_quote": "We created AirSen so that safety stops being expensive. No need to buy bulky closed systems anymore — everything you need to protect your loved ones is now in your smartphone.",
+                "team_turan_tag": "Vision & Product",
+                "team_tamerlan_name": "Tamerlan Safarli",
+                "team_tamerlan_role": "Co-Founder & CFO",
+                "team_tamerlan_quote": "Our goal is to make the system financially affordable for every family by building a transparent business model, efficient sensor logistics, and sustainable project scaling.",
+                "team_tamerlan_tag": "Finance & Scale",
+                "investors_label": "Project Status & Investors",
+                "investors_title": "Disrupting Personal Safety",
+                "investors_badge": "Investment Opportunity",
+                "investors_card_title": "Value for Investors",
+                "investors_card_text": "AirSen changes the rules of the game at the intersection of the Smart Home and personal safety markets. We are creating an affordable, unified ecosystem for carbon monoxide protection that doesn't just warn, but acts.",
+                "investors_tag": "Smart Home & Safety Ecosystem",
+                "status_badge": "Launch on Android",
+                "status_card_title": "Launch on Android & Roadmap",
+                "status_card_text": "The first version is released on Android for rapid market validation and feedback collection, with a subsequent iterative rollout on iOS.",
+                "status_tag": "Market Validation & iOS Expansion",
+                "reviews_label": "Public Feedback",
+                "reviews_title": "Community & Startup Idea Reviews",
+                "reviews_empty": "No public reviews yet. Be the first to share your thoughts!",
+                "btn_leave_review": "Leave a Review about the Idea",
+                "modal_review_title": "Share Your Feedback on AirSen",
+                "modal_name": "Full Name",
+                "modal_name_placeholder": "e.g. David Miller",
+                "modal_rating_label": "Rate the safety concept:",
+                "modal_rating": "Rating (1–5 Stars)",
+                "modal_comment": "Your Review or Feedback",
+                "modal_comment_placeholder": "Share your thoughts about this carbon monoxide safety idea...",
+                "modal_submit": "Submit Review",
+                "modal_success": "Thank you! Your review has been submitted and will be published after moderation.",
+                "modal_close": "Close",
+                "footer_copyright": "All rights reserved.",
+                "footer_admin_link": "Private Dashboard / Analytics"
+            }
+        };
+    </script>
+</head>
+<body>
+
+    <!-- ====================================================================
+         Header & Navigation (Glass Pill)
+         ==================================================================== -->
+    <header class="site-header">
+        <nav class="nav-glass">
+            <a href="#hero" class="brand-logo" aria-label="AirSen Home">
+                <img src="images/logo.png" alt="AirSen" class="site-logo-img">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#problem" class="nav-link" data-i18n="nav_problem">Problem</a></li>
+                <li><a href="#how-it-works" class="nav-link" data-i18n="nav_how_it_works">Necə İşləyir</a></li>
+                <li><a href="#features" class="nav-link" data-i18n="nav_features">Üstünlüklər</a></li>
+                <li><a href="#team" class="nav-link" data-i18n="nav_team">Komanda</a></li>
+                <li><a href="#investors" class="nav-link" data-i18n="nav_investors">İnvestorlar</a></li>
+                <li><a href="#reviews" class="nav-link" data-i18n="nav_reviews">Rəylər</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Language Switcher -->
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn js-lang-btn active" data-lang="az">AZ</button>
+                    <button type="button" class="lang-btn js-lang-btn" data-lang="ru">RU</button>
+                    <button type="button" class="lang-btn js-lang-btn" data-lang="en">EN</button>
+                </div>
+
+                <!-- Secret Admin Shortcut -->
+                <a href="javascript:void(0)" class="admin-lock-btn" title="Giriş / Analitika" data-i18n="footer_admin_link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menyu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay">
+        <div class="mobile-nav-drawer">
+            <div class="mobile-drawer-header">
+                <a href="#hero" class="brand-logo" id="mobileLogoLink">
+                    <img src="images/logo.png" alt="AirSen" class="site-logo-img" style="height: 38px;">
+                </a>
+                <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Bağla">&times;</button>
+            </div>
+            <ul class="mobile-drawer-links">
+                <li><a href="#problem" class="mobile-nav-link" data-i18n="nav_problem">Problem</a></li>
+                <li><a href="#how-it-works" class="mobile-nav-link" data-i18n="nav_how_it_works">Necə İşləyir</a></li>
+                <li><a href="#features" class="mobile-nav-link" data-i18n="nav_features">Üstünlüklər</a></li>
+                <li><a href="#team" class="mobile-nav-link" data-i18n="nav_team">Komanda</a></li>
+                <li><a href="#investors" class="mobile-nav-link" data-i18n="nav_investors">İnvestorlar</a></li>
+                <li><a href="#reviews" class="mobile-nav-link" data-i18n="nav_reviews">Rəylər</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="airsen-container">
+
+        <!-- =========================================================================
+             BLOCK 1: ACTIVE HERO SECTION & PHONE STAGE (Bento Grid 2/3 + 1/3)
+             ========================================================================= -->
+        <section id="hero" class="hero-grid hero-stage-section">
+            <!-- Left Card (2/3 width) -->
+            <div class="bento-card hero-left-card">
+                <div>
+                    <div class="hero-logo-row">
+                        <div class="brand-wordmark">
+                            <img src="images/logo.png" alt="AirSen" class="hero-brand-logo-img">
+                        </div>
+                        <div class="brutalist-badge badge-purple">
+                            <span class="badge-pulse-dot"></span>
+                            <span data-i18n="hero_badge">Yeni Nəsil Təhlükəsizlik Sistemi</span>
+                        </div>
+                    </div>
+
+                    <h1 class="hero-title" data-i18n="hero_title">
+                        AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün
+                    </h1>
+
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">
+                        Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.
+                    </p>
+                </div>
+
+                <!-- Google Play CTA Button & Moderation Status -->
+                <div class="cta-group">
+                    <a href="#google-play" 
+                       class="btn-google-play js-google-play-btn is-disabled-state"
+                       data-status="moderation"
+                       id="mainGooglePlayBtn"
+                       title="Google Play">
+                        <div class="gp-glow-layer"></div>
+                        <img src="images/google-play-icon.svg" alt="Google Play" class="gp-icon-img" width="26" height="26">
+                        <span class="gp-single-label" data-i18n="cta_google_play">Available on Google Play</span>
+                    </a>
+
+                    <div class="moderation-tag" title="Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!">
+                        <span class="mod-live-dot"></span>
+                        <span data-i18n="cta_moderation_badge">Tətbiq Moderasiyadadır</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Card (1/3 width): Spacious Full-Height Phone Stage -->
+            <div class="bento-card hero-phone-card phone-stage card">
+                <div class="phone-mockup-wrapper" id="phoneMockup">
+                    <!-- Subtle Reflection Glass Sheen -->
+                    <div class="phone-glass-sheen"></div>
+
+                    <!-- Integrated iPhone Status Bar -->
+                    <div class="phone-sys-bar">
+                        <span class="sys-time">09:41</span>
+                        <div class="phone-island"></div>
+                        <div class="sys-icons">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l.64-.64C7.93 19.26 9.88 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9z"/>
+                            </svg>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/>
+                            </svg>
+                            <div class="battery-pill">
+                                <div class="battery-level"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Bar -->
+                    <div class="phone-app-bar">
+                        <div class="phone-mode-switch">
+                            <button type="button" class="phone-mode-btn active" id="modeHome">Home</button>
+                            <button type="button" class="phone-mode-btn" id="modeCar">Car</button>
+                        </div>
+                    </div>
+
+                    <!-- Location & Sensor Status Line -->
+                    <div class="sensor-live-bar">
+                        <span class="sensor-pulse-dot"></span>
+                        <span class="sensor-info-text" id="sensorLiveText">QONAQ OTAĞI • 2.4 GHz CANLI BAĞLANTI</span>
+                    </div>
+
+                    <!-- 3 Symmetrical Concentric Rings with Fluid Liquid Wave Inner Core -->
+                    <div class="co-dial-container">
+                        <!-- Ring 3: Outer Pulse Ring -->
+                        <div class="pulse-ring ring-three" id="coRingThree"></div>
+
+                        <!-- Ring 2: Middle Pulse Ring -->
+                        <div class="pulse-ring ring-two" id="coRingTwo"></div>
+
+                        <!-- Ring 1: Inner Core with Moving Liquid Water Wave -->
+                        <div class="pulse-ring inner-core" id="coInnerCore">
+                            <div class="liquid-wave-layer" id="coLiquidWave"></div>
+                            <div class="liquid-wave-mesh"></div>
+                            <div class="inner-core-content">
+                                <span class="co-core-label" id="coDialHeaderTag">CO</span>
+                                <span class="co-core-value" id="coDialValue">12</span>
+                                <span class="co-core-unit" data-i18n="mockup_ppm">ppm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Pill Badge (Clear of rings) -->
+                    <div class="co-status-badge-wrapper">
+                        <div class="co-status-badge" id="coStatusBadge" data-i18n="mockup_status_safe">
+                            0–30 PPM • TƏHLÜKƏSİZ
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Action & Status Area (Constant Height Container) -->
+                    <div class="phone-dynamic-card-area">
+                        <!-- Normal State Card -->
+                        <div id="mockupSafeBox" class="mockup-state-card active">
+                            <div class="env-micro-stats">
+                                <div class="env-stat-item">
+                                    <span class="stat-lbl">STATUS</span>
+                                    <span class="stat-val-green">TƏMİZ HAVA</span>
+                                </div>
+                                <div class="env-stat-divider"></div>
+                                <div class="env-stat-item">
+                                    <span class="stat-lbl">VENTİLYASİYA</span>
+                                    <span class="stat-val-white">NORMAL</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Warning State Card -->
+                        <div id="mockupWarnBox" class="mockup-state-card" style="display: none;">
+                            <div class="warn-notice-box">
+                                <div class="warn-notice-title">⚠️ YÜKSƏLƏN SƏVİYYƏ</div>
+                                <div class="warn-notice-desc">Pəncərələri açın və otağı havalandırın</div>
+                            </div>
+                        </div>
+
+                        <!-- Danger State Card (Voice Confirm + SOS in sleek 2-button grid) -->
+                        <div id="mockupDangerBox" class="mockup-state-card" style="display: none;">
+                            <div class="danger-action-grid">
+                                <button type="button" id="mockupVoiceBtn" class="danger-btn btn-confirm-safe" title="Sistemi normal rejimə qaytar">
+                                    <span>✓ Mən Yaxşıyam</span>
+                                </button>
+                                <a href="tel:112" id="mockupSosBtn" class="danger-btn btn-sos-call" title="112 Təcili Xidmət">
+                                    <span>🚨 SOS (112)</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Family Network Bar -->
+                    <div class="phone-family-box">
+                        <div>
+                            <div style="font-size: 11px; font-weight: 800; color: #FFF;" data-i18n="mockup_family_title">Qoşulmuş Ailə Üzvləri</div>
+                            <div style="font-size: 10px; color: var(--green-signal); font-weight: 700;" data-i18n="mockup_family_active">4 üzv aktiv nəzarətdə</div>
+                        </div>
+                        <div class="phone-family-avatars">
+                            <div class="avatar-mini" title="Turan">TS</div>
+                            <div class="avatar-mini" title="Tamerlan">TS</div>
+                            <div class="avatar-mini" title="Ailə">A</div>
+                            <div class="avatar-mini">+1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simulator Trigger Controls -->
+                <div class="phone-sim-controls">
+                    <span style="font-size: 11px; font-weight: 700; color: var(--text-dim); text-align: center; letter-spacing: 0.04em;" data-i18n="mockup_interactive_hint">
+                        İnteraktiv Simulyator: Səviyyəni seçin və sınaqdan keçirin
+                    </span>
+                    <div class="sim-btn-group">
+                        <button type="button" class="sim-btn btn-safe active" id="simBtnSafe" data-i18n="mockup_simulate_safe">Normal (12 ppm)</button>
+                        <button type="button" class="sim-btn btn-warn" id="simBtnWarn" data-i18n="mockup_simulate_warn">Xəbərdarlıq (42 ppm)</button>
+                        <button type="button" class="sim-btn btn-danger" id="simBtnDanger" data-i18n="mockup_simulate_danger">Təhlükə (110 ppm)</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             BLOCK 2: The Problem (Wide + Square Stat Card)
+             ================================================================ -->
+        <section id="problem" class="problem-grid">
+            <!-- Card 1: The Problem (Wide Card) -->
+            <div class="bento-card problem-card-wide card-glow-blue">
+                <div>
+                    <div class="brutalist-badge badge-blue" style="margin-bottom: 20px;">
+                        <span data-i18n="problem_label">Qlobal Problem</span>
+                    </div>
+                    <h3 class="problem-heading" data-i18n="problem_title">
+                        Standart detektorlar sadəcə boş mənzildə səs-küy salır.
+                    </h3>
+                </div>
+                <p class="problem-description" data-i18n="problem_text">
+                    Dəm qazını görmək, iyləmək və ya dadını hiss etmək qeyri-mümkündür. Evdə heç kim yoxdursa və ya insan artıq huşsuz vəziyyətdədirsə — adi siqnalı heç kim eşitməyəcək.
+                </p>
+            </div>
+
+            <!-- Card 2: Stat (Vibrant Purple #C042F0 Square Card) -->
+            <div class="bento-card problem-card-stat card-solid-purple">
+                <div class="stat-top-group">
+                    <div class="brutalist-badge badge-stat-tag">
+                        <span data-i18n="stat_badge">Statistika</span>
+                    </div>
+                    <div class="stat-huge-number" id="statCounter" data-target="28900">28 900</div>
+                </div>
+                <p class="stat-label-text" data-i18n="stat_label">
+                    hər il dünyada ehtiyatsızlıqdan dəm qazından zəhərlənərək həyatını itirən insanların sayıdır. Bu ölümlərin böyük əksəriyyətinin vaxtında qarşısını almaq olardı.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             BLOCK 3: How It Works (Bento Grid - 4 Cards)
+             ================================================================ -->
+        <section id="how-it-works">
+            <div class="section-header">
+                <div class="brutalist-badge badge-purple" style="margin-bottom: 12px;">
+                    <span data-i18n="how_label">İş Prinsipi</span>
+                </div>
+                <h2 class="section-title" data-i18n="how_title">AirSen Necə Həyat Xilas Edir?</h2>
+            </div>
+
+            <div class="how-it-works-grid">
+                <!-- Card 1: The Connection (Bir Sensor — Bütün Ailə Şəbəkədə) -->
+                <div class="bento-card how-bento-card card-gradient-purple">
+                    <div class="how-card-icon icon-purple">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="how-card-title" data-i18n="card1_title">Bir Sensor — Bütün Ailə Şəbəkədə</h3>
+                    <p class="how-card-text" data-i18n="card1_text">Fiziki sensor otaqda və ya avtomobildə quraşdırılır və real vaxt göstəricilərini tətbiq vasitəsilə dərhal bütün qoşulmuş yaxınlarınıza ötürür.</p>
+                </div>
+
+                <!-- Card 2: Danger Levels (Üçpilləli Nəzarət Sistemi) -->
+                <div class="bento-card how-bento-card card-glow-green">
+                    <div class="how-card-icon icon-green">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="how-card-title" data-i18n="card2_title">Üçpilləli Nəzarət Sistemi (ppm)</h3>
+                    <p class="how-card-text" data-i18n="card2_text">Sistem təhlükə səviyyəsini rənglərlə və sensorun dəqiq göstəriciləri ilə kodlaşdırır:</p>
+                    <ul class="danger-levels-list">
+                        <li class="danger-level-item item-green">
+                            <span class="level-indicator-dot dot-green"></span>
+                            <span data-i18n="card2_green">Yaşıl — 0–30 ppm (Hər şey qaydasındadır. Hava təmizdir).</span>
+                        </li>
+                        <li class="danger-level-item item-yellow">
+                            <span class="level-indicator-dot dot-yellow"></span>
+                            <span data-i18n="card2_yellow">Sarı — 30–50 ppm (Yüksəlmiş səviyyə. Bütün ailənin smartfonuna bildiriş göndərilir).</span>
+                        </li>
+                        <li class="danger-level-item item-red">
+                            <span class="level-indicator-dot dot-red"></span>
+                            <span data-i18n="card2_red">Qırmızı — 50–150 ppm (Təhlükə! Dərhal siren, vibrasiya və həyəcan ekranı).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Voice Control (Ağıllı Təhlükəsizlik Təsdiqi) -->
+                <div class="bento-card how-bento-card card-glow-blue">
+                    <div class="how-card-icon icon-blue">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="22"/>
+                        </svg>
+                    </div>
+                    <h3 class="how-card-title" data-i18n="card3_title">Ağıllı Təhlükəsizlik Təsdiqi</h3>
+                    <p class="how-card-text" data-i18n="card3_text">Təhlükə anında AirSen yaxşı olduğunuzu səsinizlə və ya düymə ilə təsdiq etməyinizi istəyir. Bu, yalançı həyəcan siqnallarını aradan qaldırır və vəziyyətinizi yoxlayır.</p>
+                </div>
+
+                <!-- Card 4: The Escalation (Avtomatik Eskalasiya) -->
+                <div class="bento-card how-bento-card card-gradient-purple">
+                    <div class="how-card-icon icon-red">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="how-card-title" data-i18n="card4_title">Avtomatik Eskalasiya</h3>
+                    <p class="how-card-text" data-i18n="card4_text">Əgər sistemə cavab verməsəniz, tətbiq kömək çağırmaq üçün dəqiq ünvanınızı və təcili xidmətlərin nömrələrini bir kliklə göstərəcək.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             BLOCK 4: Technical Features & Advantages (3 Cards)
+             ================================================================ -->
+        <section id="features">
+            <div class="section-header">
+                <div class="brutalist-badge badge-blue" style="margin-bottom: 12px;">
+                    <span data-i18n="feat_label">Texniki Üstünlüklər</span>
+                </div>
+                <h2 class="section-title" data-i18n="feat_title">Maksimum Etibarlılıq Üçün Mühəndislik</h2>
+            </div>
+
+            <div class="features-grid">
+                <!-- Feature 1: Locations (For Home and For Car) -->
+                <div class="bento-card feature-bento-card card-gradient-purple">
+                    <div class="feature-card-inner">
+                        <div class="feature-pure-icon icon-feat-purple">
+                            <svg class="feat-pure-svg feat-svg-purple" width="48" height="48" viewBox="0 0 40 40" fill="none">
+                                <path class="feat-home-roof" d="M5 16L20 4l15 12v18a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V16z" stroke="#C042F0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 36V22h12v14" stroke="#C042F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle class="feat-gps-ring" cx="29" cy="11" r="6.5" stroke="#69E5FF" stroke-width="1.5" stroke-dasharray="2.5 2.5"/>
+                                <circle class="feat-gps-dot" cx="29" cy="11" r="2.8" fill="#69E5FF"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-heading" data-i18n="feat1_title">Ev və Avtomobil Üçün</h3>
+                        <p class="feature-card-text" data-i18n="feat1_text">Ev sensoru elektrik şəbəkəsi və Wi-Fi ilə işləyir. Avtomobil sensoru Bluetooth ilə işləyir və GPS koordinatlarını təyin edir — beləliklə mühafizə qapınızın ağzında bitmir.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Autonomy (Protection Without Internet) -->
+                <div class="bento-card feature-bento-card card-glow-green">
+                    <div class="feature-card-inner">
+                        <div class="feature-pure-icon icon-feat-green">
+                            <svg class="feat-pure-svg feat-svg-green" width="48" height="48" viewBox="0 0 40 40" fill="none">
+                                <path class="feat-shield" d="M20 4L7 9.5v10c0 8.5 5.6 16.5 13 18.5 7.4-2 13-10 13-18.5v-10L20 4z" stroke="#76FF5B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polygon class="feat-spark" points="21 10 12 21 19 21 17 30 28 19 21 19 23 10" fill="#76FF5B"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-heading" data-i18n="feat2_title">İnternetsiz Mühafizə</h3>
+                        <p class="feature-card-text" data-i18n="feat2_text">Əsas təhlükəsizlik və yerli xəbərdarlıqlar Wi-Fi sönülü olsa belə avtonom şəkildə işləyir.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Scalability (One Account — Multiple Devices) -->
+                <div class="bento-card feature-bento-card card-glow-blue">
+                    <div class="feature-card-inner">
+                        <div class="feature-pure-icon icon-feat-blue">
+                            <svg class="feat-pure-svg feat-svg-blue" width="48" height="48" viewBox="0 0 40 40" fill="none">
+                                <rect class="feat-screen-main" x="4" y="6" width="22" height="17" rx="3" stroke="#69E5FF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect class="feat-screen-phone" x="22" y="15" width="14" height="20" rx="3" stroke="#69E5FF" stroke-width="2.2" fill="#15151F" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="26" y1="31" x2="32" y2="31" stroke="#69E5FF" stroke-width="1.8" stroke-linecap="round"/>
+                                <circle class="feat-sync-dot" cx="15" cy="14.5" r="2.5" fill="#69E5FF"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card-heading" data-i18n="feat3_title">Bir Hesab — Çoxsaylı Cihazlar</h3>
+                        <p class="feature-card-text" data-i18n="feat3_text">Evinizi, ofisinizi və avtomobilinizi vahid müasir tətbiqdə bir-birindən asılı olmayaraq izləyin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             BLOCK 5: The Team (Trust Block - 2 Cards)
+             ================================================================ -->
+        <section id="team" class="team-section">
+            <div class="section-header">
+                <div class="brutalist-badge badge-purple">
+                    <span data-i18n="team_label">Təsisçilər & Komanda</span>
+                </div>
+                <h2 style="font-size: 36px;" data-i18n="team_title">Həyat Xilas Edən Vizyon</h2>
+            </div>
+
+            <div class="team-grid">
+                <!-- Founder & CEO: Turan Safarli -->
+                <div class="bento-card team-card team-card-turan">
+                    <div class="team-card-glow-bg"></div>
+                    <div class="team-header-row">
+                        <div class="team-avatar-wrapper avatar-purple">
+                            <img src="images/1.jpg" alt="Turan Safarli" class="team-avatar-img team-avatar-img-turan" loading="lazy">
+                            <div class="avatar-neon-ring"></div>
+                        </div>
+                        <div class="team-identity">
+                            <div class="team-info-name" data-i18n="team_turan_name">Turan Səfərli</div>
+                            <div class="team-role-badge role-badge-purple" data-i18n="team_turan_role">Founder & CEO</div>
+                        </div>
+                        <div class="team-quote-mark">“</div>
+                    </div>
+                    
+                    <div class="team-quote-wrapper">
+                        <p class="team-quote-text quote-purple" data-i18n="team_turan_quote">
+                            Biz AirSen-i təhlükəsizliyin baha olmaması üçün yaratdıq. Artıq həcmli qapalı sistemlər almağa ehtiyac yoxdur — yaxınlarınızı qorumaq üçün lazım olan hər şey artıq smartfonunuzdadır.
+                        </p>
+                    </div>
+
+                    <div class="team-card-footer">
+                        <span class="team-tag tag-purple">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Vision & Product
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Co-Founder & CFO: Tamerlan Safarli -->
+                <div class="bento-card team-card team-card-tamerlan">
+                    <div class="team-card-glow-bg"></div>
+                    <div class="team-header-row">
+                        <div class="team-avatar-wrapper avatar-cyan">
+                            <img src="images/2.jpg" alt="Tamerlan Safarli" class="team-avatar-img team-avatar-img-tamerlan" loading="lazy">
+                            <div class="avatar-neon-ring"></div>
+                        </div>
+                        <div class="team-identity">
+                            <div class="team-info-name" data-i18n="team_tamerlan_name">Tamerlan Səfərli</div>
+                            <div class="team-role-badge role-badge-cyan" data-i18n="team_tamerlan_role">Co-Founder & CFO</div>
+                        </div>
+                        <div class="team-quote-mark">“</div>
+                    </div>
+                    
+                    <div class="team-quote-wrapper">
+                        <p class="team-quote-text quote-cyan" data-i18n="team_tamerlan_quote">
+                            Bizim məqsədimiz şəffaf biznes modeli, effektiv sensor logistikası və dayanıqlı layihə miqyası quraraq sistemi hər bir ailə üçün maliyyə baxımından əlçatan etməkdir.
+                        </p>
+                    </div>
+
+                    <div class="team-card-footer">
+                        <span class="team-tag tag-cyan">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            Finance & Scale
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             BLOCK 6: Project Status & Investors (2 Arch & Dome Bento Cards)
+             ================================================================ -->
+        <section id="investors" class="investors-section">
+            <div class="section-header">
+                <div class="brutalist-badge badge-purple">
+                    <span data-i18n="investors_label">Layihə Statusu & İnvestisiya</span>
+                </div>
+                <h2 style="font-size: 36px;" data-i18n="investors_title">Böyümə & Gələcək Hədəflər</h2>
+            </div>
+
+            <div class="status-investors-grid">
+                <!-- Card 1: Investors Opportunity Card -->
+                <div class="investor-arch-card card-arch-purple">
+                    <div class="arch-pic-box">
+                        <div class="arch-icon-wrapper arch-icon-purple">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="arch-card-content">
+                        <div class="brutalist-badge badge-purple" style="margin-bottom: 12px; display: inline-flex;">
+                            <span>Investment Opportunity</span>
+                        </div>
+                        <h3 class="arch-title" data-i18n="investors_card_title">İnvestorlar Üçün Dəyər</h3>
+                        <p class="arch-text" data-i18n="investors_card_text">AirSen Ağıllı Ev və fərdi təhlükəsizlik bazarlarının kəsişməsində oyun qaydalarını dəyişir. Biz dəm qazından mühafizə üçün sadəcə xəbərdarlıq edən deyil, həm də hərəkətə keçən əlçatan, vahid ekosistem yaradırıq.</p>
+                    </div>
+                    <div class="arch-card-footer">
+                        <span class="arch-tag tag-purple">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                            Smart Home & Safety Ecosystem
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Status & Roadmap Card -->
+                <div class="investor-arch-card card-arch-green">
+                    <div class="arch-pic-box">
+                        <div class="arch-icon-wrapper arch-icon-green">
+                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="16" height="20" x="4" y="2" rx="2"/>
+                                <line x1="12" x2="12.01" y1="18" y2="18"/>
+                                <path d="M8 6h8"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="arch-card-content">
+                        <div class="brutalist-badge badge-green" style="margin-bottom: 12px; display: inline-flex;">
+                            <span class="badge-pulse-dot"></span>
+                            <span>Launch on Android</span>
+                        </div>
+                        <h3 class="arch-title" data-i18n="status_card_title">Android-də Başlanğıc & Yol Xəritəsi</h3>
+                        <p class="arch-text" data-i18n="status_card_text">İlkin versiya bazarın sürətli yoxlanılması və rəylərin toplanması üçün Android platformasında buraxılır, ardınca iOS üçün mərhələli şəkildə istifadəyə veriləcək.</p>
+                    </div>
+                    <div class="arch-card-footer">
+                        <span class="arch-tag tag-green">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Market Validation & iOS Expansion
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             BLOCK 7: Public Reviews Wall (Auto-Glide Slider)
+             ================================================================ -->
+        <section id="reviews" class="reviews-section">
+            <div class="reviews-top-bar">
+                <div>
+                    <div class="brutalist-badge badge-blue">
+                        <span data-i18n="reviews_label">İstifadəçi Rəyləri</span>
+                    </div>
+                    <h2 style="font-size: 36px;" data-i18n="reviews_title">Startap İdeyası Haqqında Rəylər</h2>
+                </div>
+
+                <button type="button" class="btn-open-review" id="btnOpenReviewModal">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span data-i18n="btn_leave_review">İdeya Haqqında Rəy Bildirin</span>
+                </button>
+            </div>
+
+            <div class="reviews-slider-container">
+                <div class="reviews-slider-viewport" id="reviewsSliderViewport">
+                    <div class="reviews-slider-track" id="reviewsSliderTrack">
+                        <!-- Review 1 -->
+                        <div class="review-card slider-card">
+                            <div class="review-card-top">
+                                <div class="review-stars-row">
+                                    <div class="review-stars" aria-label="5.0 / 5">
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                    </div>
+                                    <span class="rating-num-badge">5.0</span>
+                                </div>
+                                <p class="review-comment">Dəm qazı hər qış Azərbaycanda ən böyük faciələrdən biridir. Tətbiqin ailə üzvlərinin telefonuna dərhal siqnal göndərməsi və GPS koordinatları təyin etməsi inqilabi yanaşmadır!</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-avatar">E</div>
+                                <div class="review-author-name">Elmir Həsənov</div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 -->
+                        <div class="review-card slider-card">
+                            <div class="review-card-top">
+                                <div class="review-stars-row">
+                                    <div class="review-stars" aria-label="5.0 / 5">
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                    </div>
+                                    <span class="rating-num-badge">5.0</span>
+                                </div>
+                                <p class="review-comment">Идея интеграции физического сенсора с голосовым подтверждением состояния и автоэскалацией — это спасение жизней. Обычные датчики бесполезны, если человек без сознания.</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-avatar">A</div>
+                                <div class="review-author-name">Alexey Voronov</div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 -->
+                        <div class="review-card slider-card">
+                            <div class="review-card-top">
+                                <div class="review-stars-row">
+                                    <div class="review-stars" aria-label="5.0 / 5">
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                    </div>
+                                    <span class="rating-num-badge">5.0</span>
+                                </div>
+                                <p class="review-comment">The multi-device monitoring for both home and car in one sleek dashboard is brilliant. Creative brutalism UI looks incredible and very futuristic!</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-avatar">S</div>
+                                <div class="review-author-name">Sarah Jenkins</div>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 -->
+                        <div class="review-card slider-card">
+                            <div class="review-card-top">
+                                <div class="review-stars-row">
+                                    <div class="review-stars" aria-label="5.0 / 5">
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                        <span class="star-filled">★</span>
+                                    </div>
+                                    <span class="rating-num-badge">5.0</span>
+                                </div>
+                                <p class="review-comment">Smart Home sistemləri çox baha idi, amma AirSen bu təhlükəsizliyi hər bir ailə üçün əlçatan edir. Google Play-də çıxmasını səbirsizliklə gözləyirik!</p>
+                            </div>
+                            <div class="review-author">
+                                <div class="review-author-avatar">N</div>
+                                <div class="review-author-name">Nərgiz Məmmədova</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Controls: Navigation Arrows, Uniform Dots & Live Progress Bar -->
+                <div class="slider-bottom-bar">
+                    <div class="slider-controls-row">
+                        <button type="button" class="slider-arrow-btn" id="btnSliderPrev" aria-label="Əvvəlki">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+                        </button>
+
+                        <div class="slider-dots-box" id="sliderDotsBox"></div>
+
+                        <button type="button" class="slider-arrow-btn" id="btnSliderNext" aria-label="Növbəti">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="slider-progress-track">
+                        <div class="slider-progress-bar" id="sliderProgressBar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====================================================================
+         Review Submission Modal
+         ==================================================================== -->
+    <div class="modal-backdrop" id="reviewModal">
+        <div class="modal-content">
+            <button type="button" class="modal-close-btn" id="reviewModalClose">&times;</button>
+            <h3 class="modal-title" data-i18n="modal_review_title">AirSen İdeyası Haqqında Fikrinizi Bölüşün</h3>
+
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label class="form-label" data-i18n="modal_name">Adınız və Soyadınız</label>
+                    <input type="text" id="reviewNameInput" class="form-input" required data-i18n="modal_name_placeholder" placeholder="məs. Rəşad Əliyev">
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label-row">
+                        <label class="form-label" style="margin-bottom: 0;">Təhlükəsizlik ideyasını qiymətləndirin:</label>
+                        <span class="live-score-pill" id="liveScorePill">5.0 / 5.0</span>
+                    </div>
+                    <div class="rating-picker-wrapper">
+                        <div class="rating-picker" id="starPicker">
+                            <span class="star-pick active" data-index="1">★</span>
+                            <span class="star-pick active" data-index="2">★</span>
+                            <span class="star-pick active" data-index="3">★</span>
+                            <span class="star-pick active" data-index="4">★</span>
+                            <span class="star-pick active" data-index="5">★</span>
+                        </div>
+                        <div class="live-rating-text" id="liveRatingText">5.0 — Möhtəşəm</div>
+                    </div>
+                    <input type="hidden" id="reviewRatingInput" value="5">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" data-i18n="modal_comment">Rəyiniz və ya Təklifiniz</label>
+                    <textarea id="reviewCommentInput" class="form-textarea" rows="4" required data-i18n="modal_comment_placeholder" placeholder="Layihə və təhlükəsizlik həlli haqqında fikirlərinizi yazın..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-open-review" style="width: 100%; justify-content: center;">
+                    <span data-i18n="modal_submit">Rəyi Göndər</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         Google Play Moderation Info Modal
+         ==================================================================== -->
+    <div class="modal-backdrop" id="gpModerationModal">
+        <div class="modal-content" style="text-align: center;">
+            <button type="button" class="modal-close-btn" id="gpModalClose">&times;</button>
+            <div style="font-size: 40px; margin-bottom: 14px;">🚀</div>
+            <h3 class="modal-title" style="margin-bottom: 12px;" data-i18n="cta_moderation_badge">Tətbiq Moderasiyadadır</h3>
+            <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px;" data-i18n="cta_moderation_info">
+                Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!
+            </p>
+            <button type="button" class="btn-open-review" style="margin: 0 auto;" onclick="document.getElementById('gpModerationModal').classList.remove('is-open')">
+                <span data-i18n="modal_close">Bağla</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         Footer
+         ==================================================================== -->
+    <footer class="site-footer">
+        <div class="airsen-container footer-inner">
+            <a href="#hero" class="brand-logo footer-logo-link" aria-label="AirSen Home">
+                <img src="images/logo.png" alt="AirSen" class="footer-logo-img">
+            </a>
+
+            <div class="footer-credits">
+                &copy; 2026 AirSen.com. <span data-i18n="footer_copyright">Bütün hüquqlar qorunur.</span>
+            </div>
+
+            <a href="javascript:void(0)" class="footer-admin-link" data-i18n="footer_admin_link">
+                <span>🔒</span> <span data-i18n="footer_admin_link">Şəxsi Kabinet / Analitika</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- ====================================================================
+         AirSen Back To Top Button
+         ==================================================================== -->
+    <button type="button" class="airsen-back-to-top" id="bttMainBtn" aria-label="Yuxarı Qayıt" title="Yuxarı Qayıt">
+        <svg class="btt-arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
