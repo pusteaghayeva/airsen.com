@@ -1,15 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="az">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="j02RGE9QcjT27gKT9EuQC51mzDVPruK08Hg28ICv">
     
-    <title>AirSen (.com) — Smart CO Protection</title>
+    <title>AirSen (.com) — AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün</title>
     <meta name="description" content="Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="AirSen — Smart Carbon Monoxide Protection">
-    <meta property="og:description" content="Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq.">
+    <meta property="og:description" content="Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://airsen.com">
     
@@ -23,425 +24,231 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
-    
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    <!-- Client Translations Dictionary & Configurations -->
+    <!-- Client Translations Dictionary -->
     <script>
+        window.AIRSEN_TRANSLATIONS = {"az":{"brand":"AirSen","tagline":"Smart CO Protection","nav_problem":"Problem","nav_how_it_works":"Nec\u0259 \u0130\u015fl\u0259yir","nav_features":"\u00dcst\u00fcnl\u00fckl\u0259r","nav_plans":"Tarifl\u0259r","nav_team":"Komanda","nav_investors":"\u0130nvestorlar","nav_reviews":"R\u0259yl\u0259r","nav_contact":"\u018flaq\u0259","hero_badge":"Yeni N\u0259sil T\u0259hl\u00fck\u0259sizlik Sistemi","hero_title":"AirSen. D\u0259m Qaz\u0131ndan A\u011f\u0131ll\u0131 M\u00fchafiz\u0259 \u2014 Ev, Ofis v\u0259 Avtomobil \u00dc\u00e7\u00fcn","hero_subtitle":"Smartfonunuzu g\u00f6r\u00fcnm\u0259z qatil\u0259 qar\u015f\u0131 intellektual qalxana \u00e7evir\u0259n ilk mobil t\u0259tbiq. D\u00fcnyan\u0131n ist\u0259nil\u0259n n\u00f6qt\u0259sind\u0259n yax\u0131nlar\u0131n\u0131z\u0131n t\u0259hl\u00fck\u0259sizliyin\u0259 n\u0259zar\u0259t edin.","cta_google_play":"Available on Google Play","cta_google_play_sub":"GET IT ON","cta_moderation_badge":"T\u0259tbiq Moderasiyadad\u0131r","cta_moderation_info":"T\u0259tbiq haz\u0131rda Google Play Store-da moderasiya m\u0259rh\u0259l\u0259sind\u0259dir (ay\u0131n 10\u201313-n\u0259 q\u0259d\u0259r). \u00c7\u0131xan kimi birba\u015fa y\u00fckl\u0259m\u0259 aktiv olacaq!","mockup_status_safe":"0\u201330 PPM \u2022 T\u018fHL\u00dcK\u018fS\u0130Z","mockup_status_warning":"31\u201369 PPM \u2022 X\u018fB\u018fRDARLIQ","mockup_status_danger":"70+ PPM \u2022 D\u018fM QAZI T\u018fHL\u00dcK\u018fS\u0130","mockup_co_indicator":"CO \u0130ND\u0130KATORU","mockup_ppm":"ppm","mockup_home":"M\u0259nzil (Qonaq ota\u011f\u0131)","mockup_car":"Avtomobil (Prius 30)","mockup_family_title":"Qo\u015fulmu\u015f Ail\u0259 \u00dczvl\u0259ri","mockup_family_active":"4 \u00fczv aktiv n\u0259zar\u0259td\u0259","mockup_simulate_safe":"Normal (12 ppm)","mockup_simulate_warn":"X\u0259b\u0259rdarl\u0131q (42 ppm)","mockup_simulate_danger":"T\u0259hl\u00fck\u0259 (110 ppm)","mockup_voice_confirm":"\u0022H\u0259r \u015fey yax\u015f\u0131d\u0131r\u0022 deyin v\u0259 ya toxunun","mockup_sos_btn":"T\u0259cili K\u00f6m\u0259k \u00c7a\u011f\u0131r (103 \/ 112)","mockup_interactive_hint":"\u0130nteraktiv Simulyator: S\u0259viyy\u0259ni se\u00e7in v\u0259 s\u0131naqdan ke\u00e7irin","problem_label":"Qlobal Problem","problem_title":"Standart detektorlar sad\u0259c\u0259 bo\u015f m\u0259nzild\u0259 s\u0259s-k\u00fcy sal\u0131r.","problem_text":"D\u0259m qaz\u0131n\u0131 g\u00f6rm\u0259k, iyl\u0259m\u0259k v\u0259 ya dad\u0131n\u0131 hiss etm\u0259k qeyri-m\u00fcmk\u00fcnd\u00fcr. Evd\u0259 he\u00e7 kim yoxdursa v\u0259 ya insan art\u0131q hu\u015fsuz v\u0259ziyy\u0259td\u0259dirs\u0259 \u2014 adi siqnal\u0131 he\u00e7 kim e\u015fitm\u0259y\u0259c\u0259k.","stat_badge":"Statistika","stat_number":"28 900","stat_label":"h\u0259r il d\u00fcnyada ehtiyats\u0131zl\u0131qdan d\u0259m qaz\u0131ndan z\u0259h\u0259rl\u0259n\u0259r\u0259k h\u0259yat\u0131n\u0131 itir\u0259n insanlar\u0131n say\u0131d\u0131r. Bu \u00f6l\u00fcml\u0259rin b\u00f6y\u00fck \u0259ks\u0259riyy\u0259tinin vaxt\u0131nda qar\u015f\u0131s\u0131n\u0131 almaq olard\u0131.","how_label":"\u0130\u015f Prinsipi","how_title":"AirSen Nec\u0259 H\u0259yat Xilas Edir?","how_step1_title":"1. Qo\u015fulma (Connect)","how_step1_desc":"M\u00f6vcud CO sensorunuz bizim a\u011f\u0131ll\u0131 adapterimiz\u0259 v\u0259 ya Bluetooth moduluna asanl\u0131qla qo\u015fulur.","how_step2_title":"2. Sinxronizasiya (Sync)","how_step2_desc":"Adapter real vaxt rejimind\u0259 hava keyfiyy\u0259ti m\u0259lumatlar\u0131n\u0131 birba\u015fa AirSen mobil t\u0259tbiqin\u0259 \u00f6t\u00fcr\u00fcr.","how_step3_title":"3. M\u00fchafiz\u0259 (Protect)","how_step3_desc":"B\u00fct\u00fcn ail\u0259niz t\u0259tbiq daxilind\u0259ki t\u0259hl\u00fck\u0259siz \u015f\u0259b\u0259k\u0259y\u0259 qo\u015fulur v\u0259 h\u0259r hans\u0131 qaz s\u0131zmas\u0131 t\u0259hl\u00fck\u0259si an\u0131nda d\u0259rhal kritik x\u0259b\u0259rdarl\u0131qlar aktivl\u0259\u015fir.","card1_title":"Bir Sensor \u2014 B\u00fct\u00fcn Ail\u0259 \u015e\u0259b\u0259k\u0259d\u0259","card1_text":"Fiziki sensor otaqda v\u0259 ya avtomobild\u0259 qura\u015fd\u0131r\u0131l\u0131r v\u0259 real vaxt g\u00f6st\u0259ricil\u0259rini t\u0259tbiq vasit\u0259sil\u0259 d\u0259rhal b\u00fct\u00fcn qo\u015fulmu\u015f yax\u0131nlar\u0131n\u0131za \u00f6t\u00fcr\u00fcr.","card2_title":"\u00dc\u00e7pill\u0259li N\u0259zar\u0259t Sistemi (ppm)","card2_text":"Sistem t\u0259hl\u00fck\u0259 s\u0259viyy\u0259sini r\u0259ngl\u0259rl\u0259 v\u0259 sensorun d\u0259qiq g\u00f6st\u0259ricil\u0259ri il\u0259 kodla\u015fd\u0131r\u0131r:","card2_green":"Ya\u015f\u0131l \u2014 0\u201330 ppm (H\u0259r \u015fey qaydas\u0131ndad\u0131r. Hava t\u0259mizdir).","card2_yellow":"Sar\u0131 \u2014 30\u201350 ppm (Y\u00fcks\u0259lmi\u015f s\u0259viyy\u0259. B\u00fct\u00fcn ail\u0259nin smartfonuna bildiri\u015f g\u00f6nd\u0259rilir).","card2_red":"Q\u0131rm\u0131z\u0131 \u2014 50\u2013150 ppm (T\u0259hl\u00fck\u0259! D\u0259rhal siren, vibrasiya v\u0259 h\u0259y\u0259can ekran\u0131).","card3_title":"A\u011f\u0131ll\u0131 T\u0259hl\u00fck\u0259sizlik T\u0259sdiqi","card3_text":"T\u0259hl\u00fck\u0259 an\u0131nda AirSen yax\u015f\u0131 oldu\u011funuzu s\u0259sinizl\u0259 v\u0259 ya d\u00fcym\u0259 il\u0259 t\u0259sdiq etm\u0259yinizi ist\u0259yir. Bu, yalan\u00e7\u0131 h\u0259y\u0259can siqnallar\u0131n\u0131 aradan qald\u0131r\u0131r v\u0259 v\u0259ziyy\u0259tinizi yoxlay\u0131r.","card4_title":"Avtomatik Eskalasiya","card4_text":"\u018fg\u0259r sistem\u0259 cavab verm\u0259s\u0259niz, t\u0259tbiq k\u00f6m\u0259k \u00e7a\u011f\u0131rmaq \u00fc\u00e7\u00fcn d\u0259qiq \u00fcnvan\u0131n\u0131z\u0131 v\u0259 t\u0259cili xidm\u0259tl\u0259rin n\u00f6mr\u0259l\u0259rini bir klikl\u0259 g\u00f6st\u0259r\u0259c\u0259k.","feat_label":"Texniki \u00dcst\u00fcnl\u00fckl\u0259r","feat_title":"Maksimum Etibarl\u0131l\u0131q \u00dc\u00e7\u00fcn M\u00fch\u0259ndislik","feat1_title":"Ev v\u0259 Avtomobil \u00dc\u00e7\u00fcn","feat1_text":"Ev sensoru elektrik \u015f\u0259b\u0259k\u0259si v\u0259 Wi-Fi il\u0259 i\u015fl\u0259yir. Avtomobil sensoru Bluetooth il\u0259 i\u015fl\u0259yir v\u0259 GPS koordinatlar\u0131n\u0131 t\u0259yin edir \u2014 bel\u0259likl\u0259 m\u00fchafiz\u0259 qap\u0131n\u0131z\u0131n a\u011fz\u0131nda bitmir.","feat2_title":"\u0130nternetsiz M\u00fchafiz\u0259","feat2_text":"\u018fsas t\u0259hl\u00fck\u0259sizlik v\u0259 yerli x\u0259b\u0259rdarl\u0131qlar Wi-Fi s\u00f6n\u00fcl\u00fc olsa bel\u0259 avtonom \u015f\u0259kild\u0259 i\u015fl\u0259yir.","feat3_title":"Bir Hesab \u2014 \u00c7oxsayl\u0131 Cihazlar","feat3_text":"Evinizi, ofisinizi v\u0259 avtomobilinizi vahid m\u00fcasir t\u0259tbiqd\u0259 bir-birind\u0259n as\u0131l\u0131 olmayaraq izl\u0259yin.","pricing_label":"Tarifl\u0259r \u0026 Qiym\u0259tl\u0259r","pricing_title":"H\u0259r K\u0259s \u00dc\u00e7\u00fcn \u018fl\u00e7atan T\u0259hl\u00fck\u0259sizlik","plan_basic_title":"BAZA PLANI","plan_basic_badge":"\u00d6d\u0259ni\u015fsiz","plan_basic_price":"$0","plan_basic_period":"\/ ay","plan_basic_f1_t":"1 Sensor Qo\u015fulmas\u0131","plan_basic_f1_d":"1 CO sensorunu problemsiz qo\u015fun.","plan_basic_f2_t":"Real Vaxt Rejimind\u0259 Monitorinq","plan_basic_f2_d":"Canl\u0131 hava keyfiyy\u0259ti v\u0259 PPM s\u0259viyy\u0259si n\u0259zar\u0259ti.","plan_basic_f3_t":"Lokal Push Bildiri\u015fl\u0259r","plan_basic_f3_d":"Qaz h\u0259ddi a\u015f\u0131ld\u0131qda standart bildiri\u015fl\u0259r.","plan_basic_f4_t":"24 Saatl\u0131q Tarix\u00e7\u0259 Qeydi","plan_basic_f4_d":"Son 24 saat\u0131n qaz s\u0259viyy\u0259si qrafiki.","plan_basic_btn":"Pulsuz \u0130stifad\u0259 Et","plan_prem_title":"PREM\u0130UM T\u018fHL\u00dcK\u018fS\u0130ZL\u0130K","plan_prem_badge":"\u018fn Populyar","plan_prem_tag":"TEZL\u0130KL\u018f \/ BETA","plan_prem_price":"$5.99","plan_prem_period":"\/ ay","plan_prem_yearly":"v\u0259 ya $49.99 \/ il (30% Q\u0259na\u0259t)","plan_prem_f1_t":"Kritik X\u0259b\u0259rdarl\u0131q Rejimi","plan_prem_f1_d":"Telefon s\u0259ssizd\u0259 v\u0259 ya \u0022Narahat Etm\u0259yin\u0022 rejimind\u0259 olsa bel\u0259 tam s\u0259sli siqnal.","plan_prem_f2_t":"Ail\u0259 T\u0259hl\u00fck\u0259sizlik Radar\u0131","plan_prem_f2_d":"B\u00fct\u00fcn ail\u0259 \u00fczvl\u0259rini (5 n\u0259f\u0259r\u0259 q\u0259d\u0259r) eyni vaxtda qo\u015fun.","plan_prem_f3_t":"A\u011f\u0131ll\u0131 Eskalasiya \u0026 GPS Xilasetm\u0259","plan_prem_f3_d":"Cavab verilm\u0259dikd\u0259 t\u0259cili xidm\u0259tl\u0259r\u0259 v\u0259 qohumlara canl\u0131 GPS \u00fcnvan\u0131 g\u00f6nd\u0259rilir.","plan_prem_f4_t":"Avtomobil \u00fc\u00e7\u00fcn S\u00fcni \u0130ntellekt","plan_prem_f4_d":"Avtomobil t\u0131xacda v\u0259 ya qarajda olanda qaz s\u0131zmas\u0131n\u0131 \u0259vv\u0259lc\u0259d\u0259n t\u0259xmin ed\u0259n alqoritm.","plan_prem_f5_t":"Bulud Server Ehtiyat N\u00fcsx\u0259si \u0026 S\u0131n\u0131rs\u0131z Tarix\u00e7\u0259","plan_prem_f5_d":"H\u0259rt\u0259r\u0259fli t\u0259hlil v\u0259 hesabatlar.","plan_prem_btn":"Burax\u0131l\u0131\u015fda M\u0259n\u0259 X\u0259b\u0259r Ver","beta_modal_badge":"QAPALI BETA TEST\u0130","beta_modal_title":"AirSen Premium Beta Testin\u0259 Qo\u015fulun","beta_modal_desc":"AirSen Premium haz\u0131rda qapal\u0131 s\u0131naq m\u0259rh\u0259l\u0259sind\u0259dir. R\u0259smi burax\u0131l\u0131\u015fda ilk x\u0259b\u0259rdar olmaq v\u0259 3 ay PULSUZ istifad\u0259 haqq\u0131 qazanmaq \u00fc\u00e7\u00fcn e-po\u00e7tunuzu qeyd edin.","beta_perk_text":"\ud83c\udf81 Qeydiyyatdan ke\u00e7\u0259nl\u0259r\u0259 r\u0259smi burax\u0131l\u0131\u015fda 3 ay Premium h\u0259diyy\u0259!","beta_input_placeholder":"E-po\u00e7t \u00fcnvan\u0131n\u0131z\u0131 daxil edin...","beta_submit_btn":"T\u0259sdiq et v\u0259 Qo\u015ful","beta_success_text":"T\u0259\u015f\u0259kk\u00fcr edirik! E-po\u00e7tunuz qeyd\u0259 al\u0131nd\u0131. R\u0259smi burax\u0131l\u0131\u015fda 3 ay pulsuz istifad\u0259 h\u00fcququ qazand\u0131n\u0131z!","team_label":"T\u0259sis\u00e7il\u0259r \u0026 Komanda","team_title":"H\u0259yat Xilas Ed\u0259n Vizyon","team_turan_name":"Turan S\u0259f\u0259rli","team_turan_role":"Founder \u0026 CTO","team_turan_desc":"M\u0259hsul Arxitekturas\u0131, IoT Protokol \u0130nteqrasiyas\u0131 v\u0259 M\u00fch\u0259ndislik. \u00c7oxsayl\u0131 Respublika v\u0259 Beyn\u0259lxalq Olimpiada M\u00fckafat\u00e7\u0131s\u0131 | Azercosmos Space Academy T\u0259cr\u00fcb\u0259\u00e7isi.","team_turan_quote":"Biz AirSen-i t\u0259hl\u00fck\u0259sizliyin baha olmamas\u0131 \u00fc\u00e7\u00fcn yaratd\u0131q. Art\u0131q h\u0259cmli qapal\u0131 sisteml\u0259r alma\u011fa ehtiyac yoxdur \u2014 yax\u0131nlar\u0131n\u0131z\u0131 qorumaq \u00fc\u00e7\u00fcn laz\u0131m olan h\u0259r \u015fey art\u0131q smartfonunuzdad\u0131r.","team_turan_tag":"IoT M\u00fch\u0259ndisliyi \u0026 Arxitektura","team_tamerlan_name":"Tamerlan S\u0259f\u0259rli","team_tamerlan_role":"Co-founder \u0026 CEO","team_tamerlan_desc":"Biznes Strategiyas\u0131, Maliyy\u0259 \u018fm\u0259liyyatlar\u0131 v\u0259 Beyn\u0259lxalq Miqyaslama. Stanford Universiteti Magistr Namiz\u0259di.","team_tamerlan_quote":"Bizim m\u0259qs\u0259dimiz \u015f\u0259ffaf biznes modeli, effektiv sensor logistikas\u0131 v\u0259 dayan\u0131ql\u0131 layih\u0259 miqyas\u0131 quraraq sistemi h\u0259r bir ail\u0259 \u00fc\u00e7\u00fcn maliyy\u0259 bax\u0131m\u0131ndan \u0259l\u00e7atan etm\u0259kdir.","team_tamerlan_tag":"Strategiya \u0026 Qlobal Miqyas","investors_label":"Layih\u0259 Statusu \u0026 \u0130nvestisiya","investors_title":"B\u00f6y\u00fcm\u0259 \u0026 G\u0259l\u0259c\u0259k H\u0259d\u0259fl\u0259r","investors_badge":"\u0130nvestisiya \u0130mkan\u0131","investors_card_title":"\u0130nvestorlar \u00dc\u00e7\u00fcn D\u0259y\u0259r","investors_card_text":"AirSen A\u011f\u0131ll\u0131 Ev v\u0259 f\u0259rdi t\u0259hl\u00fck\u0259sizlik bazarlar\u0131n\u0131n k\u0259si\u015fm\u0259sind\u0259 oyun qaydalar\u0131n\u0131 d\u0259yi\u015fir. Biz d\u0259m qaz\u0131ndan m\u00fchafiz\u0259 \u00fc\u00e7\u00fcn sad\u0259c\u0259 x\u0259b\u0259rdarl\u0131q ed\u0259n deyil, h\u0259m d\u0259 h\u0259r\u0259k\u0259t\u0259 ke\u00e7\u0259n \u0259l\u00e7atan, vahid ekosistem yarad\u0131r\u0131q.","investors_tag":"A\u011f\u0131ll\u0131 Ev \u0026 T\u0259hl\u00fck\u0259sizlik Ekosistemi","status_badge":"Android-d\u0259 Ba\u015flan\u011f\u0131c","status_card_title":"Android-d\u0259 Ba\u015flan\u011f\u0131c \u0026 Yol X\u0259rit\u0259si","status_card_text":"\u0130lkin versiya bazar\u0131n s\u00fcr\u0259tli yoxlan\u0131lmas\u0131 v\u0259 r\u0259yl\u0259rin toplanmas\u0131 \u00fc\u00e7\u00fcn Android platformas\u0131nda burax\u0131l\u0131r, ard\u0131nca iOS \u00fc\u00e7\u00fcn m\u0259rh\u0259l\u0259li \u015f\u0259kild\u0259 istifad\u0259y\u0259 veril\u0259c\u0259k.","status_tag":"Bazar\u0131n Yoxlanmas\u0131 \u0026 iOS Geni\u015fl\u0259nm\u0259si","reviews_label":"\u0130stifad\u0259\u00e7i R\u0259yl\u0259ri","reviews_title":"Startap \u0130deyas\u0131 Haqq\u0131nda R\u0259yl\u0259r","reviews_empty_title":"H\u0259l\u0259lik he\u00e7 bir r\u0259y yoxdur","reviews_empty_desc":"\u0130lk r\u0259yi siz bildirin v\u0259 d\u0259m qaz\u0131ndan qorunma ekosisteminin inki\u015faf\u0131na d\u0259st\u0259k olun!","reviews_empty":"H\u0259l\u0259lik he\u00e7 bir t\u0259sdiql\u0259nmi\u015f r\u0259y yoxdur. \u0130lk r\u0259yi siz yaz\u0131n!","btn_leave_review":"\u0130deya Haqq\u0131nda R\u0259y Bildirin","modal_review_title":"AirSen \u0130deyas\u0131 Haqq\u0131nda Fikrinizi B\u00f6l\u00fc\u015f\u00fcn","modal_name":"Ad\u0131n\u0131z v\u0259 Soyad\u0131n\u0131z","modal_name_placeholder":"M\u0259s: Elvin M\u0259mm\u0259dov","modal_rating_label":"Konsepti qiym\u0259tl\u0259ndirin:","modal_rating":"Qiym\u0259t (1\u20135 Ulduz)","modal_comment":"Fikriniz v\u0259 ya R\u0259yiniz","modal_comment_placeholder":"D\u0259m qaz\u0131ndan qorunma haqq\u0131nda n\u0259 d\u00fc\u015f\u00fcn\u00fcrs\u00fcn\u00fcz?...","modal_submit":"R\u0259yi G\u00f6nd\u0259r","modal_success":"T\u0259\u015f\u0259kk\u00fcr edirik! R\u0259yiniz qeyd\u0259 al\u0131nd\u0131 v\u0259 moderasiyadan sonra d\u0259rc olunacaq.","modal_close":"Ba\u011fla","contact_label":"\u018flaq\u0259 \u0026 D\u0259st\u0259k","contact_title":"Biziml\u0259 \u018flaq\u0259 Saxlay\u0131n","contact_email_title":"Birba\u015fa \u018flaq\u0259","contact_email_desc":"\u018fm\u0259kda\u015fl\u0131q, texniki t\u0259klifl\u0259r v\u0259 suallar\u0131n\u0131z \u00fc\u00e7\u00fcn biz\u0259 yaz\u0131n:","contact_btn_copy":"Kopyala","contact_location_title":"Q\u0259rargah \u0026 M\u0259kan","contact_location_desc":"Beyn\u0259lxalq komandam\u0131z Bak\u0131 v\u0259 Kaliforniyada f\u0259aliyy\u0259t g\u00f6st\u0259rir:","contact_loc_baku":"Bak\u0131, Az\u0259rbaycan","contact_loc_stanford":"Stanford, CA \/ Bak\u0131","contact_loc_team":"Paylanm\u0131\u015f M\u00fch\u0259ndislik Komandas\u0131","footer_copyright":"B\u00fct\u00fcn h\u00fcquqlar qorunur.","footer_admin_link":"\u015e\u0259xsi Kabinet \/ Analitika","admin_title":"AirSen \u0130dar\u0259etm\u0259 \u0026 Analitika Paneli"},"ru":{"brand":"AirSen","tagline":"Smart CO Protection","nav_problem":"\u041f\u0440\u043e\u0431\u043b\u0435\u043c\u0430","nav_how_it_works":"\u041a\u0430\u043a \u044d\u0442\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442","nav_features":"\u041f\u0440\u0435\u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u0430","nav_plans":"\u0422\u0430\u0440\u0438\u0444\u044b","nav_team":"\u041a\u043e\u043c\u0430\u043d\u0434\u0430","nav_investors":"\u0418\u043d\u0432\u0435\u0441\u0442\u043e\u0440\u0430\u043c","nav_reviews":"\u041e\u0442\u0437\u044b\u0432\u044b","nav_contact":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b","hero_badge":"\u0421\u0438\u0441\u0442\u0435\u043c\u0430 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u043d\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u043a\u043e\u043b\u0435\u043d\u0438\u044f","hero_title":"AirSen. \u0423\u043c\u043d\u0430\u044f \u0437\u0430\u0449\u0438\u0442\u0430 \u043e\u0442 \u0443\u0433\u0430\u0440\u043d\u043e\u0433\u043e \u0433\u0430\u0437\u0430 \u2014 \u0434\u043b\u044f \u0434\u043e\u043c\u0430, \u043e\u0444\u0438\u0441\u0430 \u0438 \u0430\u0432\u0442\u043e","hero_subtitle":"\u041f\u0435\u0440\u0432\u043e\u0435 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435, \u043f\u0440\u0435\u0432\u0440\u0430\u0449\u0430\u044e\u0449\u0435\u0435 \u0432\u0430\u0448 \u0441\u043c\u0430\u0440\u0442\u0444\u043e\u043d \u0432 \u0438\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0439 \u0449\u0438\u0442 \u043e\u0442 \u043d\u0435\u0432\u0438\u0434\u0438\u043c\u043e\u0433\u043e \u0443\u0431\u0438\u0439\u0446\u044b. \u041a\u043e\u043d\u0442\u0440\u043e\u043b\u0438\u0440\u0443\u0439\u0442\u0435 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0431\u043b\u0438\u0437\u043a\u0438\u0445 \u0438\u0437 \u043b\u044e\u0431\u043e\u0439 \u0442\u043e\u0447\u043a\u0438 \u043c\u0438\u0440\u0430.","cta_google_play":"Available on Google Play","cta_google_play_sub":"\u0414\u041e\u0421\u0422\u0423\u041f\u041d\u041e \u0412","cta_moderation_badge":"\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043d\u0430 \u043c\u043e\u0434\u0435\u0440\u0430\u0446\u0438\u0438","cta_moderation_info":"\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0441\u0435\u0439\u0447\u0430\u0441 \u043f\u0440\u043e\u0445\u043e\u0434\u0438\u0442 \u0444\u0438\u043d\u0430\u043b\u044c\u043d\u0443\u044e \u043c\u043e\u0434\u0435\u0440\u0430\u0446\u0438\u044e \u0432 Google Play Store (\u0434\u043e 10\u201313 \u0447\u0438\u0441\u043b\u0430). \u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u043e\u0442\u043a\u0440\u043e\u0435\u0442\u0441\u044f \u0434\u043e\u0441\u0442\u0443\u043f, \u0441\u0441\u044b\u043b\u043a\u0430 \u0441\u0442\u0430\u043d\u0435\u0442 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0439!","mockup_status_safe":"0\u201330 PPM \u2022 \u0411\u0415\u0417\u041e\u041f\u0410\u0421\u041d\u041e","mockup_status_warning":"31\u201369 PPM \u2022 \u0412\u041d\u0418\u041c\u0410\u041d\u0418\u0415","mockup_status_danger":"70+ PPM \u2022 \u041e\u041f\u0410\u0421\u041d\u041e\u0421\u0422\u042c: CO","mockup_co_indicator":"\u0418\u041d\u0414\u0418\u041a\u0410\u0422\u041e\u0420 CO","mockup_ppm":"ppm","mockup_home":"\u041a\u0432\u0430\u0440\u0442\u0438\u0440\u0430 (\u0413\u043e\u0441\u0442\u0438\u043d\u0430\u044f)","mockup_car":"\u0410\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c (Prius 30)","mockup_family_title":"\u0421\u0435\u043c\u044c\u044f \u0432 \u0441\u0435\u0442\u0438","mockup_family_active":"4 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043f\u043e\u0434 \u0437\u0430\u0449\u0438\u0442\u043e\u0439","mockup_simulate_safe":"\u041d\u043e\u0440\u043c\u0430 (12 ppm)","mockup_simulate_warn":"\u0422\u0440\u0435\u0432\u043e\u0433\u0430 (42 ppm)","mockup_simulate_danger":"\u041e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c (110 ppm)","mockup_voice_confirm":"\u0421\u043a\u0430\u0436\u0438\u0442\u0435 \u0022\u0412\u0441\u0435 \u0432 \u043f\u043e\u0440\u044f\u0434\u043a\u0435\u0022 \u0438\u043b\u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435","mockup_sos_btn":"\u0412\u044b\u0437\u043e\u0432 \u044d\u043a\u0441\u0442\u0440\u0435\u043d\u043d\u044b\u0445 \u0441\u043b\u0443\u0436\u0431 (103 \/ 112)","mockup_interactive_hint":"\u0418\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u0441\u0438\u043c\u0443\u043b\u044f\u0442\u043e\u0440: \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0438 \u043f\u0440\u043e\u0442\u0435\u0441\u0442\u0438\u0440\u0443\u0439\u0442\u0435","problem_label":"\u0413\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0430\u044f \u041f\u0440\u043e\u0431\u043b\u0435\u043c\u0430","problem_title":"\u041e\u0431\u044b\u0447\u043d\u044b\u0435 \u0434\u0435\u0442\u0435\u043a\u0442\u043e\u0440\u044b \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u0438\u0449\u0430\u0442 \u0432 \u043f\u0443\u0441\u0442\u043e\u0439 \u043a\u0432\u0430\u0440\u0442\u0438\u0440\u0435.","problem_text":"\u0423\u0433\u0430\u0440\u043d\u044b\u0439 \u0433\u0430\u0437 \u043d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0443\u0432\u0438\u0434\u0435\u0442\u044c, \u043f\u043e\u0447\u0443\u0432\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u043f\u043e \u0437\u0430\u043f\u0430\u0445\u0443 \u0438\u043b\u0438 \u0432\u043a\u0443\u0441\u0443. \u0415\u0441\u043b\u0438 \u0434\u043e\u043c\u0430 \u043d\u0438\u043a\u043e\u0433\u043e \u043d\u0435\u0442 \u0438\u043b\u0438 \u0447\u0435\u043b\u043e\u0432\u0435\u043a \u0443\u0436\u0435 \u043f\u043e\u0442\u0435\u0440\u044f\u043b \u0441\u043e\u0437\u043d\u0430\u043d\u0438\u0435 \u2014 \u043e\u0431\u044b\u0447\u043d\u044b\u0439 \u0441\u0438\u0433\u043d\u0430\u043b \u0442\u0440\u0435\u0432\u043e\u0433\u0438 \u043d\u0438\u043a\u0442\u043e \u043d\u0435 \u0443\u0441\u043b\u044b\u0448\u0438\u0442.","stat_badge":"\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430","stat_number":"28 900","stat_label":"\u0447\u0435\u043b\u043e\u0432\u0435\u043a \u0432\u043e \u0432\u0441\u0435\u043c \u043c\u0438\u0440\u0435 \u0435\u0436\u0435\u0433\u043e\u0434\u043d\u043e \u043f\u043e\u0433\u0438\u0431\u0430\u044e\u0442 \u043e\u0442 \u0441\u043b\u0443\u0447\u0430\u0439\u043d\u043e\u0433\u043e \u043e\u0442\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0443\u0433\u0430\u0440\u043d\u044b\u043c \u0433\u0430\u0437\u043e\u043c. \u0411\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u043e \u044d\u0442\u0438\u0445 \u0441\u043c\u0435\u0440\u0442\u0435\u0439 \u043c\u043e\u0436\u043d\u043e \u0431\u044b\u043b\u043e \u043f\u0440\u0435\u0434\u043e\u0442\u0432\u0440\u0430\u0442\u0438\u0442\u044c \u0432\u043e\u0432\u0440\u0435\u043c\u044f.","how_label":"\u041f\u0440\u0438\u043d\u0446\u0438\u043f \u0420\u0430\u0431\u043e\u0442\u044b","how_title":"\u041a\u0430\u043a AirSen \u0441\u043f\u0430\u0441\u0430\u0435\u0442 \u0436\u0438\u0437\u043d\u0438?","how_step1_title":"1. \u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 (Connect)","how_step1_desc":"\u0412\u0430\u0448 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u044e\u0449\u0438\u0439 \u0434\u0430\u0442\u0447\u0438\u043a CO \u043b\u0435\u0433\u043a\u043e \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0435\u0442\u0441\u044f \u043a \u043d\u0430\u0448\u0435\u043c\u0443 \u0441\u043c\u0430\u0440\u0442-\u0430\u0434\u0430\u043f\u0442\u0435\u0440\u0443 \u0438\u043b\u0438 \u043c\u043e\u0434\u0443\u043b\u044e Bluetooth.","how_step2_title":"2. \u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0430\u0446\u0438\u044f (Sync)","how_step2_desc":"\u0410\u0434\u0430\u043f\u0442\u0435\u0440 \u043f\u0435\u0440\u0435\u0434\u0430\u0435\u0442 \u0434\u0430\u043d\u043d\u044b\u0435 \u043e \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u0435 \u0432\u043e\u0437\u0434\u0443\u0445\u0430 \u0432 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u043c \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u043f\u0440\u044f\u043c\u043e \u0432 \u043c\u043e\u0431\u0438\u043b\u044c\u043d\u043e\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 AirSen.","how_step3_title":"3. \u0417\u0430\u0449\u0438\u0442\u0430 (Protect)","how_step3_desc":"\u0412\u0441\u044f \u0432\u0430\u0448\u0430 \u0441\u0435\u043c\u044c\u044f \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0435\u0442\u0441\u044f \u043a \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0439 \u0441\u0435\u0442\u0438 \u0432\u043d\u0443\u0442\u0440\u0438 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f, \u043c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u043e \u0430\u043a\u0442\u0438\u0432\u0438\u0440\u0443\u044f \u043a\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043e\u043f\u043e\u0432\u0435\u0449\u0435\u043d\u0438\u044f \u043f\u0440\u0438 \u043b\u044e\u0431\u043e\u0439 \u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u0443\u0442\u0435\u0447\u043a\u0438 \u0433\u0430\u0437\u0430.","card1_title":"\u041e\u0434\u0438\u043d \u0434\u0430\u0442\u0447\u0438\u043a \u2014 \u0432\u0441\u044f \u0441\u0435\u043c\u044c\u044f \u043d\u0430 \u0441\u0432\u044f\u0437\u0438","card1_text":"\u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0434\u0430\u0442\u0447\u0438\u043a \u0443\u0441\u0442\u0430\u043d\u0430\u0432\u043b\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u0432 \u043f\u043e\u043c\u0435\u0449\u0435\u043d\u0438\u0438 \u0438\u043b\u0438 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u0435 \u0438 \u043c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u043e \u043f\u0435\u0440\u0435\u0434\u0430\u0435\u0442 \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0438\u044f \u0432 \u0440\u0435\u0430\u043b\u044c\u043d\u043e\u043c \u0432\u0440\u0435\u043c\u0435\u043d\u0438 \u0447\u0435\u0440\u0435\u0437 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0432\u0441\u0435\u043c \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u044b\u043c \u0431\u043b\u0438\u0437\u043a\u0438\u043c.","card2_title":"\u0422\u0440\u0438 \u0443\u0440\u043e\u0432\u043d\u044f \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044f (ppm)","card2_text":"\u0421\u0438\u0441\u0442\u0435\u043c\u0430 \u043a\u043e\u0434\u0438\u0440\u0443\u0435\u0442 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u0446\u0432\u0435\u0442\u0430\u043c\u0438 \u0438 \u0442\u043e\u0447\u043d\u044b\u043c\u0438 \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0438\u044f\u043c\u0438 \u0434\u0430\u0442\u0447\u0438\u043a\u0430:","card2_green":"\u0417\u0435\u043b\u0435\u043d\u044b\u0439 \u2014 0\u201330 ppm (\u0412\u0441\u0435 \u0432 \u043f\u043e\u0440\u044f\u0434\u043a\u0435. \u0412\u043e\u0437\u0434\u0443\u0445 \u0447\u0438\u0441\u0442).","card2_yellow":"\u0416\u0435\u043b\u0442\u044b\u0439 \u2014 30\u201350 ppm (\u041f\u043e\u0432\u044b\u0448\u0435\u043d\u043d\u044b\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c. \u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0435 \u043d\u0430 \u0441\u043c\u0430\u0440\u0442\u0444\u043e\u043d\u044b \u0432\u0441\u0435\u0439 \u0441\u0435\u043c\u044c\u0438).","card2_red":"\u041a\u0440\u0430\u0441\u043d\u044b\u0439 \u2014 50\u2013150 ppm (\u041e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c! \u041c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u0430\u044f \u0441\u0438\u0440\u0435\u043d\u0430, \u0432\u0438\u0431\u0440\u0430\u0446\u0438\u044f \u0438 \u044d\u043a\u0440\u0430\u043d \u0442\u0440\u0435\u0432\u043e\u0433\u0438).","card3_title":"\u0423\u043c\u043d\u043e\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438","card3_text":"\u0412 \u043c\u043e\u043c\u0435\u043d\u0442 \u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 AirSen \u043f\u0440\u043e\u0441\u0438\u0442 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0433\u043e\u043b\u043e\u0441\u043e\u043c \u0438\u043b\u0438 \u043a\u043d\u043e\u043f\u043a\u043e\u0439, \u0447\u0442\u043e \u0441 \u0432\u0430\u043c\u0438 \u0432\u0441\u0435 \u0432 \u043f\u043e\u0440\u044f\u0434\u043a\u0435. \u042d\u0442\u043e \u0438\u0441\u043a\u043b\u044e\u0447\u0430\u0435\u0442 \u043b\u043e\u0436\u043d\u044b\u0435 \u0441\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u043d\u0438\u044f \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0435\u0442 \u0432\u0430\u0448\u0435 \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435.","card4_title":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u044d\u0441\u043a\u0430\u043b\u0430\u0446\u0438\u044f","card4_text":"\u0415\u0441\u043b\u0438 \u0432\u044b \u043d\u0435 \u043e\u0442\u0432\u0435\u0442\u0438\u0442\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u0435, \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u043e\u0442\u043e\u0431\u0440\u0430\u0437\u0438\u0442 \u0432\u0430\u0448 \u0442\u043e\u0447\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0438 \u043d\u043e\u043c\u0435\u0440\u0430 \u044d\u043a\u0441\u0442\u0440\u0435\u043d\u043d\u044b\u0445 \u0441\u043b\u0443\u0436\u0431 \u0434\u043b\u044f \u0432\u044b\u0437\u043e\u0432\u0430 \u043f\u043e\u043c\u043e\u0449\u0438 \u0432 \u043e\u0434\u0438\u043d \u043a\u043b\u0438\u043a.","feat_label":"\u0422\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u041f\u0440\u0435\u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u0430","feat_title":"\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f \u0434\u043b\u044f \u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0439 \u041d\u0430\u0434\u0435\u0436\u043d\u043e\u0441\u0442\u0438","feat1_title":"\u0414\u043b\u044f \u0434\u043e\u043c\u0430 \u0438 \u0434\u043b\u044f \u0430\u0432\u0442\u043e","feat1_text":"\u0414\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0434\u0430\u0442\u0447\u0438\u043a \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u043e\u0442 \u0440\u043e\u0437\u0435\u0442\u043a\u0438 \u0438 Wi-Fi. \u0410\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c\u043d\u044b\u0439 \u2014 \u043f\u043e Bluetooth \u0438 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u044f\u0435\u0442 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b GPS, \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u0437\u0430\u0449\u0438\u0442\u0430 \u043d\u0435 \u0437\u0430\u043a\u0430\u043d\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u0437\u0430 \u043f\u043e\u0440\u043e\u0433\u043e\u043c.","feat2_title":"\u0417\u0430\u0449\u0438\u0442\u0430 \u0431\u0435\u0437 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0430","feat2_text":"\u0411\u0430\u0437\u043e\u0432\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0438 \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u044b\u0435 \u043e\u043f\u043e\u0432\u0435\u0449\u0435\u043d\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u0430\u044e\u0442 \u0430\u0432\u0442\u043e\u043d\u043e\u043c\u043d\u043e, \u0434\u0430\u0436\u0435 \u043f\u0440\u0438 \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 Wi-Fi.","feat3_title":"\u041e\u0434\u0438\u043d \u0430\u043a\u043a\u0430\u0443\u043d\u0442 \u2014 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432","feat3_text":"\u041c\u043e\u043d\u0438\u0442\u043e\u0440\u044c\u0442\u0435 \u0434\u043e\u043c, \u043e\u0444\u0438\u0441 \u0438 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u044c \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e \u0434\u0440\u0443\u0433 \u043e\u0442 \u0434\u0440\u0443\u0433\u0430 \u0432 \u043e\u0434\u043d\u043e\u043c \u0441\u0442\u0438\u043b\u044c\u043d\u043e\u043c \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438.","pricing_label":"\u0422\u0430\u0440\u0438\u0444\u044b \u0026 \u0426\u0435\u043d\u044b","pricing_title":"\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u0430\u044f \u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u0414\u043b\u044f \u041a\u0430\u0436\u0434\u043e\u0433\u043e","plan_basic_title":"\u0411\u0410\u0417\u041e\u0412\u042b\u0419 \u041f\u041b\u0410\u041d","plan_basic_badge":"\u0411\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e","plan_basic_price":"$0","plan_basic_period":"\/ \u043c\u0435\u0441","plan_basic_f1_t":"\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 1 \u0414\u0430\u0442\u0447\u0438\u043a\u0430","plan_basic_f1_d":"\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0435 1 \u0434\u0430\u0442\u0447\u0438\u043a CO \u0431\u0435\u0437 \u043b\u0438\u0448\u043d\u0438\u0445 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043a.","plan_basic_f2_t":"\u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0432 \u0420\u0435\u0430\u043b\u044c\u043d\u043e\u043c \u0412\u0440\u0435\u043c\u0435\u043d\u0438","plan_basic_f2_d":"\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c \u0447\u0438\u0441\u0442\u043e\u0442\u044b \u0432\u043e\u0437\u0434\u0443\u0445\u0430 \u0438 \u0443\u0440\u043e\u0432\u043d\u044f PPM 24\/7.","plan_basic_f3_t":"\u041b\u043e\u043a\u0430\u043b\u044c\u043d\u044b\u0435 Push-\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f","plan_basic_f3_d":"\u0421\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u043d\u044b\u0435 \u043e\u043f\u043e\u0432\u0435\u0449\u0435\u043d\u0438\u044f \u043f\u0440\u0438 \u043f\u0440\u0435\u0432\u044b\u0448\u0435\u043d\u0438\u0438 \u043d\u043e\u0440\u043c\u044b \u0433\u0430\u0437\u0430.","plan_basic_f4_t":"\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0437\u0430 24 \u0427\u0430\u0441\u0430","plan_basic_f4_d":"\u0413\u0440\u0430\u0444\u0438\u043a \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0443\u0440\u043e\u0432\u043d\u044f \u0433\u0430\u0437\u0430 \u0437\u0430 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435 \u0441\u0443\u0442\u043a\u0438.","plan_basic_btn":"\u041d\u0430\u0447\u0430\u0442\u044c \u0411\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e","plan_prem_title":"PREMIUM \u0411\u0415\u0417\u041e\u041f\u0410\u0421\u041d\u041e\u0421\u0422\u042c","plan_prem_badge":"\u041f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u044b\u0439","plan_prem_tag":"\u0421\u041a\u041e\u0420\u041e \/ \u0411\u0415\u0422\u0410","plan_prem_price":"$5.99","plan_prem_period":"\/ \u043c\u0435\u0441","plan_prem_yearly":"\u0438\u043b\u0438 $49.99 \/ \u0433\u043e\u0434 (\u0421\u043a\u0438\u0434\u043a\u0430 30%)","plan_prem_f1_t":"\u041a\u0440\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0420\u0435\u0436\u0438\u043c \u041e\u043f\u043e\u0432\u0435\u0449\u0435\u043d\u0438\u044f","plan_prem_f1_d":"\u0413\u0440\u043e\u043c\u043a\u0430\u044f \u0441\u0438\u0440\u0435\u043d\u0430 \u0434\u0430\u0436\u0435 \u043f\u0440\u0438 \u0431\u0435\u0437\u0437\u0432\u0443\u0447\u043d\u043e\u043c \u0440\u0435\u0436\u0438\u043c\u0435 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0430 \u0438 \u0022\u041d\u0435 \u0431\u0435\u0441\u043f\u043e\u043a\u043e\u0438\u0442\u044c\u0022.","plan_prem_f2_t":"\u0420\u0430\u0434\u0430\u0440 \u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438 \u0421\u0435\u043c\u044c\u0438","plan_prem_f2_d":"\u041e\u0434\u043d\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u0432\u0441\u0435\u0439 \u0441\u0435\u043c\u044c\u0438 (\u0434\u043e 5 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432).","plan_prem_f3_t":"\u0423\u043c\u043d\u0430\u044f \u042d\u0441\u043a\u0430\u043b\u0430\u0446\u0438\u044f \u0438 GPS-\u0421\u043f\u0430\u0441\u0435\u043d\u0438\u0435","plan_prem_f3_d":"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u0442\u043e\u0447\u043d\u044b\u0445 GPS-\u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442 \u0441\u043b\u0443\u0436\u0431\u0430\u043c 112 \u0438 \u0431\u043b\u0438\u0437\u043a\u0438\u043c.","plan_prem_f4_t":"\u0418\u0441\u043a\u0443\u0441\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u0418\u043d\u0442\u0435\u043b\u043b\u0435\u043a\u0442 \u0434\u043b\u044f \u0410\u0432\u0442\u043e","plan_prem_f4_d":"\u041f\u0440\u0435\u0434\u0438\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u0438\u0435 \u0440\u0438\u0441\u043a\u0430 \u0437\u0430\u0433\u0430\u0437\u043e\u0432\u0430\u043d\u043d\u043e\u0441\u0442\u0438 \u0432 \u043f\u0440\u043e\u0431\u043a\u0430\u0445 \u0438 \u0433\u0430\u0440\u0430\u0436\u0430\u0445.","plan_prem_f5_t":"\u041e\u0431\u043b\u0430\u0447\u043d\u043e\u0435 \u0420\u0435\u0437\u0435\u0440\u0432\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0026 \u0418\u0441\u0442\u043e\u0440\u0438\u044f \u0431\u0435\u0437 \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u0439","plan_prem_f5_d":"\u0414\u0435\u0442\u0430\u043b\u044c\u043d\u0430\u044f \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 \u0438 \u0434\u043e\u043b\u0433\u043e\u0441\u0440\u043e\u0447\u043d\u044b\u0435 \u043e\u0442\u0447\u0435\u0442\u044b.","plan_prem_btn":"\u0423\u0432\u0435\u0434\u043e\u043c\u0438\u0442\u044c \u043e \u0440\u0435\u043b\u0438\u0437\u0435","beta_modal_badge":"\u0417\u0410\u041a\u0420\u042b\u0422\u042b\u0419 \u0411\u0415\u0422\u0410-\u0422\u0415\u0421\u0422","beta_modal_title":"\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u044f\u0439\u0442\u0435\u0441\u044c \u043a \u0437\u0430\u043a\u0440\u044b\u0442\u043e\u043c\u0443 \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e AirSen Premium","beta_modal_desc":"AirSen Premium \u0441\u0435\u0439\u0447\u0430\u0441 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u043d\u0430 \u0441\u0442\u0430\u0434\u0438\u0438 \u0437\u0430\u043a\u0440\u044b\u0442\u043e\u0433\u043e \u0442\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f. \u041e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0441\u0432\u043e\u0439 e-mail, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0435 \u0432 \u043c\u043e\u043c\u0435\u043d\u0442 \u043e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0440\u0435\u043b\u0438\u0437\u0430 \u0438 3 \u043c\u0435\u0441\u044f\u0446\u0430 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0430.","beta_perk_text":"\ud83c\udf81 3 \u043c\u0435\u0441\u044f\u0446\u0430 Premium \u0432 \u043f\u043e\u0434\u0430\u0440\u043e\u043a \u0432\u0441\u0435\u043c \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u043c \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0430\u043c!","beta_input_placeholder":"\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 e-mail...","beta_submit_btn":"\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0438 \u0412\u0441\u0442\u0443\u043f\u0438\u0442\u044c","beta_success_text":"\u0421\u043f\u0430\u0441\u0438\u0431\u043e! \u0412\u044b \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u044b \u0432 \u0441\u043f\u0438\u0441\u043e\u043a. 3 \u043c\u0435\u0441\u044f\u0446\u0430 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e\u0433\u043e Premium \u0437\u0430\u0440\u0435\u0437\u0435\u0440\u0432\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0437\u0430 \u0432\u0430\u043c\u0438.","team_label":"\u041e\u0441\u043d\u043e\u0432\u0430\u0442\u0435\u043b\u0438 \u0026 \u041a\u043e\u043c\u0430\u043d\u0434\u0430","team_title":"\u0412\u0438\u0434\u0435\u043d\u0438\u0435, \u0441\u043f\u0430\u0441\u0430\u044e\u0449\u0435\u0435 \u0436\u0438\u0437\u043d\u0438","team_turan_name":"\u0422\u0443\u0440\u0430\u043d \u0421\u0430\u0444\u0430\u0440\u043b\u0438","team_turan_role":"Founder \u0026 CTO","team_turan_desc":"\u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430 \u043f\u0440\u043e\u0434\u0443\u043a\u0442\u0430, \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u044f IoT-\u043f\u0440\u043e\u0442\u043e\u043a\u043e\u043b\u043e\u0432 \u0438 \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f. \u041c\u043d\u043e\u0433\u043e\u043a\u0440\u0430\u0442\u043d\u044b\u0439 \u043f\u0440\u0438\u0437\u0435\u0440 \u043d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0438 \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0445 \u043e\u043b\u0438\u043c\u043f\u0438\u0430\u0434 | \u0421\u0442\u0430\u0436\u0435\u0440 Azercosmos Space Academy.","team_turan_quote":"\u041c\u044b \u0441\u043e\u0437\u0434\u0430\u043b\u0438 AirSen \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u043f\u0435\u0440\u0435\u0441\u0442\u0430\u043b\u0430 \u0431\u044b\u0442\u044c \u0434\u043e\u0440\u043e\u0433\u043e\u0439. \u0411\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u043d\u0443\u0436\u043d\u043e \u043f\u043e\u043a\u0443\u043f\u0430\u0442\u044c \u0433\u0440\u043e\u043c\u043e\u0437\u0434\u043a\u0438\u0435 \u0437\u0430\u043a\u0440\u044b\u0442\u044b\u0435 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u2014 \u0432\u0441\u0451 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0435 \u0434\u043b\u044f \u0437\u0430\u0449\u0438\u0442\u044b \u0431\u043b\u0438\u0437\u043a\u0438\u0445 \u0442\u0435\u043f\u0435\u0440\u044c \u0432 \u0432\u0430\u0448\u0435\u043c \u0441\u043c\u0430\u0440\u0442\u0444\u043e\u043d\u0435.","team_turan_tag":"\u0418\u043d\u0436\u0435\u043d\u0435\u0440\u0438\u044f IoT \u0026 \u0410\u0440\u0445\u0438\u0442\u0435\u043a\u0442\u0443\u0440\u0430","team_tamerlan_name":"\u0422\u0430\u043c\u0435\u0440\u043b\u0430\u043d \u0421\u0430\u0444\u0430\u0440\u043b\u0438","team_tamerlan_role":"Co-founder \u0026 CEO","team_tamerlan_desc":"\u0411\u0438\u0437\u043d\u0435\u0441-\u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f, \u0444\u0438\u043d\u0430\u043d\u0441\u043e\u0432\u044b\u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u0438 \u0438 \u043c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u043e\u0435 \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435. \u041c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043d\u0442 \u0421\u0442\u044d\u043d\u0444\u043e\u0440\u0434\u0441\u043a\u043e\u0433\u043e \u0443\u043d\u0438\u0432\u0435\u0440\u0441\u0438\u0442\u0435\u0442\u0430 (Stanford University M.S. Candidate).","team_tamerlan_quote":"\u041d\u0430\u0448\u0430 \u0446\u0435\u043b\u044c \u2014 \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0444\u0438\u043d\u0430\u043d\u0441\u043e\u0432\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0439 \u0434\u043b\u044f \u043a\u0430\u0436\u0434\u043e\u0439 \u0441\u0435\u043c\u044c\u0438 \u0437\u0430 \u0441\u0447\u0435\u0442 \u043f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u043e\u0439 \u0431\u0438\u0437\u043d\u0435\u0441-\u043c\u043e\u0434\u0435\u043b\u0438, \u044d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u043e\u0439 \u043b\u043e\u0433\u0438\u0441\u0442\u0438\u043a\u0438 \u0434\u0430\u0442\u0447\u0438\u043a\u043e\u0432 \u0438 \u0443\u0441\u0442\u043e\u0439\u0447\u0438\u0432\u043e\u0433\u043e \u043c\u0430\u0441\u0448\u0442\u0430\u0431\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f \u043f\u0440\u043e\u0435\u043a\u0442\u0430.","team_tamerlan_tag":"\u0421\u0442\u0440\u0430\u0442\u0435\u0433\u0438\u044f \u0026 \u041c\u0435\u0436\u0434\u0443\u043d\u0430\u0440\u043e\u0434\u043d\u044b\u0439 \u041c\u0430\u0441\u0448\u0442\u0430\u0431","investors_label":"\u0421\u0442\u0430\u0442\u0443\u0441 \u041f\u0440\u043e\u0435\u043a\u0442\u0430 \u0026 \u0418\u043d\u0432\u0435\u0441\u0442\u043e\u0440\u0430\u043c","investors_title":"\u0420\u043e\u0441\u0442 \u0438 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u044b\u0435 \u0433\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u044b","investors_badge":"\u0418\u043d\u0432\u0435\u0441\u0442\u0438\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c","investors_card_title":"\u0426\u0435\u043d\u043d\u043e\u0441\u0442\u044c \u0434\u043b\u044f \u0418\u043d\u0432\u0435\u0441\u0442\u043e\u0440\u043e\u0432","investors_card_text":"AirSen \u043c\u0435\u043d\u044f\u0435\u0442 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0438\u0433\u0440\u044b \u043d\u0430 \u0441\u0442\u044b\u043a\u0435 \u0440\u044b\u043d\u043a\u043e\u0432 Smart Home \u0438 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0439 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438. \u041c\u044b \u0441\u043e\u0437\u0434\u0430\u0435\u043c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0443\u044e \u0435\u0434\u0438\u043d\u0443\u044e \u044d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0437\u0430\u0449\u0438\u0442\u044b \u043e\u0442 \u0443\u0433\u0430\u0440\u043d\u043e\u0433\u043e \u0433\u0430\u0437\u0430, \u043a\u043e\u0442\u043e\u0440\u0430\u044f \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u043f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0430\u0435\u0442, \u043d\u043e \u0438 \u0434\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442.","investors_tag":"\u042d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u0443\u043c\u043d\u043e\u0433\u043e \u0434\u043e\u043c\u0430 \u0438 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438","status_badge":"\u0417\u0430\u043f\u0443\u0441\u043a \u043d\u0430 Android","status_card_title":"\u0417\u0430\u043f\u0443\u0441\u043a \u043d\u0430 Android \u0026 Roadmap","status_card_text":"\u041f\u0435\u0440\u0432\u0430\u044f \u0432\u0435\u0440\u0441\u0438\u044f \u0432\u044b\u0445\u043e\u0434\u0438\u0442 \u043d\u0430 Android \u0434\u043b\u044f \u0431\u044b\u0441\u0442\u0440\u043e\u0439 \u0432\u0430\u043b\u0438\u0434\u0430\u0446\u0438\u0438 \u0440\u044b\u043d\u043a\u0430 \u0438 \u0441\u0431\u043e\u0440\u0430 \u043e\u0431\u0440\u0430\u0442\u043d\u043e\u0439 \u0441\u0432\u044f\u0437\u0438 \u0441 \u043f\u043e\u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u043c \u0438\u0442\u0435\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u043c \u0437\u0430\u043f\u0443\u0441\u043a\u043e\u043c \u043d\u0430 iOS.","status_tag":"\u0412\u0430\u043b\u0438\u0434\u0430\u0446\u0438\u044f \u0440\u044b\u043d\u043a\u0430 \u0026 \u042d\u043a\u0441\u043f\u0430\u043d\u0441\u0438\u044f \u043d\u0430 iOS","reviews_label":"\u041e\u0442\u0437\u044b\u0432\u044b \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439","reviews_title":"\u041c\u043d\u0435\u043d\u0438\u044f \u043e \u0441\u0442\u0430\u0440\u0442\u0430\u043f\u0435 \u0438 \u043a\u043e\u043d\u0446\u0435\u043f\u0442\u0435","reviews_empty_title":"\u041e\u0442\u0437\u044b\u0432\u043e\u0432 \u043f\u043e\u043a\u0430 \u043d\u0435\u0442","reviews_empty_desc":"\u0421\u0442\u0430\u043d\u044c\u0442\u0435 \u043f\u0435\u0440\u0432\u044b\u043c, \u043a\u0442\u043e \u043e\u0441\u0442\u0430\u0432\u0438\u0442 \u0441\u0432\u043e\u0439 \u043e\u0442\u0437\u044b\u0432 \u0438 \u043f\u043e\u043c\u043e\u0436\u0435\u0442 \u0440\u0430\u0437\u0432\u0438\u0442\u0438\u044e \u044d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0437\u0430\u0449\u0438\u0442\u044b \u043e\u0442 \u0443\u0433\u0430\u0440\u043d\u043e\u0433\u043e \u0433\u0430\u0437\u0430!","reviews_empty":"\u041f\u043e\u043a\u0430 \u043d\u0435\u0442 \u043e\u043f\u0443\u0431\u043b\u0438\u043a\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043e\u0442\u0437\u044b\u0432\u043e\u0432. \u0411\u0443\u0434\u044c\u0442\u0435 \u043f\u0435\u0440\u0432\u044b\u043c, \u043a\u0442\u043e \u043e\u0441\u0442\u0430\u0432\u0438\u0442 \u043c\u043d\u0435\u043d\u0438\u0435!","btn_leave_review":"\u041e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u043e\u0442\u0437\u044b\u0432 \u043e\u0431 \u0438\u0434\u0435\u0435","modal_review_title":"\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u0435\u0441\u044c \u043c\u043d\u0435\u043d\u0438\u0435\u043c \u043e\u0431 \u0438\u0434\u0435\u0435 AirSen","modal_name":"\u0412\u0430\u0448\u0435 \u0418\u043c\u044f \u0438 \u0424\u0430\u043c\u0438\u043b\u0438\u044f","modal_name_placeholder":"\u043d\u0430\u043f\u0440. \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u0421\u043c\u0438\u0440\u043d\u043e\u0432","modal_rating_label":"\u041e\u0446\u0435\u043d\u0438\u0442\u0435 \u0438\u0434\u0435\u044e \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438:","modal_rating":"\u041e\u0446\u0435\u043d\u043a\u0430 (1\u20135 \u0437\u0432\u0435\u0437\u0434)","modal_comment":"\u0412\u0430\u0448 \u043e\u0442\u0437\u044b\u0432 \u0438\u043b\u0438 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0435","modal_comment_placeholder":"\u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u0432\u0430\u0448\u0438 \u043c\u044b\u0441\u043b\u0438 \u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0435 \u0438 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u0438...","modal_submit":"\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043e\u0442\u0437\u044b\u0432","modal_success":"\u0421\u043f\u0430\u0441\u0438\u0431\u043e! \u0412\u0430\u0448 \u043e\u0442\u0437\u044b\u0432 \u043f\u0440\u0438\u043d\u044f\u0442 \u0438 \u0431\u0443\u0434\u0435\u0442 \u043e\u043f\u0443\u0431\u043b\u0438\u043a\u043e\u0432\u0430\u043d \u043f\u043e\u0441\u043b\u0435 \u043c\u043e\u0434\u0435\u0440\u0430\u0446\u0438\u0438.","modal_close":"\u0417\u0430\u043a\u0440\u044b\u0442\u044c","contact_label":"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0026 \u0421\u0432\u044f\u0437\u044c","contact_title":"\u0421\u0432\u044f\u0436\u0438\u0442\u0435\u0441\u044c \u0441 \u041d\u0430\u043c\u0438","contact_email_title":"\u041f\u0440\u044f\u043c\u043e\u0439 \u041a\u043e\u043d\u0442\u0430\u043a\u0442","contact_email_desc":"\u041f\u043e \u0432\u043e\u043f\u0440\u043e\u0441\u0430\u043c \u0441\u043e\u0442\u0440\u0443\u0434\u043d\u0438\u0447\u0435\u0441\u0442\u0432\u0430, \u0442\u0435\u0445\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u043c \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u044f\u043c \u0438 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0435:","contact_btn_copy":"\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c","contact_location_title":"\u041b\u043e\u043a\u0430\u0446\u0438\u0438 \u0438 \u041a\u043e\u043c\u0430\u043d\u0434\u0430","contact_location_desc":"\u041d\u0430\u0448\u0430 \u0440\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0432 \u0411\u0430\u043a\u0443 \u0438 \u0421\u0442\u044d\u043d\u0444\u043e\u0440\u0434\u0435, \u041a\u0430\u043b\u0438\u0444\u043e\u0440\u043d\u0438\u044f:","contact_loc_baku":"\u0411\u0430\u043a\u0443, \u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d","contact_loc_stanford":"Stanford, CA \/ \u0411\u0430\u043a\u0443","contact_loc_team":"\u0420\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u0430\u044f \u0438\u043d\u0436\u0435\u043d\u0435\u0440\u043d\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430","footer_copyright":"\u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.","footer_admin_link":"\u041a\u0430\u0431\u0438\u043d\u0435\u0442 \/ \u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430","admin_title":"\u041f\u0430\u043d\u0435\u043b\u044c \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0026 \u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 AirSen"},"en":{"brand":"AirSen","tagline":"Smart CO Protection","nav_problem":"Problem","nav_how_it_works":"How It Works","nav_features":"Features","nav_plans":"Plans","nav_team":"Team","nav_investors":"Investors","nav_reviews":"Reviews","nav_contact":"Contact Us","hero_badge":"Next-Gen Safety System","hero_title":"AirSen. Smart Carbon Monoxide Protection \u2014 For Home, Office, and Car","hero_subtitle":"The first mobile application that transforms your smartphone into an intelligent shield against the silent killer. Control the safety of your loved ones from anywhere in the world.","cta_google_play":"Available on Google Play","cta_google_play_sub":"GET IT ON","cta_moderation_badge":"App In Moderation","cta_moderation_info":"The app is currently undergoing Google Play Store review (until the 10th\u201313th). Direct download link will activate immediately upon store approval!","mockup_status_safe":"0\u201330 PPM \u2022 SAFE LEVEL","mockup_status_warning":"31\u201369 PPM \u2022 WARNING","mockup_status_danger":"70+ PPM \u2022 DANGER CO","mockup_co_indicator":"CO INDICATOR","mockup_ppm":"ppm","mockup_home":"Home (Living Room)","mockup_car":"Car (Prius 30)","mockup_family_title":"Family Connected","mockup_family_active":"4 family members monitored","mockup_simulate_safe":"Normal (12 ppm)","mockup_simulate_warn":"Warning (42 ppm)","mockup_simulate_danger":"Danger (110 ppm)","mockup_voice_confirm":"Say \u0022I am okay\u0022 or tap button","mockup_sos_btn":"Emergency Dispatch (911 \/ 112)","mockup_interactive_hint":"Interactive Simulator: Choose a level to test response","problem_label":"The Global Problem","problem_title":"Standard detectors just beep in an empty apartment.","problem_text":"Carbon monoxide is impossible to see, smell, or taste. If no one is home or a person is already unconscious \u2014 no one will hear a regular alarm.","stat_badge":"Global Statistics","stat_number":"28 900","stat_label":"people worldwide die each year from unintentional carbon monoxide poisoning. Most of these deaths could have been prevented in time.","how_label":"How It Works","how_title":"How AirSen Protects Lives in Real-Time","how_step1_title":"1. Connect","how_step1_desc":"Your existing CO sensor easily connects to our smart adapter or Bluetooth module.","how_step2_title":"2. Sync","how_step2_desc":"The adapter streams real-time air quality data directly to the AirSen mobile application.","how_step3_title":"3. Protect","how_step3_desc":"Your entire family joins the secure network inside the app, activating critical alerts instantly during any gas leak danger.","card1_title":"One Sensor \u2014 Whole Family Connected","card1_text":"The physical sensor is installed in the room or car and instantly transmits real-time readings via the app to all connected loved ones.","card2_title":"Three Levels of Control (ppm)","card2_text":"The system encodes the danger level with colors and exact sensor readings:","card2_green":"Green \u2014 0\u201330 ppm (Everything is fine. The air is clean).","card2_yellow":"Yellow \u2014 30\u201350 ppm (Elevated level. Notification sent to the whole family\u0027s smartphones).","card2_red":"Red \u2014 50\u2013150 ppm (Danger! Instant siren, vibration, and alarm screen).","card3_title":"Smart Safety Confirmation","card3_text":"In a moment of danger, AirSen asks you to confirm with your voice or a button that you are okay. This eliminates false alarms and checks your condition.","card4_title":"Automatic Escalation","card4_text":"If you do not respond to the system, the app will automatically display your exact address and emergency services numbers to call for help in one click.","feat_label":"Technical Advantages","feat_title":"Engineering for Maximum Reliability","feat1_title":"For Home and For Car","feat1_text":"The home sensor operates via wall outlet and Wi-Fi. The car sensor operates via Bluetooth and determines GPS coordinates \u2014 so protection doesn\u0027t end at your doorstep.","feat2_title":"Protection Without Internet","feat2_text":"Basic safety and local alerts operate autonomously, even if Wi-Fi is disconnected.","feat3_title":"One Account \u2014 Multiple Devices","feat3_text":"Monitor your home, office, and car independently in one sleek application.","pricing_label":"Plans \u0026 Pricing","pricing_title":"Affordable Safety For Everyone","plan_basic_title":"BASIC PLAN","plan_basic_badge":"Free","plan_basic_price":"$0","plan_basic_period":"\/ month","plan_basic_f1_t":"1 Sensor Connection","plan_basic_f1_d":"Connect 1 CO sensor seamlessly.","plan_basic_f2_t":"Real-Time Monitoring","plan_basic_f2_d":"Live air quality and PPM level tracking 24\/7.","plan_basic_f3_t":"Local Push Notifications","plan_basic_f3_d":"Standard alerts when gas thresholds are exceeded.","plan_basic_f4_t":"24-Hour History Log","plan_basic_f4_d":"View historical gas trend graphs for the last 24 hours.","plan_basic_btn":"Get Started Free","plan_prem_title":"PREMIUM SAFETY","plan_prem_badge":"Most Popular","plan_prem_tag":"COMING SOON \/ IN BETA","plan_prem_price":"$5.99","plan_prem_period":"\/ month","plan_prem_yearly":"or $49.99 \/ year (Save 30%)","plan_prem_f1_t":"Critical Override Alerts","plan_prem_f1_d":"Loud siren bypasses phone\u0027s silent \/ \u0022Do Not Disturb\u0022 mode.","plan_prem_f2_t":"Family Safety Radar","plan_prem_f2_d":"Connect and monitor up to 5 family members simultaneously.","plan_prem_f3_t":"Smart Escalation \u0026 GPS Rescue","plan_prem_f3_d":"Automatically dispatches live GPS location to 911\/112 and family if unresponsive.","plan_prem_f4_t":"Predictive Car AI","plan_prem_f4_d":"Smart algorithm detects exhaust leakage risks in traffic and enclosed garages.","plan_prem_f5_t":"Cloud Server Backup \u0026 Unlimited History","plan_prem_f5_d":"Comprehensive analytics, audit logs, and exportable safety reports.","plan_prem_btn":"Notify Me on Release","beta_modal_badge":"CLOSED BETA TESTING","beta_modal_title":"Join the AirSen Premium Beta Program","beta_modal_desc":"AirSen Premium is currently in closed testing. Leave your email to be notified upon official release and get 3 months for free.","beta_perk_text":"\ud83c\udf81 3 Months Free Premium Gift for all early beta subscribers!","beta_input_placeholder":"Enter your email address...","beta_submit_btn":"Confirm \u0026 Join Waitlist","beta_success_text":"Thank you! You have been added to the beta waitlist with 3 months free access.","team_label":"Founders \u0026 Team","team_title":"Life-Saving Vision","team_turan_name":"Turan Safarli","team_turan_role":"Founder \u0026 CTO","team_turan_desc":"Product Architecture, IoT Protocol Integration \u0026 Engineering. Multiple National \u0026 International Olympiad Medalist | Azercosmos Space Academy Intern.","team_turan_quote":"We created AirSen so that safety stops being expensive. No need to buy bulky closed systems anymore \u2014 everything you need to protect your loved ones is now in your smartphone.","team_turan_tag":"IoT Engineering \u0026 Architecture","team_tamerlan_name":"Tamerlan Safarli","team_tamerlan_role":"Co-founder \u0026 CEO","team_tamerlan_desc":"Business Strategy, Financial Operations \u0026 International Scalability. Stanford University M.S. Candidate.","team_tamerlan_quote":"Our goal is to make the system financially affordable for every family by building a transparent business model, efficient sensor logistics, and sustainable project scaling.","team_tamerlan_tag":"Strategy \u0026 Global Scale","investors_label":"Project Status \u0026 Investors","investors_title":"Disrupting Personal Safety","investors_badge":"Investment Opportunity","investors_card_title":"Value for Investors","investors_card_text":"AirSen changes the rules of the game at the intersection of the Smart Home and personal safety markets. We are creating an affordable, unified ecosystem for carbon monoxide protection that doesn\u0027t just warn, but acts.","investors_tag":"Smart Home \u0026 Safety Ecosystem","status_badge":"Launch on Android","status_card_title":"Launch on Android \u0026 Roadmap","status_card_text":"The first version is released on Android for rapid market validation and feedback collection, with a subsequent iterative rollout on iOS.","status_tag":"Market Validation \u0026 iOS Expansion","reviews_label":"Public Feedback","reviews_title":"Community \u0026 Startup Idea Reviews","reviews_empty_title":"No reviews yet","reviews_empty_desc":"Be the first to share your thoughts and support the carbon monoxide protection ecosystem!","reviews_empty":"No public reviews yet. Be the first to share your thoughts!","btn_leave_review":"Leave a Review about the Idea","modal_review_title":"Share Your Feedback on AirSen","modal_name":"Full Name","modal_name_placeholder":"e.g. David Miller","modal_rating_label":"Rate the safety concept:","modal_rating":"Rating (1\u20135 Stars)","modal_comment":"Your Review or Feedback","modal_comment_placeholder":"Share your thoughts about this carbon monoxide safety idea...","modal_submit":"Submit Review","modal_success":"Thank you! Your review has been submitted and will be published after moderation.","modal_close":"Close","contact_label":"Contact \u0026 Support","contact_title":"Get in Touch with Us","contact_email_title":"Direct Communication","contact_email_desc":"For partnerships, engineering inquiries, and support:","contact_btn_copy":"Copy","contact_location_title":"Headquarters \u0026 Locations","contact_location_desc":"Our distributed engineering team operates from Baku and Stanford, CA:","contact_loc_baku":"Baku, Azerbaijan","contact_loc_stanford":"Stanford, CA \/ Baku","contact_loc_team":"Distributed Engineering Team","footer_copyright":"All rights reserved.","footer_admin_link":"Private Dashboard \/ Analytics","admin_title":"AirSen Management \u0026 Analytics Panel"}};
         window.GOOGLE_PLAY_CONFIG = {
             status: "moderation",
             url: "https://play.google.com/store/apps/details?id=com.airsen.app"
         };
+    </script>
+<script id="browser-logger-active">
+(function() {
+    const ENDPOINT = '#/_boost/browser-logs';
+    const logQueue = [];
+    let flushTimeout = null;
+    const captureTypes = ["error","warning","info","log","debug","table"];
 
-        window.AIRSEN_TRANSLATIONS = {
-            "az": {
-                "brand": "AirSen",
-                "tagline": "Smart CO Protection",
-                "nav_problem": "Problem",
-                "nav_how_it_works": "Necə İşləyir",
-                "nav_features": "Üstünlüklər",
-                "nav_pricing": "Tariflər",
-                "nav_team": "Komanda",
-                "nav_investors": "İnvestorlar",
-                "nav_reviews": "Rəylər",
-                "nav_contact": "Əlaqə",
-                "hero_badge": "Yeni Nəsil Təhlükəsizlik Sistemi",
-                "hero_title": "AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün",
-                "hero_subtitle": "Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.",
-                "cta_google_play": "Available on Google Play",
-                "cta_google_play_sub": "GET IT ON",
-                "cta_moderation_badge": "Tətbiq Moderasiyadadır",
-                "cta_moderation_info": "Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!",
-                "mockup_status_safe": "0–30 PPM • TƏHLÜKƏSİZ",
-                "mockup_status_warning": "31–69 PPM • XƏBƏRDARLIQ",
-                "mockup_status_danger": "70+ PPM • DƏM QAZI TƏHLÜKƏSİ",
-                "mockup_co_indicator": "CO İNDİKATORU",
-                "mockup_ppm": "ppm",
-                "mockup_home": "Mənzil (Qonaq otağı)",
-                "mockup_car": "Avtomobil (Prius 30)",
-                "mockup_family_title": "Qoşulmuş Ailə Üzvləri",
-                "mockup_family_active": "4 üzv aktiv nəzarətdə",
-                "mockup_simulate_safe": "Normal (12 ppm)",
-                "mockup_simulate_warn": "Xəbərdarlıq (42 ppm)",
-                "mockup_simulate_danger": "Təhlükə (110 ppm)",
-                "mockup_voice_confirm": "\"Hər şey yaxşıdır\" deyin və ya toxunun",
-                "mockup_sos_btn": "Təcili Kömək Çağır (103 / 112)",
-                "mockup_interactive_hint": "İnteraktiv Simulyator: Səviyyəni seçin və sınaqdan keçirin",
-                "problem_label": "Qlobal Problem",
-                "problem_title": "Standart detektorlar sadəcə boş mənzildə səs-küy salır.",
-                "problem_text": "Dəm qazını görmək, iyləmək və ya dadını hiss etmək qeyri-mümkündür. Evdə heç kim yoxdursa və ya insan artıq huşsuz vəziyyətdədirsə — adi siqnalı heç kim eşitməyəcək.",
-                "stat_badge": "Statistika",
-                "stat_number": "28 900",
-                "stat_label": "hər il dünyada ehtiyatsızlıqdan dəm qazından zəhərlənərək həyatını itirən insanların sayıdır. Bu ölümlərin böyük əksəriyyətinin vaxtında qarşısını almaq olardı.",
-                "how_label": "İş Prinsipi",
-                "how_title": "AirSen Necə Həyat Xilas Edir?",
-                "how_step1_title": "1. Qoşulma (Connect)",
-                "how_step1_text": "Mövcud dəm qazı (CO) sensorunuz ağıllı adapterimizə və ya Bluetooth moduluna asanlıqla qoşulur.",
-                "how_step2_title": "2. Sinxronizasiya (Sync)",
-                "how_step2_text": "Adapter real vaxt rejimində hava keyfiyyəti məlumatlarını birbaşa AirSen mobil tətbiqinə ötürür.",
-                "how_step3_title": "3. Mühafizə (Protect)",
-                "how_step3_text": "Bütün ailəniz tətbiq daxilindəki təhlükəsiz şəbəkəyə qoşulur və qaz sızması təhlükəsi zamanı kritik bildirişlər dərhal aktivləşir.",
-                "card2_title": "Üçpilləli Nəzarət Sistemi (ppm)",
-                "card2_text": "Sistem təhlükə səviyyəsini rənglərlə və sensorun dəqiq göstəriciləri ilə kodlaşdırır:",
-                "card2_green": "Yaşıl — 0–30 ppm (Hər şey qaydasındadır. Hava təmizdir).",
-                "card2_yellow": "Sarı — 30–50 ppm (Yüksəlmiş səviyyə. Bütün ailənin smartfonuna bildiriş göndərilir).",
-                "card2_red": "Qırmızı — 50–150 ppm (Təhlükə! Dərhal siren, vibrasiya və həyəcan ekranı).",
-                "card3_title": "Ağıllı Təhlükəsizlik Təsdiqi",
-                "card3_text": "Təhlükə anında AirSen yaxşı olduğunuzu səsinizlə və ya düymə ilə təsdiq etməyinizi istəyir. Bu, yalançı həyəcan siqnallarını aradan qaldırır və vəziyyətinizi yoxlayır.",
-                "card4_title": "Avtomatik Eskalasiya",
-                "card4_text": "Əgər sistemə cavab verməsəniz, tətbiq kömək çağırmaq üçün dəqiq ünvanınızı və təcili xidmətlərin nömrələrini bir kliklə göstərəcək.",
-                "feat_label": "Texniki Üstünlüklər",
-                "feat_title": "Maksimum Etibarlılıq Üçün Mühəndislik",
-                "feat1_title": "Ev və Avtomobil Üçün",
-                "feat1_text": "Ev sensoru elektrik şəbəkəsi və Wi-Fi ilə işləyir. Avtomobil sensoru Bluetooth ilə işləyir və GPS koordinatlarını təyin edir — beləliklə mühafizə qapınızın ağzında bitmir.",
-                "feat2_title": "İnternetsiz Mühafizə",
-                "feat2_text": "Əsas təhlükəsizlik və yerli xəbərdarlıqlar Wi-Fi sönülü olsa belə avtonom şəkildə işləyir.",
-                "feat3_title": "Bir Hesab — Çoxsaylı Cihazlar",
-                "feat3_text": "Evinizi, ofisinizi və avtomobilinizi vahid müasir tətbiqdə bir-birindən asılı olmayaraq izləyin.",
-                "pricing_label": "Tariflər & Planlar",
-                "pricing_title": "Hər Kəs Üçün Əlçatan Təhlükəsizlik",
-                "plan_basic_name": "BASIC PLAN (Pulsuz)",
-                "plan_basic_price": "$0",
-                "plan_basic_period": "/ ay",
-                "plan_basic_f1": "1 Sensor Qoşulması — Adapter vasitəsilə 1 CO detektorunu 1 smartfona qoşun.",
-                "plan_basic_f2": "Real Vaxt Monitorinqi — Tətbiqdə dəm qazının cari səviyyəsini canlı izləyin.",
-                "plan_basic_f3": "Lokal Push Bildirişləri — Qaz səviyyəsi dəyişdikdə standart xəbərdarlıqlar.",
-                "plan_basic_f4": "24 Saatlıq Tarixçə — Son 24 saatın hava keyfiyyəti məlumatlarına baxış.",
-                "plan_basic_btn": "Hazırda Aktiv (Pulsuz)",
-                "plan_premium_badge": "[ COMING SOON / IN BETA ]",
-                "plan_premium_name": "PREMIUM SAFETY (Ən Populyar)",
-                "plan_premium_price": "$5.99",
-                "plan_premium_period": "/ ay",
-                "plan_premium_alt_price": "və ya $49.99 / il (30% Qənaət)",
-                "plan_premium_f1": "Kritik Səs Keçidi (Critical Override) — \"Səssiz\" və \"Narahat Etməyin\" rejimlərini keçərək maksimum həyəcan siqnalı.",
-                "plan_premium_f2": "Ailə Təhlükəsizlik Radarı — 5 ailə üzvünü qoşaraq ev və ya avtomobil statusunu qarşılıqlı izləmə.",
-                "plan_premium_f3": "Ağıllı Eskalasiya & GPS — 30 saniyə ərzində cavab vermədikdə ailəyə dəqiq koordinatlı təcili SMS göndərilməsi.",
-                "plan_premium_f4": "Avtomobil Üçün Süni İntellekt (Predictive Car AI) — Zəhərlənmə baş vermədən öncə egzoz qazlarının yavaş sızmasını təhlil edən alqoritm.",
-                "plan_premium_f5": "Bulud Server Yedəkləməsi — Ev Wi-Fi-dan asılı olmayaraq bulud serverləri vasitəsilə fasiləsiz nəzarət.",
-                "plan_premium_btn": "Buraxılışda Mənə Bildir",
-                "team_label": "Təsisçilər & Komanda",
-                "team_title": "Həyat Xilas Edən Vizyon",
-                "team_turan_name": "Turan Səfərli",
-                "team_turan_role": "Founder & CTO",
-                "team_turan_focus": "Məhsul Arxitekturası, IoT Protokol İnteqrasiyası və Mühəndislik.",
-                "team_turan_achievement": "Çoxsaylı Respublika və Beynəlxalq Olimpiada Mükafatçısı | Azercosmos Space Academy Təcrübəçisi.",
-                "team_turan_tag": "IoT & Mühəndislik",
-                "team_tamerlan_name": "Tamerlan Səfərli",
-                "team_tamerlan_role": "Co-founder & CEO",
-                "team_tamerlan_focus": "Biznes Strategiyası, Maliyyə Əməliyyatları və Beynəlxalq Miqyaslama.",
-                "team_tamerlan_achievement": "Stanford Universiteti Magistr Namizədi.",
-                "team_tamerlan_tag": "Strategiya & Qlobal Miqyas",
-                "investors_label": "Layihə Statusu & İnvestisiya",
-                "investors_title": "Böyümə & Gələcək Hədəflər",
-                "investors_badge": "İnvestisiya İmkanı",
-                "investors_card_title": "İnvestorlar Üçün Dəyər",
-                "investors_card_text": "AirSen Ağıllı Ev və fərdi təhlükəsizlik bazarlarının kəsişməsində oyun qaydalarını dəyişir. Biz dəm qazından mühafizə üçün sadəcə xəbərdarlıq edən deyil, həm də hərəkətə keçən əlçatan, vahid ekosistem yaradırıq.",
-                "investors_tag": "Ağıllı Ev & Təhlükəsizlik Ekosistemi",
-                "status_badge": "Android-də Başlanğıc",
-                "status_card_title": "Android-də Başlanğıc & Yol Xəritəsi",
-                "status_card_text": "İlkin versiya bazarın sürətli yoxlanılması və rəylərin toplanması üçün Android platformasında buraxılır, ardınca iOS üçün mərhələli şəkildə istifadəyə veriləcək.",
-                "status_tag": "Bazarın Yoxlanması & iOS Genişlənməsi",
-                "reviews_label": "İstifadəçi Rəyləri",
-                "reviews_title": "Startap İdeyası Haqqında Rəylər",
-                "reviews_empty": "Hələlik heç bir təsdiqlənmiş rəy yoxdur. İlk rəyi siz yazın!",
-                "btn_leave_review": "İdeya Haqqında Rəy Bildirin",
-                "modal_review_title": "AirSen İdeyası Haqqında Fikrinizi Bölüşün",
-                "modal_name": "Adınız və Soyadınız",
-                "modal_name_placeholder": "məs. Rəşad Əliyev",
-                "modal_rating_label": "Təhlükəsizlik ideyasını qiymətləndirin:",
-                "modal_rating": "Qiymətləndirmə (1–5 Ulduz)",
-                "modal_comment": "Rəyiniz və ya Təklifiniz",
-                "modal_comment_placeholder": "Layihə və təhlükəsizlik həlli haqqında fikirlərinizi yazın...",
-                "modal_submit": "Rəyi Göndər",
-                "modal_success": "Təşəkkür edirik! Rəyiniz qeydə alındı və moderator yoxlanışından sonra saytda dərc olunacaq.",
-                "modal_close": "Bağla",
-                "contact_label": "Əlaqə",
-                "contact_title": "Bizimlə Əlaqə Saxlayın",
-                "contact_subtitle": "Sualınız, investisiya və ya təklifiniz üçün komandamızla birbaşa əlaqə qura bilərsiniz.",
-                "contact_email_title": "Rəsmi E-poçt",
-                "contact_loc_title": "Qərargah & Komanda",
-                "contact_copy_btn": "E-poçtu Kopyala",
-                "modal_beta_title": "AirSen Premium (Beta Giriş)",
-                "modal_beta_desc": "AirSen Premium hazırda qapalı sınaq mərhələsindədir. Rəsmi buraxılış zamanı dərhal bildiriş almaq və 3 ay pulsuz istifadə hüququ qazanmaq üçün e-poçtunuzu qeyd edin.",
-                "modal_beta_email_placeholder": "e-poct@example.com",
-                "modal_beta_submit": "Məni Xəbərdar Et",
-                "modal_beta_success": "Təşəkkür edirik! E-poçtunuz qeydə alındı. Rəsmi buraxılışda 3 ay pulsuz hədiyyənizlə birlikdə bildiriş alacaqsınız!",
-                "footer_copyright": "Bütün hüquqlar qorunur.",
-                "footer_admin_link": "Şəxsi Kabinet / Analitika"
+    console.log('🔍 Browser logger active (MCP server detected). Posting to: ' + ENDPOINT);
+
+    // Store original console methods
+    const originalConsole = {
+        log: console.log,
+        debug: console.debug,
+        info: console.info,
+        error: console.error,
+        warn: console.warn,
+        table: console.table
+    };
+
+    // Helper to safely stringify values
+    function safeStringify(obj) {
+        const seen = new WeakSet();
+        return JSON.stringify(obj, (key, value) => {
+            if (typeof value === 'object' && value !== null) {
+                if (seen.has(value)) return '[Circular]';
+                seen.add(value);
+            }
+            if (value instanceof Error) {
+                return {
+                    name: value.name,
+                    message: value.message,
+                    stack: value.stack
+                };
+            }
+            return value;
+        });
+    }
+
+    // Normalize log type for consistency (e.g., 'warn' to 'warning')
+    function normalizeType(type) {
+        return type === 'warn' ? 'warning' : type;
+    }
+
+    // Determine if a log type should be captured based on configured levels
+    function shouldCapture(type) {
+        return captureTypes.includes(normalizeType(type));
+    }
+
+    // Batch and send logs
+    function flushLogs() {
+        if (logQueue.length === 0) return;
+
+        const batch = logQueue.splice(0, logQueue.length);
+
+        fetch(ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
             },
-            "ru": {
-                "brand": "AirSen",
-                "tagline": "Smart CO Protection",
-                "nav_problem": "Проблема",
-                "nav_how_it_works": "Как это работает",
-                "nav_features": "Преимущества",
-                "nav_pricing": "Тарифы",
-                "nav_team": "Команда",
-                "nav_investors": "Инвесторам",
-                "nav_reviews": "Отзывы",
-                "nav_contact": "Контакты",
-                "hero_badge": "Система безопасности нового поколения",
-                "hero_title": "AirSen. Умная защита от угарного газа — для дома, офиса и авто",
-                "hero_subtitle": "Первое мобильное приложение, превращающее ваш смартфон в интеллектуальный щит от невидимого убийцы. Контролируйте безопасность близких из любой точки мира.",
-                "cta_google_play": "Available on Google Play",
-                "cta_google_play_sub": "ДОСТУПНО В",
-                "cta_moderation_badge": "Приложение на модерации",
-                "cta_moderation_info": "Приложение сейчас проходит финальную модерацию в Google Play Store (до 10–13 числа). Как только откроется доступ, ссылка станет активной!",
-                "mockup_status_safe": "0–30 PPM • БЕЗОПАСНО",
-                "mockup_status_warning": "31–69 PPM • ВНИМАНИЕ",
-                "mockup_status_danger": "70+ PPM • ОПАСНОСТЬ: CO",
-                "mockup_co_indicator": "ИНДИКАТОР CO",
-                "mockup_ppm": "ppm",
-                "mockup_home": "Квартира (Гостиная)",
-                "mockup_car": "Автомобиль (Prius 30)",
-                "mockup_family_title": "Семья в сети",
-                "mockup_family_active": "4 пользователя под защитой",
-                "mockup_simulate_safe": "Норма (12 ppm)",
-                "mockup_simulate_warn": "Тревога (42 ppm)",
-                "mockup_simulate_danger": "Опасность (110 ppm)",
-                "mockup_voice_confirm": "Скажите \"Все в порядке\" или нажмите",
-                "mockup_sos_btn": "Вызов экстренных служб (103 / 112)",
-                "mockup_interactive_hint": "Интерактивный симулятор: выберите уровень и протестируйте",
-                "problem_label": "Глобальная Проблема",
-                "problem_title": "Обычные детекторы просто пищат в пустой квартире.",
-                "problem_text": "Угарный газ невозможно увидеть, почувствовать по запаху или вкусу. Если дома никого нет или человек уже потерял сознание — обычный сигнал тревоги никто не услышит.",
-                "stat_badge": "Статистика",
-                "stat_number": "28 900",
-                "stat_label": "человек во всем мире ежегодно погибают от случайного отравления угарным газом. Большинство этих смертей можно было предотвратить вовремя.",
-                "how_label": "Принцип Работы",
-                "how_title": "Как AirSen спасает жизни?",
-                "how_step1_title": "1. Подключение (Connect)",
-                "how_step1_text": "Ваш существующий датчик CO легко подключается к нашему умному адаптеру или Bluetooth-модулю.",
-                "how_step2_title": "2. Синхронизация (Sync)",
-                "how_step2_text": "Адаптер передает данные о качестве воздуха в реальном времени прямо в мобильное приложение AirSen.",
-                "how_step3_title": "3. Защита (Protect)",
-                "how_step3_text": "Вся ваша семья подключается к защищенной сети в приложении, мгновенно активируя критические оповещения при любой опасности утечки газа.",
-                "card2_title": "Три уровня контроля (ppm)",
-                "card2_text": "Система кодирует уровень опасности цветами и точными показаниями датчика:",
-                "card2_green": "Зеленый — 0–30 ppm (Все в порядке. Воздух чист).",
-                "card2_yellow": "Желтый — 30–50 ppm (Повышенный уровень. Уведомление на смартфоны всей семьи).",
-                "card2_red": "Красный — 50–150 ppm (Опасность! Мгновенная сирена, вибрация и экран тревоги).",
-                "card3_title": "Умное подтверждение безопасности",
-                "card3_text": "В момент опасности AirSen просит подтвердить голосом или кнопкой, что с вами все в порядке. Это исключает ложные срабатывания и проверяет ваше состояние.",
-                "card4_title": "Автоматическая эскалация",
-                "card4_text": "Если вы не ответите системе, приложение автоматически отобразит ваш точный адрес и номера экстренных служб для вызова помощи в один клик.",
-                "feat_label": "Технические Преимущества",
-                "feat_title": "Инженерия для абсолютной надежности",
-                "feat1_title": "Для дома и для авто",
-                "feat1_text": "Домашний датчик работает от розетки и Wi-Fi. Автомобильный — по Bluetooth и определяет координаты GPS, поэтому защита не заканчивается за порогом.",
-                "feat2_title": "Защита без интернета",
-                "feat2_text": "Базовая безопасность и локальные оповещения работают автономно, даже при отключении Wi-Fi.",
-                "feat3_title": "Один аккаунт — множество устройств",
-                "feat3_text": "Мониторьте дом, офис и автомобиль независимо друг от друга в одном стильном приложении.",
-                "pricing_label": "Тарифы и Планы",
-                "pricing_title": "Доступная безопасность для каждого",
-                "plan_basic_name": "BASIC PLAN (Бесплатный)",
-                "plan_basic_price": "$0",
-                "plan_basic_period": "/ мес",
-                "plan_basic_f1": "1 Подключение сенсора — Подключение 1 детектора CO к 1 смартфону через адаптер.",
-                "plan_basic_f2": "Мониторинг в реальном времени — Отслеживайте текущий уровень угарного газа в приложении.",
-                "plan_basic_f3": "Локальные Push-уведомления — Стандартные оповещения при изменении уровня газа.",
-                "plan_basic_f4": "24-часовой журнал истории — Доступ к данным качества воздуха за последние 24 часа.",
-                "plan_basic_btn": "Текущий тариф (Бесплатно)",
-                "plan_premium_badge": "[ COMING SOON / IN BETA ]",
-                "plan_premium_name": "PREMIUM SAFETY (Самый популярный)",
-                "plan_premium_price": "$5.99",
-                "plan_premium_period": "/ мес",
-                "plan_premium_alt_price": "или $49.99 / год (Экономия 30%)",
-                "plan_premium_f1": "Critical Override — Экстренная сирена на максимальной громкости в обход режимов «Без звука» и «Не беспокоить».",
-                "plan_premium_f2": "Семейный радар безопасности — Подключение до 5 членов семьи для взаимного мониторинга дома или авто.",
-                "plan_premium_f3": "Умная эскалация и GPS — Автоматическая отправка срочного SMS с точными координатами близким при отсутствии ответа за 30 секунд.",
-                "plan_premium_f4": "Predictive Car AI — Продвинутый алгоритм анализирует медленные утечки выхлопных газов до достижения токсичности.",
-                "plan_premium_f5": "Резервное копирование на облачных серверах — Непрерывный мониторинг независимо от домашнего Wi-Fi.",
-                "plan_premium_btn": "Уведомить о релизе",
-                "team_label": "Основатели & Команда",
-                "team_title": "Видение, спасающее жизни",
-                "team_turan_name": "Туран Сафарли",
-                "team_turan_role": "Founder & CTO",
-                "team_turan_focus": "Архитектура продукта, интеграция IoT-протоколов и инженерия.",
-                "team_turan_achievement": "Многократный призер национальных и международных олимпиад | Стажер Azercosmos Space Academy.",
-                "team_turan_tag": "Инженерия IoT & Архитектура",
-                "team_tamerlan_name": "Тамерлан Сафарли",
-                "team_tamerlan_role": "Co-founder & CEO",
-                "team_tamerlan_focus": "Бизнес-стратегия, финансовые операции и международное масштабирование.",
-                "team_tamerlan_achievement": "Магистрант Стэнфордского университета (Stanford University M.S. Candidate).",
-                "team_tamerlan_tag": "Стратегия & Масштабирование",
-                "investors_label": "Статус Проекта & Инвесторам",
-                "investors_title": "Рост и глобальные горизонты",
-                "investors_badge": "Инвестиционная возможность",
-                "investors_card_title": "Ценность для Инвесторов",
-                "investors_card_text": "AirSen меняет правила игры на стыке рынков Smart Home и персональной безопасности. Мы создаем доступную единую экосистему защиты от угарного газа, которая не просто предупреждает, но и действует.",
-                "investors_tag": "Экосистема умного дома и безопасности",
-                "status_badge": "Запуск на Android",
-                "status_card_title": "Запуск на Android & Roadmap",
-                "status_card_text": "Первая версия выходит на Android для быстрой валидации рынка и сбора обратной связи с последующим итеративным запуском на iOS.",
-                "status_tag": "Валидация рынка & Экспансия на iOS",
-                "reviews_label": "Отзывы пользователей",
-                "reviews_title": "Мнения о стартапе и концепте",
-                "reviews_empty": "Пока нет опубликованных отзывов. Будьте первым, кто оставит мнение!",
-                "btn_leave_review": "Оставить отзыв об идее",
-                "modal_review_title": "Поделитесь мнением об идее AirSen",
-                "modal_name": "Ваше Имя и Фамилия",
-                "modal_name_placeholder": "напр. Алексей Смирнов",
-                "modal_rating_label": "Оцените идею безопасности:",
-                "modal_rating": "Оценка (1–5 звезд)",
-                "modal_comment": "Ваш отзыв или предложение",
-                "modal_comment_placeholder": "Напишите ваши мысли о проекте и безопасности...",
-                "modal_submit": "Отправить отзыв",
-                "modal_success": "Спасибо! Ваш отзыв принят и будет опубликован после модерации.",
-                "modal_close": "Закрыть",
-                "contact_label": "Контакты",
-                "contact_title": "Свяжитесь с Нами",
-                "contact_subtitle": "Свяжитесь с нашей командой по любым вопросам, инвестициям или партнерству.",
-                "contact_email_title": "Официальный Email",
-                "contact_loc_title": "Локация & Команда",
-                "contact_copy_btn": "Скопировать Email",
-                "modal_beta_title": "AirSen Premium (Бета-доступ)",
-                "modal_beta_desc": "AirSen Premium находится на стадии закрытого тестирования. Оставьте свой email, чтобы получить уведомление об официальном релизе и 3 месяца бесплатно.",
-                "modal_beta_email_placeholder": "email@example.com",
-                "modal_beta_submit": "Уведомить меня",
-                "modal_beta_success": "Спасибо! Ваш email зарегистрирован. Вы получите уведомление и 3 месяца бесплатно при релизе!",
-                "footer_copyright": "Все права защищены.",
-                "footer_admin_link": "Кабинет / Аналитика"
-            },
-            "en": {
-                "brand": "AirSen",
-                "tagline": "Smart CO Protection",
-                "nav_problem": "Problem",
-                "nav_how_it_works": "How It Works",
-                "nav_features": "Features",
-                "nav_pricing": "Plans",
-                "nav_team": "Team",
-                "nav_investors": "Investors",
-                "nav_reviews": "Reviews",
-                "nav_contact": "Contact Us",
-                "hero_badge": "Next-Gen Safety System",
-                "hero_title": "AirSen. Smart Carbon Monoxide Protection — For Home, Office, and Car",
-                "hero_subtitle": "The first mobile application that transforms your smartphone into an intelligent shield against the silent killer. Control the safety of your loved ones from anywhere in the world.",
-                "cta_google_play": "Available on Google Play",
-                "cta_google_play_sub": "GET IT ON",
-                "cta_moderation_badge": "App In Moderation",
-                "cta_moderation_info": "The app is currently undergoing Google Play Store review (until the 10th–13th). Direct download link will activate immediately upon store approval!",
-                "mockup_status_safe": "0–30 PPM • SAFE LEVEL",
-                "mockup_status_warning": "31–69 PPM • WARNING",
-                "mockup_status_danger": "70+ PPM • DANGER CO",
-                "mockup_co_indicator": "CO INDICATOR",
-                "mockup_ppm": "ppm",
-                "mockup_home": "Home (Living Room)",
-                "mockup_car": "Car (Prius 30)",
-                "mockup_family_title": "Family Connected",
-                "mockup_family_active": "4 family members monitored",
-                "mockup_simulate_safe": "Normal (12 ppm)",
-                "mockup_simulate_warn": "Warning (42 ppm)",
-                "mockup_simulate_danger": "Danger (110 ppm)",
-                "mockup_voice_confirm": "Say \"I am okay\" or tap button",
-                "mockup_sos_btn": "Emergency Dispatch (911 / 112)",
-                "mockup_interactive_hint": "Interactive Simulator: Choose a level to test response",
-                "problem_label": "The Global Problem",
-                "problem_title": "Standard detectors just beep in an empty apartment.",
-                "problem_text": "Carbon monoxide is impossible to see, smell, or taste. If no one is home or a person is already unconscious — no one will hear a regular alarm.",
-                "stat_badge": "Global Statistics",
-                "stat_number": "28 900",
-                "stat_label": "people worldwide die each year from unintentional carbon monoxide poisoning. Most of these deaths could have been prevented in time.",
-                "how_label": "How It Works",
-                "how_title": "How AirSen Protects Lives in Real-Time",
-                "how_step1_title": "1. Connect",
-                "how_step1_text": "Your existing CO sensor easily connects to our smart adapter or Bluetooth module.",
-                "how_step2_title": "2. Sync",
-                "how_step2_text": "The adapter streams real-time air quality data directly to the AirSen mobile application.",
-                "how_step3_title": "3. Protect",
-                "how_step3_text": "Your entire family joins the secure network inside the app, activating critical alerts instantly during any gas leak danger.",
-                "card2_title": "Three Levels of Control (ppm)",
-                "card2_text": "The system encodes the danger level with colors and exact sensor readings:",
-                "card2_green": "Green — 0–30 ppm (Everything is fine. The air is clean).",
-                "card2_yellow": "Yellow — 30–50 ppm (Elevated level. Notification sent to the whole family's smartphones).",
-                "card2_red": "Red — 50–150 ppm (Danger! Instant siren, vibration, and alarm screen).",
-                "card3_title": "Smart Safety Confirmation",
-                "card3_text": "In a moment of danger, AirSen asks you to confirm with your voice or a button that you are okay. This eliminates false alarms and checks your condition.",
-                "card4_title": "Automatic Escalation",
-                "card4_text": "If you do not respond to the system, the app will automatically display your exact address and emergency services numbers to call for help in one click.",
-                "feat_label": "Technical Advantages",
-                "feat_title": "Engineering for Maximum Reliability",
-                "feat1_title": "For Home and For Car",
-                "feat1_text": "The home sensor operates via wall outlet and Wi-Fi. The car sensor operates via Bluetooth and determines GPS coordinates — so protection doesn't end at your doorstep.",
-                "feat2_title": "Protection Without Internet",
-                "feat2_text": "Basic safety and local alerts operate autonomously, even if Wi-Fi is disconnected.",
-                "feat3_title": "One Account — Multiple Devices",
-                "feat3_text": "Monitor your home, office, and car independently in one sleek application.",
-                "pricing_label": "Plans & Pricing",
-                "pricing_title": "Life-Saving Protection For Everyone",
-                "plan_basic_name": "BASIC PLAN (Free)",
-                "plan_basic_price": "$0",
-                "plan_basic_period": "/ month",
-                "plan_basic_f1": "1 Sensor Connection — Connect 1 CO detector to 1 smartphone via adapter.",
-                "plan_basic_f2": "Real-Time Monitoring — Track current carbon monoxide levels inside the app.",
-                "plan_basic_f3": "Local Push Notifications — Standard alerts when gas levels change.",
-                "plan_basic_f4": "24-Hour History Log — Access air quality data for the last 24 hours.",
-                "plan_basic_btn": "Current Free Tier",
-                "plan_premium_badge": "[ COMING SOON / IN BETA ]",
-                "plan_premium_name": "PREMIUM SAFETY (Most Popular)",
-                "plan_premium_price": "$5.99",
-                "plan_premium_period": "/ month",
-                "plan_premium_alt_price": "or $49.99 / year (Save 30%)",
-                "plan_premium_f1": "Critical Override — Emergency alarm screams at maximum volume, bypassing \"Silent\" and \"Do Not Disturb\" phone modes.",
-                "plan_premium_f2": "Family Safety Radar — Connect up to 5 family members to sync and monitor each other's home or car status.",
-                "plan_premium_f3": "Smart Escalation & GPS — Automatically sends urgent SMS with exact coordinates to family if you don't respond in 30 seconds.",
-                "plan_premium_f4": "Predictive Car AI — Advanced algorithm analyzes slow exhaust leaks in vehicles before they become toxic.",
-                "plan_premium_f5": "Cloud Server Backup — Continuous monitoring independent of home Wi-Fi via cloud backup servers.",
-                "plan_premium_btn": "Notify Me on Release",
-                "team_label": "Founders & Team",
-                "team_title": "Life-Saving Vision",
-                "team_turan_name": "Turan Safarli",
-                "team_turan_role": "Founder & CTO",
-                "team_turan_focus": "Product Architecture, IoT Protocol Integration & Engineering.",
-                "team_turan_achievement": "Multiple National & International Olympiad Medalist | Azercosmos Space Academy Intern.",
-                "team_turan_tag": "IoT & Engineering",
-                "team_tamerlan_name": "Tamerlan Safarli",
-                "team_tamerlan_role": "Co-founder & CEO",
-                "team_tamerlan_focus": "Business Strategy, Financial Operations & International Scalability.",
-                "team_tamerlan_achievement": "Stanford University M.S. Candidate.",
-                "team_tamerlan_tag": "Strategy & Scalability",
-                "investors_label": "Project Status & Investors",
-                "investors_title": "Disrupting Personal Safety",
-                "investors_badge": "Investment Opportunity",
-                "investors_card_title": "Value for Investors",
-                "investors_card_text": "AirSen changes the rules of the game at the intersection of the Smart Home and personal safety markets. We are creating an affordable, unified ecosystem for carbon monoxide protection that doesn't just warn, but acts.",
-                "investors_tag": "Smart Home & Safety Ecosystem",
-                "status_badge": "Launch on Android",
-                "status_card_title": "Launch on Android & Roadmap",
-                "status_card_text": "The first version is released on Android for rapid market validation and feedback collection, with a subsequent iterative rollout on iOS.",
-                "status_tag": "Market Validation & iOS Expansion",
-                "reviews_label": "Public Feedback",
-                "reviews_title": "Community & Startup Idea Reviews",
-                "reviews_empty": "No public reviews yet. Be the first to share your thoughts!",
-                "btn_leave_review": "Leave a Review about the Idea",
-                "modal_review_title": "Share Your Feedback on AirSen",
-                "modal_name": "Full Name",
-                "modal_name_placeholder": "e.g. David Miller",
-                "modal_rating_label": "Rate the safety concept:",
-                "modal_rating": "Rating (1–5 Stars)",
-                "modal_comment": "Your Review or Feedback",
-                "modal_comment_placeholder": "Share your thoughts about this carbon monoxide safety idea...",
-                "modal_submit": "Submit Review",
-                "modal_success": "Thank you! Your review has been submitted and will be published after moderation.",
-                "modal_close": "Close",
-                "contact_label": "Contact Us",
-                "contact_title": "Get In Touch With AirSen",
-                "contact_subtitle": "Have questions, investment inquiries, or partnership proposals? Our team is always ready to connect.",
-                "contact_email_title": "Official Email",
-                "contact_loc_title": "HQ & Distributed Team",
-                "contact_copy_btn": "Copy Email",
-                "modal_beta_title": "AirSen Premium (Closed Beta Access)",
-                "modal_beta_desc": "AirSen Premium is in closed testing. Leave your email to be notified upon official release and get 3 months for free.",
-                "modal_beta_email_placeholder": "yourname@domain.com",
-                "modal_beta_submit": "Notify Me on Release",
-                "modal_beta_success": "Thank you! Your email has been registered. You will be notified upon official release with your 3 months free access!",
-                "footer_copyright": "All rights reserved.",
-                "footer_admin_link": "Private Dashboard / Analytics"
+            body: JSON.stringify({ logs: batch })
+        }).catch(err => {
+            // Silently fail to avoid infinite loops
+            originalConsole.error('Failed to send logs:', err);
+        });
+    }
+
+    // Debounced flush (100ms)
+    function scheduleFlush() {
+        if (flushTimeout) clearTimeout(flushTimeout);
+        flushTimeout = setTimeout(flushLogs, 100);
+    }
+
+    // Intercept console methods
+    ['log', 'debug', 'info', 'error', 'warn', 'table'].forEach(method => {
+        console[method] = function(...args) {
+            // Call original method
+            originalConsole[method].apply(console, args);
+
+            // Capture log data
+            try {
+                if (!shouldCapture(method)) {
+                    return;
+                }
+
+                logQueue.push({
+                    type: method,
+                    timestamp: new Date().toISOString(),
+                    data: args.map(arg => {
+                        try {
+                            return typeof arg === 'object' ? JSON.parse(safeStringify(arg)) : arg;
+                        } catch (e) {
+                            return String(arg);
+                        }
+                    }),
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            } catch (e) {
+                // Fail silently
             }
         };
-    </script>
+    });
+
+    // Global error handlers for uncaught errors
+    const originalOnError = window.onerror;
+    window.onerror = function boostErrorHandler(errorMsg, url, lineNumber, colNumber, error) {
+        try {
+            if (shouldCapture('error')) {
+                logQueue.push({
+                    type: 'uncaught_error',
+                    timestamp: new Date().toISOString(),
+                    data: [{
+                        message: errorMsg,
+                        filename: url,
+                        lineno: lineNumber,
+                        colno: colNumber,
+                        error: error ? {
+                            name: error.name,
+                            message: error.message,
+                            stack: error.stack
+                        } : null
+                    }],
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                });
+
+                scheduleFlush();
+            }
+
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Call original handler if it exists
+        if (originalOnError && typeof originalOnError === 'function') {
+            return originalOnError(errorMsg, url, lineNumber, colNumber, error);
+        }
+
+        // Let the error continue to propagate
+        return false;
+    }
+    window.addEventListener('error', (event) => {
+        try {
+            if (!shouldCapture('error')) {
+                return false;
+            }
+
+            logQueue.push({
+                type: 'window_error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: event.message,
+                    filename: event.filename,
+                    lineno: event.lineno,
+                    colno: event.colno,
+                    error: event.error ? {
+                        name: event.error.name,
+                        message: event.error.message,
+                        stack: event.error.stack
+                    } : null
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the error continue to propagate
+        return false;
+    });
+    window.addEventListener('unhandledrejection', (event) => {
+        try {
+            if (!shouldCapture('error')) {
+                return false;
+            }
+
+            logQueue.push({
+                type: 'error',
+                timestamp: new Date().toISOString(),
+                data: [{
+                    message: 'Unhandled Promise Rejection',
+                    reason: event.reason instanceof Error ? {
+                        name: event.reason.name,
+                        message: event.reason.message,
+                        stack: event.reason.stack
+                    } : event.reason
+                }],
+                url: window.location.href,
+                userAgent: navigator.userAgent
+            });
+
+            scheduleFlush();
+        } catch (e) {
+            // Fail silently
+        }
+
+        // Let the rejection continue to propagate
+        return false;
+    });
+
+    // Flush on page unload
+    window.addEventListener('beforeunload', () => {
+        if (logQueue.length > 0) {
+            navigator.sendBeacon(ENDPOINT, JSON.stringify({ logs: logQueue }));
+        }
+    });
+})();
+</script>
 </head>
 <body>
 
@@ -458,7 +265,7 @@
                 <li><a href="#problem" class="nav-link" data-i18n="nav_problem">Problem</a></li>
                 <li><a href="#how-it-works" class="nav-link" data-i18n="nav_how_it_works">Necə İşləyir</a></li>
                 <li><a href="#features" class="nav-link" data-i18n="nav_features">Üstünlüklər</a></li>
-                <li><a href="#pricing" class="nav-link" data-i18n="nav_pricing">Tariflər</a></li>
+                <li><a href="#pricing" class="nav-link" data-i18n="nav_plans">Tariflər</a></li>
                 <li><a href="#team" class="nav-link" data-i18n="nav_team">Komanda</a></li>
                 <li><a href="#investors" class="nav-link" data-i18n="nav_investors">İnvestorlar</a></li>
                 <li><a href="#reviews" class="nav-link" data-i18n="nav_reviews">Rəylər</a></li>
@@ -469,12 +276,12 @@
                 <!-- Language Switcher -->
                 <div class="lang-switcher">
                     <button type="button" class="lang-btn js-lang-btn active" data-lang="az">AZ</button>
-                    <button type="button" class="lang-btn js-lang-btn" data-lang="ru">RU</button>
-                    <button type="button" class="lang-btn js-lang-btn" data-lang="en">EN</button>
+                    <button type="button" class="lang-btn js-lang-btn " data-lang="ru">RU</button>
+                    <button type="button" class="lang-btn js-lang-btn " data-lang="en">EN</button>
                 </div>
 
                 <!-- Secret Admin Shortcut -->
-                <a href="javascript:void(0)" class="admin-lock-btn" title="Giriş / Analitika" data-i18n="footer_admin_link">
+                <a href="javascript:void(0)" class="admin-lock-btn" title="Şəxsi Kabinet / Analitika">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
@@ -504,7 +311,7 @@
                 <li><a href="#problem" class="mobile-nav-link" data-i18n="nav_problem">Problem</a></li>
                 <li><a href="#how-it-works" class="mobile-nav-link" data-i18n="nav_how_it_works">Necə İşləyir</a></li>
                 <li><a href="#features" class="mobile-nav-link" data-i18n="nav_features">Üstünlüklər</a></li>
-                <li><a href="#pricing" class="mobile-nav-link" data-i18n="nav_pricing">Tariflər</a></li>
+                <li><a href="#pricing" class="mobile-nav-link" data-i18n="nav_plans">Tariflər</a></li>
                 <li><a href="#team" class="mobile-nav-link" data-i18n="nav_team">Komanda</a></li>
                 <li><a href="#investors" class="mobile-nav-link" data-i18n="nav_investors">İnvestorlar</a></li>
                 <li><a href="#reviews" class="mobile-nav-link" data-i18n="nav_reviews">Rəylər</a></li>
@@ -513,7 +320,27 @@
         </div>
     </div>
 
+
     <main class="airsen-container">
+
+        <!-- ================================================================
+             BLOCK 1: Hero Section (2/3 + 1        <!-- =========================================================================
+             ORIGINAL HERO BACKUP (PRESERVED AS REQUESTED BY USER FOR REFERENCE)
+             ========================================================================= -->
+        <!--
+        <section id="hero-backup" class="hero-grid" style="display: none;">
+            <div class="bento-card hero-left-card">
+                <div class="hero-logo-row">
+                    <span class="hero-logo-text">AirSen</span>
+                </div>
+                <h1 class="hero-title">AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün</h1>
+                <p class="hero-subtitle">Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.</p>
+            </div>
+            <div class="bento-card hero-phone-card">
+                <div class="phone-mockup-wrapper">...</div>
+            </div>
+        </section>
+        -->
 
         <!-- =========================================================================
              BLOCK 1: ACTIVE HERO SECTION & PHONE STAGE (Bento Grid 2/3 + 1/3)
@@ -533,12 +360,10 @@
                     </div>
 
                     <h1 class="hero-title" data-i18n="hero_title">
-                        AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün
-                    </h1>
+                        AirSen. Dəm Qazından Ağıllı Mühafizə — Ev, Ofis və Avtomobil Üçün                    </h1>
 
                     <p class="hero-subtitle" data-i18n="hero_subtitle">
-                        Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.
-                    </p>
+                        Smartfonunuzu görünməz qatilə qarşı intellektual qalxana çevirən ilk mobil tətbiq. Dünyanın istənilən nöqtəsindən yaxınlarınızın təhlükəsizliyinə nəzarət edin.                    </p>
                 </div>
 
                 <!-- Google Play CTA Button & Moderation Status -->
@@ -546,6 +371,7 @@
                     <a href="#google-play" 
                        class="btn-google-play js-google-play-btn is-disabled-state"
                        data-status="moderation"
+                       target="_self"
                        id="mainGooglePlayBtn"
                        title="Google Play">
                         <div class="gp-glow-layer"></div>
@@ -553,11 +379,11 @@
                         <span class="gp-single-label" data-i18n="cta_google_play">Available on Google Play</span>
                     </a>
 
-                    <div class="moderation-tag" title="Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!">
-                        <span class="mod-live-dot"></span>
-                        <span data-i18n="cta_moderation_badge">Tətbiq Moderasiyadadır</span>
-                    </div>
-                </div>
+                                            <div class="moderation-tag" title="Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!">
+                            <span class="mod-live-dot"></span>
+                            <span data-i18n="cta_moderation_badge">Tətbiq Moderasiyadadır</span>
+                        </div>
+                                    </div>
             </div>
 
             <!-- Right Card (1/3 width): Spacious Full-Height Phone Stage -->
@@ -566,7 +392,7 @@
                     <!-- Subtle Reflection Glass Sheen -->
                     <div class="phone-glass-sheen"></div>
 
-                    <!-- Integrated iPhone Status Bar -->
+                    <!-- Integrated iPhone Status Bar: Time + Dynamic Island + Icons (All on ONE row) -->
                     <div class="phone-sys-bar">
                         <span class="sys-time">09:41</span>
                         <div class="phone-island"></div>
@@ -620,8 +446,7 @@
                     <!-- Status Pill Badge (Clear of rings) -->
                     <div class="co-status-badge-wrapper">
                         <div class="co-status-badge" id="coStatusBadge" data-i18n="mockup_status_safe">
-                            0–30 PPM • TƏHLÜKƏSİZ
-                        </div>
+                            0–30 PPM • TƏHLÜKƏSİZ                        </div>
                     </div>
 
                     <!-- Dynamic Action & Status Area (Constant Height Container) -->
@@ -680,8 +505,7 @@
                 <!-- Simulator Trigger Controls -->
                 <div class="phone-sim-controls">
                     <span style="font-size: 11px; font-weight: 700; color: var(--text-dim); text-align: center; letter-spacing: 0.04em;" data-i18n="mockup_interactive_hint">
-                        İnteraktiv Simulyator: Səviyyəni seçin və sınaqdan keçirin
-                    </span>
+                        İnteraktiv Simulyator: Səviyyəni seçin və sınaqdan keçirin                    </span>
                     <div class="sim-btn-group">
                         <button type="button" class="sim-btn btn-safe active" id="simBtnSafe" data-i18n="mockup_simulate_safe">Normal (12 ppm)</button>
                         <button type="button" class="sim-btn btn-warn" id="simBtnWarn" data-i18n="mockup_simulate_warn">Xəbərdarlıq (42 ppm)</button>
@@ -702,12 +526,10 @@
                         <span data-i18n="problem_label">Qlobal Problem</span>
                     </div>
                     <h3 class="problem-heading" data-i18n="problem_title">
-                        Standart detektorlar sadəcə boş mənzildə səs-küy salır.
-                    </h3>
+                        Standart detektorlar sadəcə boş mənzildə səs-küy salır.                    </h3>
                 </div>
                 <p class="problem-description" data-i18n="problem_text">
-                    Dəm qazını görmək, iyləmək və ya dadını hiss etmək qeyri-mümkündür. Evdə heç kim yoxdursa və ya insan artıq huşsuz vəziyyətdədirsə — adi siqnalı heç kim eşitməyəcək.
-                </p>
+                    Dəm qazını görmək, iyləmək və ya dadını hiss etmək qeyri-mümkündür. Evdə heç kim yoxdursa və ya insan artıq huşsuz vəziyyətdədirsə — adi siqnalı heç kim eşitməyəcək.                </p>
             </div>
 
             <!-- Card 2: Stat (Vibrant Purple #C042F0 Square Card) -->
@@ -719,13 +541,12 @@
                     <div class="stat-huge-number" id="statCounter" data-target="28900">28 900</div>
                 </div>
                 <p class="stat-label-text" data-i18n="stat_label">
-                    hər il dünyada ehtiyatsızlıqdan dəm qazından zəhərlənərək həyatını itirən insanların sayıdır. Bu ölümlərin böyük əksəriyyətinin vaxtında qarşısını almaq olardı.
-                </p>
+                    hər il dünyada ehtiyatsızlıqdan dəm qazından zəhərlənərək həyatını itirən insanların sayıdır. Bu ölümlərin böyük əksəriyyətinin vaxtında qarşısını almaq olardı.                </p>
             </div>
         </section>
 
         <!-- ================================================================
-             BLOCK 3: How It Works (3 Core Steps + PPM Levels + Auto Escalation)
+             BLOCK 3: How It Works (3 Steps Flow + Detailed Cards)
              ================================================================ -->
         <section id="how-it-works">
             <div class="section-header">
@@ -735,50 +556,77 @@
                 <h2 class="section-title" data-i18n="how_title">AirSen Necə Həyat Xilas Edir?</h2>
             </div>
 
-            <!-- 3 Step Sequence Row -->
-            <div class="how-steps-flow-grid">
+            <!-- 3-Step Interactive Architecture Cards -->
+            <div class="how-steps-flow-grid" style="margin-bottom: 24px;">
                 <!-- Step 1: Connect -->
-                <div class="bento-card how-step-card card-gradient-purple">
-                    <div class="how-step-badge-num">01</div>
-                    <div class="how-card-icon icon-purple">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                        </svg>
+                <div class="how-step-card step-card-purple">
+                    <div class="step-card-header">
+                        <span class="step-badge step-badge-purple">01</span>
+                        <div class="step-icon-wrap step-icon-purple">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        </div>
                     </div>
-                    <h3 class="how-card-title" data-i18n="how_step1_title">1. Qoşulma (Connect)</h3>
-                    <p class="how-card-text" data-i18n="how_step1_text">Mövcud dəm qazı (CO) sensorunuz ağıllı adapterimizə və ya Bluetooth moduluna asanlıqla qoşulur.</p>
+                    <div>
+                        <h4 class="step-title" data-i18n="how_step1_title">1. Qoşulma (Connect)</h4>
+                        <p class="step-desc" data-i18n="how_step1_desc">Mövcud CO sensorunuz bizim ağıllı adapterimizə və ya Bluetooth moduluna asanlıqla qoşulur.</p>
+                    </div>
+                    <div class="step-tech-tag">⚡ Smart Adapter / BLE</div>
                 </div>
 
                 <!-- Step 2: Sync -->
-                <div class="bento-card how-step-card card-glow-blue">
-                    <div class="how-step-badge-num">02</div>
-                    <div class="how-card-icon icon-blue">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
+                <div class="how-step-card step-card-cyan">
+                    <div class="step-card-header">
+                        <span class="step-badge step-badge-cyan">02</span>
+                        <div class="step-icon-wrap step-icon-cyan">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                            </svg>
+                        </div>
                     </div>
-                    <h3 class="how-card-title" data-i18n="how_step2_title">2. Sinxronizasiya (Sync)</h3>
-                    <p class="how-card-text" data-i18n="how_step2_text">Adapter real vaxt rejimində hava keyfiyyəti məlumatlarını birbaşa AirSen mobil tətbiqinə ötürür.</p>
+                    <div>
+                        <h4 class="step-title" data-i18n="how_step2_title">2. Sinxronizasiya (Sync)</h4>
+                        <p class="step-desc" data-i18n="how_step2_desc">Adapter real vaxt rejimində hava keyfiyyəti məlumatlarını birbaşa AirSen mobil tətbiqinə ötürür.</p>
+                    </div>
+                    <div class="step-tech-tag">🔄 Real-time Stream &lt;50ms</div>
                 </div>
 
                 <!-- Step 3: Protect -->
-                <div class="bento-card how-step-card card-glow-green">
-                    <div class="how-step-badge-num">03</div>
-                    <div class="how-card-icon icon-green">
-                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="m9 12 2 2 4-4"/>
-                        </svg>
+                <div class="how-step-card step-card-green">
+                    <div class="step-card-header">
+                        <span class="step-badge step-badge-green">03</span>
+                        <div class="step-icon-wrap step-icon-green">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
                     </div>
-                    <h3 class="how-card-title" data-i18n="how_step3_title">3. Mühafizə (Protect)</h3>
-                    <p class="how-card-text" data-i18n="how_step3_text">Bütün ailəniz tətbiq daxilindəki təhlükəsiz şəbəkəyə qoşulur və qaz sızması təhlükəsi zamanı kritik bildirişlər dərhal aktivləşir.</p>
+                    <div>
+                        <h4 class="step-title" data-i18n="how_step3_title">3. Mühafizə (Protect)</h4>
+                        <p class="step-desc" data-i18n="how_step3_desc">Bütün ailəniz tətbiq daxilindəki təhlükəsiz şəbəkəyə qoşulur və hər hansı qaz sızması təhlükəsi anında dərhal kritik xəbərdarlıqlar aktivləşir.</p>
+                    </div>
+                    <div class="step-tech-tag">🛡️ Instant Critical Override</div>
                 </div>
             </div>
 
-            <!-- Bento Details Grid: PPM Levels, Voice Confirmation & Escalation -->
-            <div class="how-it-works-grid" style="margin-top: 24px;">
-                <!-- Danger Levels (Üçpilləli Nəzarət Sistemi) -->
+            <div class="how-it-works-grid">
+                <!-- Card 1: The Connection -->
+                <div class="bento-card how-bento-card card-gradient-purple">
+                    <div class="how-card-icon icon-purple">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="how-card-title" data-i18n="card1_title">Bir Sensor — Bütün Ailə Şəbəkədə</h3>
+                    <p class="how-card-text" data-i18n="card1_text">Fiziki sensor otaqda və ya avtomobildə quraşdırılır və real vaxt göstəricilərini tətbiq vasitəsilə dərhal bütün qoşulmuş yaxınlarınıza ötürür.</p>
+                </div>
+
+                <!-- Card 2: Danger Levels -->
                 <div class="bento-card how-bento-card card-glow-green">
                     <div class="how-card-icon icon-green">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -803,7 +651,7 @@
                     </ul>
                 </div>
 
-                <!-- Voice Control (Ağıllı Təhlükəsizlik Təsdiqi) -->
+                <!-- Card 3: Voice Control -->
                 <div class="bento-card how-bento-card card-glow-blue">
                     <div class="how-card-icon icon-blue">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -816,7 +664,7 @@
                     <p class="how-card-text" data-i18n="card3_text">Təhlükə anında AirSen yaxşı olduğunuzu səsinizlə və ya düymə ilə təsdiq etməyinizi istəyir. Bu, yalançı həyəcan siqnallarını aradan qaldırır və vəziyyətinizi yoxlayır.</p>
                 </div>
 
-                <!-- Escalation (Avtomatik Eskalasiya) -->
+                <!-- Card 4: The Escalation -->
                 <div class="bento-card how-bento-card card-gradient-purple">
                     <div class="how-card-icon icon-red">
                         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -843,7 +691,7 @@
             </div>
 
             <div class="features-grid">
-                <!-- Feature 1: Locations (For Home and For Car) -->
+                <!-- Feature 1: Locations -->
                 <div class="bento-card feature-bento-card card-gradient-purple">
                     <div class="feature-card-inner">
                         <div class="feature-pure-icon icon-feat-purple">
@@ -859,7 +707,7 @@
                     </div>
                 </div>
 
-                <!-- Feature 2: Autonomy (Protection Without Internet) -->
+                <!-- Feature 2: Autonomy -->
                 <div class="bento-card feature-bento-card card-glow-green">
                     <div class="feature-card-inner">
                         <div class="feature-pure-icon icon-feat-green">
@@ -873,7 +721,7 @@
                     </div>
                 </div>
 
-                <!-- Feature 3: Scalability (One Account — Multiple Devices) -->
+                <!-- Feature 3: Scalability -->
                 <div class="bento-card feature-bento-card card-glow-blue">
                     <div class="feature-card-inner">
                         <div class="feature-pure-icon icon-feat-blue">
@@ -892,118 +740,130 @@
         </section>
 
         <!-- ================================================================
-             BLOCK 5: Plans & Pricing (Bento Cards + Beta Access)
+             BLOCK: Plans & Pricing (2 Bento Pricing Cards)
              ================================================================ -->
         <section id="pricing" class="pricing-section">
             <div class="section-header">
                 <div class="brutalist-badge badge-purple" style="margin-bottom: 12px;">
-                    <span data-i18n="pricing_label">Tariflər & Planlar</span>
+                    <span data-i18n="pricing_label">Tariflər & Qiymətlər</span>
                 </div>
                 <h2 class="section-title" data-i18n="pricing_title">Hər Kəs Üçün Əlçatan Təhlükəsizlik</h2>
             </div>
 
             <div class="pricing-grid">
-                <!-- CARD 1: BASIC PLAN (Free) -->
-                <div class="bento-card pricing-card pricing-basic card-glow-blue">
-                    <div class="pricing-card-top">
-                        <div class="pricing-plan-badge basic-badge">BASIC</div>
-                        <h3 class="pricing-plan-name" data-i18n="plan_basic_name">BASIC PLAN (Pulsuz)</h3>
+                <!-- Card 1: BASIC PLAN (Free) -->
+                <div class="bento-card pricing-card">
+                    <div class="pricing-card-head">
+                        <div class="pricing-plan-name">
+                            <span data-i18n="plan_basic_title">BAZA PLANI</span>
+                            <span class="pricing-plan-badge" data-i18n="plan_basic_badge">Ödənişsiz</span>
+                        </div>
                         <div class="pricing-price-wrap">
                             <span class="pricing-currency">$</span>
                             <span class="pricing-amount">0</span>
                             <span class="pricing-period" data-i18n="plan_basic_period">/ ay</span>
                         </div>
-                        <p class="pricing-plan-caption">Fərdi istifadə və baza dəm qazı monitorinqi üçün ideal seçim.</p>
                     </div>
-
-                    <div class="pricing-features-divider"></div>
 
                     <ul class="pricing-features-list">
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-blue">✓</span>
-                            <span data-i18n="plan_basic_f1"><strong>1 Sensor Qoşulması</strong> — Adapter vasitəsilə 1 CO detektorunu 1 smartfona qoşun.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-green">✓</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_basic_f1_t">1 Sensor Qoşulması</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_basic_f1_d">1 CO sensorunu problemsiz qoşun.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-blue">✓</span>
-                            <span data-i18n="plan_basic_f2"><strong>Real Vaxt Monitorinqi</strong> — Tətbiqdə dəm qazının cari səviyyəsini canlı izləyin.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-green">✓</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_basic_f2_t">Real Vaxt Rejimində Monitorinq</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_basic_f2_d">Canlı hava keyfiyyəti və PPM səviyyəsi nəzarəti.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-blue">✓</span>
-                            <span data-i18n="plan_basic_f3"><strong>Lokal Push Bildirişləri</strong> — Qaz səviyyəsi dəyişdikdə standart xəbərdarlıqlar.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-green">✓</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_basic_f3_t">Lokal Push Bildirişlər</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_basic_f3_d">Qaz həddi aşıldıqda standart bildirişlər.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-blue">✓</span>
-                            <span data-i18n="plan_basic_f4"><strong>24 Saatlıq Tarixçə</strong> — Son 24 saatın hava keyfiyyəti məlumatlarına baxış.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-green">✓</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_basic_f4_t">24 Saatlıq Tarixçə Qeydi</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_basic_f4_d">Son 24 saatın qaz səviyyəsi qrafiki.</div>
+                            </div>
                         </li>
                     </ul>
 
-                    <div class="pricing-card-footer">
-                        <button type="button" class="btn-pricing-action btn-basic-active" disabled>
-                            <span data-i18n="plan_basic_btn">Hazırda Aktiv (Pulsuz)</span>
-                        </button>
+                    <div class="pricing-btn-wrap">
+                        <a href="#hero" class="btn-pricing-action btn-pricing-free" data-i18n="plan_basic_btn">Pulsuz İstifadə Et</a>
                     </div>
                 </div>
 
-                <!-- CARD 2: PREMIUM SAFETY (Most Popular & Featured Glow) -->
-                <div class="bento-card pricing-card pricing-premium card-solid-purple featured-pricing">
-                    <div class="pricing-ribbon">
-                        <span class="badge-pulse-dot"></span>
-                        <span data-i18n="plan_premium_badge">[ COMING SOON / IN BETA ]</span>
-                    </div>
-
-                    <div class="pricing-card-top">
-                        <div class="pricing-plan-badge premium-badge">MOST POPULAR</div>
-                        <h3 class="pricing-plan-name" data-i18n="plan_premium_name">PREMIUM SAFETY (Ən Populyar)</h3>
+                <!-- Card 2: PREMIUM SAFETY (Most Popular) -->
+                <div class="bento-card pricing-card pricing-card-featured">
+                    <div class="pricing-ribbon" data-i18n="plan_prem_tag">TEZLİKLƏ / BETA</div>
+                    <div class="pricing-card-head">
+                        <div class="pricing-plan-name">
+                            <span data-i18n="plan_prem_title">PREMİUM TƏHLÜKƏSİZLİK</span>
+                        </div>
                         <div class="pricing-price-wrap">
                             <span class="pricing-currency">$</span>
                             <span class="pricing-amount">5.99</span>
-                            <span class="pricing-period" data-i18n="plan_premium_period">/ ay</span>
+                            <span class="pricing-period" data-i18n="plan_prem_period">/ ay</span>
                         </div>
-                        <div class="pricing-alt-price-pill" data-i18n="plan_premium_alt_price">
-                            və ya $49.99 / il (30% Qənaət)
-                        </div>
+                        <div class="pricing-sub-yearly" data-i18n="plan_prem_yearly">və ya $49.99 / il (30% Qənaət)</div>
                     </div>
-
-                    <div class="pricing-features-divider"></div>
 
                     <ul class="pricing-features-list">
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-neon-purple">★</span>
-                            <span data-i18n="plan_premium_f1"><strong>Kritik Səs Keçidi (Critical Override)</strong> — "Səssiz" və "Narahat Etməyin" rejimlərini keçərək maksimum həyəcan siqnalı.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-purple">★</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_prem_f1_t">Kritik Xəbərdarlıq Rejimi</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_prem_f1_d">Telefon səssizdə və ya "Narahat Etməyin" rejimində olsa belə tam səsli siqnal.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-neon-purple">★</span>
-                            <span data-i18n="plan_premium_f2"><strong>Ailə Təhlükəsizlik Radarı</strong> — 5 ailə üzvünü qoşaraq ev və ya avtomobil statusunu qarşılıqlı izləmə.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-purple">★</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_prem_f2_t">Ailə Təhlükəsizlik Radarı</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_prem_f2_d">Bütün ailə üzvlərini (5 nəfərə qədər) eyni vaxtda qoşun.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-neon-purple">★</span>
-                            <span data-i18n="plan_premium_f3"><strong>Ağıllı Eskalasiya & GPS</strong> — 30 saniyə ərzində cavab vermədikdə ailəyə dəqiq koordinatlı təcili SMS göndərilməsi.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-purple">★</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_prem_f3_t">Ağıllı Eskalasiya & GPS Xilasetmə</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_prem_f3_d">Cavab verilmədikdə təcili xidmətlərə və qohumlara canlı GPS ünvanı göndərilir.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-neon-purple">★</span>
-                            <span data-i18n="plan_premium_f4"><strong>Avtomobil Üçün AI (Predictive Car AI)</strong> — Zəhərlənmə baş vermədən öncə egzoz qazlarının yavaş sızmasını təhlil edən alqoritm.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-purple">★</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_prem_f4_t">Avtomobil üçün Süni İntellekt</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_prem_f4_d">Avtomobil tıxacda və ya qarajda olanda qaz sızmasını əvvəlcədən təxmin edən alqoritm.</div>
+                            </div>
                         </li>
                         <li class="pricing-feature-item">
-                            <span class="feature-check-icon icon-neon-purple">★</span>
-                            <span data-i18n="plan_premium_f5"><strong>Bulud Server Yedəkləməsi</strong> — Ev Wi-Fi-dan asılı olmayaraq bulud serverləri vasitəsilə fasiləsiz nəzarət.</span>
+                            <div class="pricing-feature-icon pricing-feature-icon-purple">★</div>
+                            <div>
+                                <div class="pricing-feature-title" data-i18n="plan_prem_f5_t">Bulud Server Ehtiyat Nüsxəsi & Sınırsız Tarixçə</div>
+                                <div class="pricing-feature-desc" data-i18n="plan_prem_f5_d">Hərtərəfli təhlil və hesabatlar.</div>
+                            </div>
                         </li>
                     </ul>
 
-                    <div class="pricing-card-footer">
-                        <button type="button" class="btn-pricing-action btn-notify-release js-beta-notify-btn" id="btnPricingNotify">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                            </svg>
-                            <span data-i18n="plan_premium_btn">Buraxılışda Mənə Bildir</span>
-                        </button>
+                    <div class="pricing-btn-wrap">
+                        <button type="button" class="btn-pricing-action btn-pricing-featured js-beta-notify-btn" id="btnPricingNotify" data-i18n="plan_prem_btn">
+                            Buraxılışda Mənə Xəbər Ver                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ================================================================
-             BLOCK 6: The Team (Turan Safarli CTO & Tamerlan Safarli CEO)
+             BLOCK 5: The Team (Trust Block - 2 Cards)
              ================================================================ -->
         <section id="team" class="team-section">
             <div class="section-header">
@@ -1030,19 +890,14 @@
                     </div>
                     
                     <div class="team-quote-wrapper">
-                        <div class="team-focus-line" data-i18n="team_turan_focus">
-                            Product Architecture, IoT Protocol Integration & Engineering.
-                        </div>
-                        <div class="team-credentials-box">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            <span data-i18n="team_turan_achievement">Multiple National & International Olympiad Medalist | Azercosmos Space Academy Intern.</span>
-                        </div>
+                        <p class="team-quote-text quote-purple" data-i18n="team_turan_desc">
+                            Məhsul Arxitekturası, IoT Protokol İnteqrasiyası və Mühəndislik. Çoxsaylı Respublika və Beynəlxalq Olimpiada Mükafatçısı | Azercosmos Space Academy Təcrübəçisi.                        </p>
                     </div>
 
                     <div class="team-card-footer">
                         <span class="team-tag tag-purple">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            <span data-i18n="team_turan_tag">IoT & Engineering</span>
+                            <span data-i18n="team_turan_tag">IoT Mühəndisliyi & Arxitektura</span>
                         </span>
                     </div>
                 </div>
@@ -1063,19 +918,14 @@
                     </div>
                     
                     <div class="team-quote-wrapper">
-                        <div class="team-focus-line" data-i18n="team_tamerlan_focus">
-                            Business Strategy, Financial Operations & International Scalability.
-                        </div>
-                        <div class="team-credentials-box">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                            <span data-i18n="team_tamerlan_achievement">Stanford University M.S. Candidate.</span>
-                        </div>
+                        <p class="team-quote-text quote-cyan" data-i18n="team_tamerlan_desc">
+                            Biznes Strategiyası, Maliyyə Əməliyyatları və Beynəlxalq Miqyaslama. Stanford Universiteti Magistr Namizədi.                        </p>
                     </div>
 
                     <div class="team-card-footer">
                         <span class="team-tag tag-cyan">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
-                            <span data-i18n="team_tamerlan_tag">Strategy & Scalability</span>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <span data-i18n="team_tamerlan_tag">Strategiya & Qlobal Miqyas</span>
                         </span>
                     </div>
                 </div>
@@ -1083,7 +933,7 @@
         </section>
 
         <!-- ================================================================
-             BLOCK 7: Project Status & Investors (2 Arch & Dome Bento Cards)
+             BLOCK 6: Project Status & Investors (2 Arch & Dome Bento Cards)
              ================================================================ -->
         <section id="investors" class="investors-section">
             <div class="section-header">
@@ -1105,7 +955,7 @@
                     </div>
                     <div class="arch-card-content">
                         <div class="brutalist-badge badge-purple" style="margin-bottom: 12px; display: inline-flex;">
-                            <span>Investment Opportunity</span>
+                            <span data-i18n="investors_badge">İnvestisiya İmkanı</span>
                         </div>
                         <h3 class="arch-title" data-i18n="investors_card_title">İnvestorlar Üçün Dəyər</h3>
                         <p class="arch-text" data-i18n="investors_card_text">AirSen Ağıllı Ev və fərdi təhlükəsizlik bazarlarının kəsişməsində oyun qaydalarını dəyişir. Biz dəm qazından mühafizə üçün sadəcə xəbərdarlıq edən deyil, həm də hərəkətə keçən əlçatan, vahid ekosistem yaradırıq.</p>
@@ -1113,7 +963,7 @@
                     <div class="arch-card-footer">
                         <span class="arch-tag tag-purple">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                            Smart Home & Safety Ecosystem
+                            <span data-i18n="investors_tag">Ağıllı Ev & Təhlükəsizlik Ekosistemi</span>
                         </span>
                     </div>
                 </div>
@@ -1132,7 +982,7 @@
                     <div class="arch-card-content">
                         <div class="brutalist-badge badge-green" style="margin-bottom: 12px; display: inline-flex;">
                             <span class="badge-pulse-dot"></span>
-                            <span>Launch on Android</span>
+                            <span data-i18n="status_badge">Android-də Başlanğıc</span>
                         </div>
                         <h3 class="arch-title" data-i18n="status_card_title">Android-də Başlanğıc & Yol Xəritəsi</h3>
                         <p class="arch-text" data-i18n="status_card_text">İlkin versiya bazarın sürətli yoxlanılması və rəylərin toplanması üçün Android platformasında buraxılır, ardınca iOS üçün mərhələli şəkildə istifadəyə veriləcək.</p>
@@ -1140,7 +990,7 @@
                     <div class="arch-card-footer">
                         <span class="arch-tag tag-green">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            Market Validation & iOS Expansion
+                            <span data-i18n="status_tag">Bazarın Yoxlanması & iOS Genişlənməsi</span>
                         </span>
                     </div>
                 </div>
@@ -1148,7 +998,7 @@
         </section>
 
         <!-- ================================================================
-             BLOCK 8: Public Reviews Wall (Real Submissions Only)
+             BLOCK 7 / Function №2: Public Comments & Reviews Wall (Auto-Glide Slider)
              ================================================================ -->
         <section id="reviews" class="reviews-section">
             <div class="reviews-top-bar">
@@ -1168,22 +1018,156 @@
             </div>
 
             <!-- Empty Reviews State -->
-            <div class="reviews-empty-state" id="reviewsEmptyState">
-                <div class="empty-state-icon-box">💬</div>
-                <h4 class="empty-state-title" data-i18n="reviews_empty">Hələlik heç bir təsdiqlənmiş rəy yoxdur. İlk rəyi siz yazın!</h4>
-                <p class="empty-state-subtitle">AirSen ideyası və təhlükəsizlik konsepti haqqında fikirləriniz bizim üçün çox dəyərlidir.</p>
+            <div class="reviews-empty-state" id="reviewsEmptyState" style="display: none;">
+                <div class="reviews-empty-icon">🛡️</div>
+                <h4 class="reviews-empty-title" data-i18n="reviews_empty_title">Hələlik heç bir rəy yoxdur</h4>
+                <p class="reviews-empty-desc" data-i18n="reviews_empty_desc">İlk rəyi siz bildirin və dəm qazından qorunma ekosisteminin inkişafına dəstək olun!</p>
+                <button type="button" class="btn-open-review" onclick="document.getElementById('btnOpenReviewModal').click();" style="margin-top: 10px;">
+                    <span data-i18n="btn_leave_review">İdeya Haqqında Rəy Bildirin</span>
+                </button>
             </div>
 
-            <!-- Real User Reviews Slider Container (Dynamically Populated) -->
-            <div class="reviews-slider-container" id="reviewsSliderContainer" style="display: none;">
+            <div class="reviews-slider-container" style="">
                 <div class="reviews-slider-viewport" id="reviewsSliderViewport">
                     <div class="reviews-slider-track" id="reviewsSliderTrack">
-                        <!-- Dynamic real user review cards inserted here -->
-                    </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="4.5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-half">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">4.5</span>
+                                    </div>
+                                    <p class="review-comment">Pis deyil, amma daha da tekmillesdirile biler. Ugurlar!</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">P</div>
+                                    <div class="review-author-name">Puste Aghayeva</div>
+                                </div>
+                            </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">5.0</span>
+                                    </div>
+                                    <p class="review-comment">Smart Home sistemləri çox baha idi, amma AirSen bu təhlükəsizliyi hər bir ailə üçün əlçatan edir. Google Play-də çıxmasını səbirsizliklə gözləyirik!</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">N</div>
+                                    <div class="review-author-name">Nərgiz Məmmədova</div>
+                                </div>
+                            </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">5.0</span>
+                                    </div>
+                                    <p class="review-comment">Smart Home sistemləri çox baha idi, amma AirSen bu təhlükəsizliyi hər bir ailə üçün əlçatan edir. Google Play-də çıxmasını səbirsizliklə gözləyirik!</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">N</div>
+                                    <div class="review-author-name">Nərgiz Məmmədova</div>
+                                </div>
+                            </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">5.0</span>
+                                    </div>
+                                    <p class="review-comment">The multi-device monitoring for both home and car in one sleek dashboard is brilliant. Creative brutalism UI looks incredible and very futuristic!</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">S</div>
+                                    <div class="review-author-name">Sarah Jenkins</div>
+                                </div>
+                            </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">5.0</span>
+                                    </div>
+                                    <p class="review-comment">The multi-device monitoring for both home and car in one sleek dashboard is brilliant. Creative brutalism UI looks incredible and very futuristic!</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">S</div>
+                                    <div class="review-author-name">Sarah Jenkins</div>
+                                </div>
+                            </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">5.0</span>
+                                    </div>
+                                    <p class="review-comment">Идея интеграции физического сенсора с голосовым подтверждением состояния и автоэскалацией — это спасение жизней. Обычные датчики бесполезны, если человек без сознания.</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">A</div>
+                                    <div class="review-author-name">Alexey Voronov</div>
+                                </div>
+                            </div>
+                                                    <div class="review-card slider-card">
+                                <div class="review-card-top">
+                                    <div class="review-stars-row">
+                                        <div class="review-stars" aria-label="5 / 5">
+                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                                                                                <span class="star-filled">★</span>
+                                                                                                                                    </div>
+                                        <span class="rating-num-badge">5.0</span>
+                                    </div>
+                                    <p class="review-comment">Dəm qazı hər qış Azərbaycanda ən böyük faciələrdən biridir. Tətbiqin ailə üzvlərinin telefonuna dərhal siqnal göndərməsi və GPS koordinatları təyin etməsi inqilabi yanaşmadır!</p>
+                                </div>
+                                <div class="review-author">
+                                    <div class="review-author-avatar">E</div>
+                                    <div class="review-author-name">Elmir Həsənov</div>
+                                </div>
+                            </div>
+                                            </div>
                 </div>
 
                 <!-- Bottom Controls: Navigation Arrows, Uniform Dots & Live Progress Bar -->
-                <div class="slider-bottom-bar" id="sliderBottomBar">
+                <div class="slider-bottom-bar slider-footer-controls">
                     <div class="slider-controls-row">
                         <button type="button" class="slider-arrow-btn" id="btnSliderPrev" aria-label="Əvvəlki">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
@@ -1204,64 +1188,64 @@
         </section>
 
         <!-- ================================================================
-             BLOCK 9: CONTACT US
+             CONTACT US SECTION
              ================================================================ -->
         <section id="contact" class="contact-section">
             <div class="section-header">
-                <div class="brutalist-badge badge-blue" style="margin-bottom: 12px;">
-                    <span data-i18n="contact_label">Əlaqə</span>
+                <div class="brutalist-badge badge-blue">
+                    <span data-i18n="contact_label">Əlaqə & Dəstək</span>
                 </div>
-                <h2 class="section-title" data-i18n="contact_title">Bizimlə Əlaqə Saxlayın</h2>
-                <p class="contact-lead-text" data-i18n="contact_subtitle">
-                    Sualınız, investisiya və ya təklifiniz üçün komandamızla birbaşa əlaqə qura bilərsiniz.
-                </p>
+                <h2 style="font-size: 36px;" data-i18n="contact_title">Bizimlə Əlaqə Saxlayın</h2>
             </div>
 
-            <div class="contact-cards-grid">
-                <!-- Card 1: Official Email -->
-                <div class="bento-card contact-card card-gradient-purple">
-                    <div class="contact-icon-box icon-purple">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="20" height="16" x="2" y="4" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
-                    </div>
-                    <div class="contact-card-info">
-                        <div class="contact-card-label" data-i18n="contact_email_title">Rəsmi E-poçt</div>
-                        <a href="mailto:airsen.info@gmail.com" class="contact-email-link" id="contactEmailLink">
-                            airsen.info@gmail.com
-                        </a>
-                    </div>
-                    <div class="contact-card-actions">
-                        <button type="button" class="btn-copy-email" id="btnCopyEmail">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-                                <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+            <div class="contact-grid">
+                <!-- Card 1: Official Email & Partnerships -->
+                <div class="bento-card contact-card">
+                    <div>
+                        <div class="contact-card-icon contact-card-icon-cyan">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                             </svg>
-                            <span id="copyEmailText" data-i18n="contact_copy_btn">E-poçtu Kopyala</span>
-                        </button>
+                        </div>
+                        <h3 class="contact-card-title" data-i18n="contact_email_title">Birbaşa Əlaqə</h3>
+                        <p class="contact-card-text" data-i18n="contact_email_desc">Əməkdaşlıq, texniki təkliflər və suallarınız üçün bizə yazın:</p>
+                    </div>
+
+                    <div class="contact-email-row">
+                        <a href="mailto:airsen.info@gmail.com" class="contact-email-link">airsen.info@gmail.com</a>
+                        <button type="button" class="btn-copy-email" id="btnCopyEmail" data-i18n="contact_btn_copy">
+                            📋 Kopyala                        </button>
                     </div>
                 </div>
 
-                <!-- Card 2: HQ & Distributed Team Location -->
-                <div class="bento-card contact-card card-glow-blue">
-                    <div class="contact-icon-box icon-blue">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                    </div>
-                    <div class="contact-card-info">
-                        <div class="contact-card-label" data-i18n="contact_loc_title">Qərargah & Komanda</div>
-                        <div class="contact-location-text">
-                            Baku, Azerbaijan | Distributed Team (Stanford, CA / Baku)
+                <!-- Card 2: HQ & Distributed Team -->
+                <div class="bento-card contact-card">
+                    <div>
+                        <div class="contact-card-icon contact-card-icon-purple">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
                         </div>
+                        <h3 class="contact-card-title" data-i18n="contact_location_title">Qərargah & Məkan</h3>
+                        <p class="contact-card-text" data-i18n="contact_location_desc">Beynəlxalq komandamız Bakı və Kaliforniyada fəaliyyət göstərir:</p>
                     </div>
-                    <div class="contact-card-actions">
-                        <span class="location-status-badge">
-                            <span class="badge-pulse-dot"></span>
-                            Stanford & Baku
-                        </span>
+
+                    <div class="contact-locations">
+                        <div class="contact-location-item">
+                            <span>📍</span>
+                            <div>
+                                <strong data-i18n="contact_loc_baku">Bakı, Azərbaycan</strong>
+                                <div><span data-i18n="contact_loc_team">Paylanmış Mühəndislik Komandası</span></div>
+                            </div>
+                        </div>
+                        <div class="contact-location-item">
+                            <span>🎓</span>
+                            <div>
+                                <strong data-i18n="contact_loc_stanford">Stanford, CA / Bakı</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1270,7 +1254,46 @@
     </main>
 
     <!-- ====================================================================
-         Review Submission Modal
+         Beta Notification Pop-up Modal (Early Access & 3 Months Free Gift)
+         ==================================================================== -->
+    <div class="beta-modal" id="betaModal" role="dialog" aria-modal="true" aria-labelledby="betaModalTitle">
+        <div class="beta-modal-backdrop"></div>
+        <div class="beta-modal-container">
+            <button type="button" class="beta-modal-close" id="betaModalClose" aria-label="Bağla">&times;</button>
+            
+            <div class="beta-badge" data-i18n="beta_modal_badge">
+                <span class="mod-live-dot"></span>
+                <span>QAPALI BETA TESTİ</span>
+            </div>
+
+            <h3 class="beta-modal-title" id="betaModalTitle" data-i18n="beta_modal_title">
+                AirSen Premium Beta Testinə Qoşulun            </h3>
+            
+            <p class="beta-modal-desc" data-i18n="beta_modal_desc">
+                AirSen Premium hazırda qapalı sınaq mərhələsindədir. Rəsmi buraxılışda ilk xəbərdar olmaq və 3 ay PULSUZ istifadə haqqı qazanmaq üçün e-poçtunuzu qeyd edin.            </p>
+
+            <div class="beta-perk-box">
+                <span class="beta-perk-icon">🎁</span>
+                <span class="beta-perk-text" data-i18n="beta_perk_text">
+                    🎁 Qeydiyyatdan keçənlərə rəsmi buraxılışda 3 ay Premium hədiyyə!                </span>
+            </div>
+
+            <form class="beta-form" id="betaNotifyForm">
+                <div class="beta-input-group">
+                    <input type="email" id="betaEmailInput" class="beta-input" required data-i18n="beta_input_placeholder" placeholder="E-poçt ünvanınızı daxil edin...">
+                </div>
+                <button type="submit" class="btn-beta-submit">
+                    <span data-i18n="beta_submit_btn">Təsdiq et və Qoşul</span> →
+                </button>
+            </form>
+
+            <div class="beta-success-msg" id="betaSuccessMsg" data-i18n="beta_success_text">
+                Təşəkkür edirik! E-poçtunuz qeydə alındı. Rəsmi buraxılışda 3 ay pulsuz istifadə hüququ qazandınız!            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================
+         Review Submission Modal (With Mandatory Premoderation)
          ==================================================================== -->
     <div class="modal-backdrop" id="reviewModal">
         <div class="modal-content">
@@ -1280,12 +1303,12 @@
             <form id="reviewForm">
                 <div class="form-group">
                     <label class="form-label" data-i18n="modal_name">Adınız və Soyadınız</label>
-                    <input type="text" id="reviewNameInput" class="form-input" required data-i18n="modal_name_placeholder" placeholder="məs. Rəşad Əliyev">
+                    <input type="text" id="reviewNameInput" class="form-input" required data-i18n="modal_name_placeholder" placeholder="Məs: Elvin Məmmədov">
                 </div>
 
                 <div class="form-group">
                     <div class="form-label-row">
-                        <label class="form-label" style="margin-bottom: 0;">Təhlükəsizlik ideyasını qiymətləndirin:</label>
+                        <label class="form-label" style="margin-bottom: 0;" data-i18n="modal_rating_label">Konsepti qiymətləndirin:</label>
                         <span class="live-score-pill" id="liveScorePill">5.0 / 5.0</span>
                     </div>
                     <div class="rating-picker-wrapper">
@@ -1302,42 +1325,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="modal_comment">Rəyiniz və ya Təklifiniz</label>
-                    <textarea id="reviewCommentInput" class="form-textarea" rows="4" required data-i18n="modal_comment_placeholder" placeholder="Layihə və təhlükəsizlik həlli haqqında fikirlərinizi yazın..."></textarea>
+                    <label class="form-label" data-i18n="modal_comment">Fikriniz və ya Rəyiniz</label>
+                    <textarea id="reviewCommentInput" class="form-textarea" rows="4" required data-i18n="modal_comment_placeholder" placeholder="Dəm qazından qorunma haqqında nə düşünürsünüz?..."></textarea>
                 </div>
 
                 <button type="submit" class="btn-open-review" style="width: 100%; justify-content: center;">
                     <span data-i18n="modal_submit">Rəyi Göndər</span>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- ====================================================================
-         Premium Beta Early Access Modal
-         ==================================================================== -->
-    <div class="modal-backdrop" id="betaModal">
-        <div class="modal-content beta-modal-content">
-            <button type="button" class="modal-close-btn" id="betaModalClose">&times;</button>
-            <div class="beta-modal-icon-badge">⚡</div>
-            <div class="brutalist-badge badge-purple" style="margin-bottom: 12px; display: inline-flex;">
-                <span class="badge-pulse-dot"></span>
-                <span>AirSen Premium Beta</span>
-            </div>
-            <h3 class="modal-title" style="margin-bottom: 12px;" data-i18n="modal_beta_title">AirSen Premium (Beta Giriş)</h3>
-            <p class="beta-modal-desc" data-i18n="modal_beta_desc">
-                AirSen Premium is in closed testing. Leave your email to be notified upon official release and get 3 months for free.
-            </p>
-
-            <form id="betaNotifyForm" class="beta-form">
-                <div class="form-group">
-                    <input type="email" id="betaEmailInput" class="form-input beta-email-input" required data-i18n="modal_beta_email_placeholder" placeholder="e-poct@example.com">
-                </div>
-                <div class="beta-gift-pill">
-                    <span>🎁 3 Months For Free</span>
-                </div>
-                <button type="submit" class="btn-open-review btn-beta-submit" style="width: 100%; justify-content: center; margin-top: 14px;">
-                    <span data-i18n="modal_beta_submit">Buraxılışda Mənə Bildir</span>
                 </button>
             </form>
         </div>
@@ -1352,8 +1345,7 @@
             <div style="font-size: 40px; margin-bottom: 14px;">🚀</div>
             <h3 class="modal-title" style="margin-bottom: 12px;" data-i18n="cta_moderation_badge">Tətbiq Moderasiyadadır</h3>
             <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px;" data-i18n="cta_moderation_info">
-                Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!
-            </p>
+                Tətbiq hazırda Google Play Store-da moderasiya mərhələsindədir (ayın 10–13-nə qədər). Çıxan kimi birbaşa yükləmə aktiv olacaq!            </p>
             <button type="button" class="btn-open-review" style="margin: 0 auto;" onclick="document.getElementById('gpModerationModal').classList.remove('is-open')">
                 <span data-i18n="modal_close">Bağla</span>
             </button>
@@ -1374,7 +1366,7 @@
             </div>
 
             <a href="javascript:void(0)" class="footer-admin-link" data-i18n="footer_admin_link">
-                <span>🔒</span> <span data-i18n="footer_admin_link">Şəxsi Kabinet / Analitika</span>
+                <span>🔒</span> <span>Şəxsi Kabinet / Analitika</span>
             </a>
         </div>
     </footer>
@@ -1392,3 +1384,5 @@
     <script src="js/app.js"></script>
 </body>
 </html>
+
+

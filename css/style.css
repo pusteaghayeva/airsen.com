@@ -229,10 +229,15 @@ div[id],
 }
 
 .footer-logo-img {
-  height: 44px;
+  height: 56px;
   width: auto;
   display: block;
   object-fit: contain;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.footer-logo-img:hover {
+  transform: scale(1.04);
+  opacity: 0.95;
 }
 
 .nav-links {
@@ -944,9 +949,6 @@ div[id],
   color: #FFFFFF;
 }
 
-/* ==========================================================================
-   3 Distinct Symmetrical Concentric Circles & Liquid Wave Core
-   ========================================================================== */
 /* ==========================================================================
    3 Distinct Symmetrical Concentric Circles & Liquid Wave Core
    ========================================================================== */
@@ -1762,6 +1764,7 @@ div[id],
 .feat-gps-ring, .feat-gps-dot, .feat-spark, .feat-sync-dot {
   transition: all 0.35s ease;
 }
+
 /* Calm, Graceful Static Elevation & Soft Neon Aura Triggered on Hover */
 .feature-bento-card:hover .feat-svg-purple,
 .feature-pure-icon:hover .feat-svg-purple {
@@ -2766,8 +2769,32 @@ div[id],
 }
 
 .footer-credits {
-  font-size: 13.5px;
-  color: var(--text-dim);
+  font-size: 15px;
+  color: #B4B7C4;
+  font-weight: 500;
+}
+
+.footer-admin-link {
+  font-size: 14px;
+  color: #8E92A4;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+}
+
+.footer-admin-link:hover {
+  color: var(--blue-neon);
+  border-color: rgba(105, 229, 255, 0.4);
+  background: rgba(105, 229, 255, 0.1);
+  box-shadow: 0 0 15px rgba(105, 229, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -3284,29 +3311,6 @@ div[id],
 
 .reveal-on-scroll.is-revealed {
   opacity: 1;
-  transform: translateY(0);
-}
-
-/* ==========================================================================
-   Back To Top (BTT) Widget & Live 4-Mode Style Switcher
-   ========================================================================== */
-.btt-container {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
-}
-
-.btt-container.is-visible {
-  opacity: 1;
-  visibility: visible;
   transform: translateY(0);
 }
 
