@@ -46,6 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 12. Smooth Anchor Navigation & Active Scrollspy
   initScrollspy();
+
+  // 13. Beta Modal & Early Access Handler
+  initBetaNotifyModal();
+
+  // 14. Contact Info Copy Helper
+  initContactCopy();
 });
 
 /* ==========================================================================
@@ -722,12 +728,26 @@ function initReviewVariants() {
   const viewport = document.getElementById('reviewsSliderViewport');
   const progressBar = document.getElementById('sliderProgressBar');
   const dotsBox = document.getElementById('sliderDotsBox');
+  const emptyState = document.getElementById('reviewsEmptyState');
+  const sliderControls = document.querySelector('.slider-footer-controls');
 
   if (!track || !viewport) return;
 
-  let currentIndex = 0;
   const cards = track.querySelectorAll('.slider-card');
   const totalCards = cards.length;
+
+  if (totalCards === 0) {
+    if (emptyState) emptyState.style.display = 'flex';
+    if (viewport) viewport.style.display = 'none';
+    if (sliderControls) sliderControls.style.display = 'none';
+    return;
+  } else {
+    if (emptyState) emptyState.style.display = 'none';
+    if (viewport) viewport.style.display = 'block';
+    if (sliderControls) sliderControls.style.display = 'flex';
+  }
+
+  let currentIndex = 0;
   const SLIDE_DURATION = 5000; // 5 seconds per slide
   let progressTime = 0;
   let timerInterval = null;
@@ -1060,4 +1080,138 @@ function initScrollspy() {
   window.addEventListener('scroll', handleScrollspy, { passive: true });
   handleScrollspy();
 }
+
+/* ==========================================================================
+   Beta Modal Controller (Early Access Subscription)
+   ========================================================================== */
+function initBetaNotifyModal() {
+  const modal = document.getElementById('betaModal');
+  const openButtons = document.querySelectorAll('.js-beta-notify-btn, #btnPricingNotify');
+  const closeBtn = document.getElementById('betaModalClose');
+  const form = document.getElementById('betaNotifyForm');
+  const successMsg = document.getElementById('betaSuccessMsg');
+  const emailInput = document.getElementById('betaEmailInput');
+
+  if (!modal) return;
+
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.add('is-active');
+    trackEvent('beta_modal_opened');
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-active');
+  };
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('beta-modal-backdrop')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+      closeModal();
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput?.value.trim();
+    if (!email) return;
+
+    const submitBtn = form.querySelector('.btn-beta-submit');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = '...';
+    }
+
+    try {
+      await fetch('/api/beta-notify', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify({
+          email: email,
+          locale: document.documentElement.lang || 'az'
+        })
+      }).catch(() => {});
+
+      trackEvent('beta_subscribed', { email: email });
+
+      if (successMsg) {
+        successMsg.style.display = 'block';
+      }
+      form.style.display = 'none';
+
+      const lang = document.documentElement.lang || 'az';
+      const thankText = lang === 'ru'
+        ? 'Спасибо! Вы добавлены в список закрытого бета-теста с бонусом 3 месяца бесплатно.'
+        : (lang === 'en'
+            ? 'Thank you! You have been added to the beta waitlist with 3 months free access.'
+            : 'Təşəkkür edirik! Qapalı beta siyahısına əlavə olundunuz və 3 ay pulsuz istifadə haqqı qazandınız.');
+
+      showToast(thankText);
+
+      setTimeout(() => {
+        closeModal();
+        // Reset form for next time if reopened
+        setTimeout(() => {
+          form.reset();
+          form.style.display = 'flex';
+          if (successMsg) successMsg.style.display = 'none';
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Təsdiq et və Qoşul</span> →';
+          }
+        }, 500);
+      }, 3000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+    }
+  });
+}
+
+/* ==========================================================================
+   Contact Email Copy to Clipboard Helper
+   ========================================================================== */
+function initContactCopy() {
+  const copyBtn = document.getElementById('btnCopyEmail');
+  if (!copyBtn) return;
+
+  copyBtn.addEventListener('click', () => {
+    const email = 'airsen.info@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      const originalHtml = copyBtn.innerHTML;
+      const lang = document.documentElement.lang || 'az';
+      const copiedText = lang === 'ru' ? '✓ Скопировано' : (lang === 'en' ? '✓ Copied!' : '✓ Kopyalandı');
+
+      copyBtn.innerHTML = copiedText;
+      copyBtn.style.color = 'var(--green-signal, #76FF5B)';
+      copyBtn.style.borderColor = 'rgba(118, 255, 91, 0.4)';
+
+      showToast(`📋 ${email} ${copiedText.toLowerCase()}`);
+
+      setTimeout(() => {
+        copyBtn.innerHTML = originalHtml;
+        copyBtn.style.color = '';
+        copyBtn.style.borderColor = '';
+      }, 2000);
+    }).catch(err => {
+      console.error('Clipboard copy failed:', err);
+    });
+  });
+}
+
 
