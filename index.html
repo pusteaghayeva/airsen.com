@@ -1054,64 +1054,83 @@
         </section>
 
         <!-- ================================================================
-             CONTACT US SECTION
+             BLOCK 8: CONTACT US (2-Card Bento Grid Layout)
              ================================================================ -->
         <section id="contact" class="contact-section">
             <div class="section-header">
-                <div class="brutalist-badge badge-blue">
-                    <span data-i18n="contact_label">Əlaqə & Dəstək</span>
+                <div class="brutalist-badge badge-purple" style="margin-bottom: 12px;">
+                    <span data-i18n="contact_label">Əlaqə</span>
                 </div>
-                <h2 style="font-size: 36px;" data-i18n="contact_title">Bizimlə Əlaqə Saxlayın</h2>
+                <h2 class="section-title" data-i18n="contact_title">BİZİMLƏ ƏLAQƏ</h2>
             </div>
 
             <div class="contact-grid">
-                <!-- Card 1: Official Email & Partnerships -->
-                <div class="bento-card contact-card">
-                    <div>
-                        <div class="contact-card-icon contact-card-icon-cyan">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                            </svg>
+                <!-- Card 1: Direct Reach & Communication -->
+                <div class="bento-card contact-bento-card card-gradient-purple">
+                    <div class="contact-card-head">
+                        <div class="brutalist-badge badge-purple" style="margin-bottom: 14px; display: inline-flex;">
+                            <span data-i18n="contact_badge_direct">BİRBAŞA ƏLAQƏ</span>
                         </div>
-                        <h3 class="contact-card-title" data-i18n="contact_email_title">Birbaşa Əlaqə</h3>
-                        <p class="contact-card-text" data-i18n="contact_email_desc">Əməkdaşlıq, texniki təkliflər və suallarınız üçün bizə yazın:</p>
+                        <h3 class="contact-card-heading" data-i18n="contact_direct_title">Təsisçilərlə Birbaşa Əlaqə</h3>
+                        <p class="contact-card-sub" data-i18n="contact_direct_sub">İnvestisiya, tərəfdaşlıq, IoT inteqrasiyası və ya hər hansı sualınız üçün bizə birbaşa yazın.</p>
                     </div>
 
-                    <div class="contact-email-row">
-                        <a href="mailto:airsen.info@gmail.com" class="contact-email-link">airsen.info@gmail.com</a>
-                        <button type="button" class="btn-copy-email" id="btnCopyEmail" data-i18n="contact_btn_copy">
-                            📋 Kopyala                        </button>
+                    <div class="contact-action-box">
+                        <a href="mailto:airsen.info@gmail.com" class="contact-email-pill" id="mainContactEmailLink" title="Email AirSen">
+                            <div class="email-pill-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg>
+                            </div>
+                            <span class="email-pill-text">airsen.info@gmail.com</span>
+                            <span class="email-pill-arrow">↗</span>
+                        </a>
+
+                        <button type="button" class="btn-copy-email-subtle" id="btnCopyEmail" title="E-poçtu kopyala">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            <span data-i18n="contact_copy_btn">E-poçtu Kopyala</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 2: HQ & Distributed Team -->
-                <div class="bento-card contact-card">
-                    <div>
-                        <div class="contact-card-icon contact-card-icon-purple">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
+                <!-- Card 2: Distributed Global Network / Hubs -->
+                <div class="bento-card contact-bento-card card-glow-blue">
+                    <div class="contact-card-head">
+                        <div class="brutalist-badge badge-blue" style="margin-bottom: 14px; display: inline-flex;">
+                            <span data-i18n="contact_badge_global">QLOBAL MƏRKƏZLƏR</span>
                         </div>
-                        <h3 class="contact-card-title" data-i18n="contact_location_title">Qərargah & Məkan</h3>
-                        <p class="contact-card-text" data-i18n="contact_location_desc">Beynəlxalq komandamız Bakı və Kaliforniyada fəaliyyət göstərir:</p>
+                        <h3 class="contact-card-heading" data-i18n="contact_global_title">Paylanmış Mühəndislik & Strategiya</h3>
                     </div>
 
-                    <div class="contact-locations">
-                        <div class="contact-location-item">
-                            <span>📍</span>
-                            <div>
-                                <strong data-i18n="contact_loc_baku">Bakı, Azərbaycan</strong>
-                                <div><span data-i18n="contact_loc_team">Paylanmış Mühəndislik Komandası</span></div>
+                    <div class="contact-hubs-list">
+                        <!-- Hub 1: Baku -->
+                        <div class="contact-hub-item">
+                            <div class="hub-item-icon hub-icon-cyan">📍</div>
+                            <div class="hub-item-info">
+                                <div class="hub-item-title">Baku Hub</div>
+                                <div class="hub-item-loc">Baku, Azerbaijan</div>
+                                <div class="hub-item-desc" data-i18n="contact_hub_baku_desc">Hardware IoT Mühəndisliyi & Əsas R&D Mərkəzi</div>
                             </div>
                         </div>
-                        <div class="contact-location-item">
-                            <span>🎓</span>
-                            <div>
-                                <strong data-i18n="contact_loc_stanford">Stanford, CA / Bakı</strong>
+
+                        <!-- Hub 2: Stanford -->
+                        <div class="contact-hub-item">
+                            <div class="hub-item-icon hub-icon-purple">🎓</div>
+                            <div class="hub-item-info">
+                                <div class="hub-item-title">Stanford Hub</div>
+                                <div class="hub-item-loc">Stanford, CA / USA</div>
+                                <div class="hub-item-desc" data-i18n="contact_hub_stanford_desc">Biznes Strategiyası & Beynəlxalq Miqyaslama</div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="contact-team-tag">
+                        <span class="hub-pulse-dot"></span>
+                        <span data-i18n="contact_location_line">Bakı, Azərbaycan | Distributed Team (Stanford, CA / Baku)</span>
                     </div>
                 </div>
             </div>
@@ -1164,13 +1183,15 @@
          ==================================================================== -->
     <div class="modal-backdrop" id="reviewModal">
         <div class="modal-content">
-            <button type="button" class="modal-close-btn" id="reviewModalClose">&times;</button>
-            <h3 class="modal-title" data-i18n="modal_review_title">AirSen İdeyası Haqqında Fikrinizi Bölüşün</h3>
+            <div class="modal-header-row">
+                <h3 class="modal-title" data-i18n="modal_review_title">AirSen İdeyası Haqqında Fikrinizi Bölüşün</h3>
+                <button type="button" class="modal-close-btn" id="reviewModalClose" aria-label="Bağla">&times;</button>
+            </div>
 
             <form id="reviewForm">
                 <div class="form-group">
                     <label class="form-label" data-i18n="modal_name">Adınız və Soyadınız</label>
-                    <input type="text" id="reviewNameInput" class="form-input" required data-i18n="modal_name_placeholder" placeholder="Məs: Elvin Məmmədov">
+                    <input type="text" id="reviewNameInput" class="form-input" maxlength="100" required data-i18n="modal_name_placeholder" placeholder="Məs: Elvin Məmmədov">
                 </div>
 
                 <div class="form-group">
@@ -1192,8 +1213,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="modal_comment">Fikriniz və ya Rəyiniz</label>
-                    <textarea id="reviewCommentInput" class="form-textarea" rows="4" required data-i18n="modal_comment_placeholder" placeholder="Dəm qazından qorunma haqqında nə düşünürsünüz?..."></textarea>
+                    <div class="form-label-row">
+                        <label class="form-label" style="margin-bottom: 0;" data-i18n="modal_comment">Fikriniz və ya Rəyiniz</label>
+                        <span class="char-count-pill" id="reviewCharCountWrap">
+                            <span id="reviewCharCount">0</span> / 1000
+                        </span>
+                    </div>
+                    <textarea id="reviewCommentInput" class="form-textarea" rows="4" maxlength="1000" required data-i18n="modal_comment_placeholder" placeholder="Dəm qazından qorunma haqqında nə düşünürsünüz?..."></textarea>
+                    <div class="char-limit-warning" id="charLimitWarning" style="display: none;">
+                        <span id="charLimitWarningText">Maksimum 1000 simvol həddinə çatdınız.</span>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-open-review" style="width: 100%; justify-content: center;">
