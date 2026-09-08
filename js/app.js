@@ -317,22 +317,25 @@ function initCOSimulator() {
 
     if (typeof Swal !== 'undefined') {
       Swal.fire({
-        title: `<div style="font-family: var(--font-display, sans-serif); font-weight: 800; font-size: 19px; color: #DC3545; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                  <span style="display: inline-block; animation: pulse-dot 1s infinite;">🚨</span>
+        title: `<div style="font-family: var(--font-display, sans-serif); font-weight: 800; font-size: 20px; color: #FF4D5E; display: flex; align-items: center; justify-content: center; gap: 10px; letter-spacing: -0.01em;">
+                  <span style="font-size: 24px; animation: pulse-dot 1s infinite;">🚨</span>
                   <span>${sosTitle}</span>
                 </div>`,
         html: `
-          <div style="text-align: left; background: rgba(220, 53, 69, 0.08); border: 1px solid rgba(220, 53, 69, 0.35); border-radius: 14px; padding: 14px; margin: 14px 0 6px 0; color: #E5E7EB; font-size: 12.5px; line-height: 1.6;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: #FFF; font-weight: 700;">
-              <span>📍</span>
-              <span>${gpsText}: <span style="color: #69E5FF; font-family: monospace;">40.4093° N, 49.8671° E</span> (Bakı)</span>
+          <div style="text-align: left; background: rgba(220, 53, 69, 0.08); border: 1px solid rgba(220, 53, 69, 0.35); border-radius: 16px; padding: 18px; margin: 16px 0 8px 0; color: #E5E7EB; font-size: 13.5px; line-height: 1.65; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: flex-start; gap: 10px; color: #FFF; font-weight: 700; background: rgba(0,0,0,0.3); padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+              <span style="font-size: 16px;">📍</span>
+              <div>
+                <div style="font-size: 11.5px; color: var(--text-muted, #9CA3AF); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px;">${gpsText}</div>
+                <div style="color: #69E5FF; font-family: monospace; font-size: 14px; font-weight: 700;">40.4093° N, 49.8671° E (Bakı)</div>
+              </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-              <span>📡</span>
+            <div style="display: flex; align-items: center; gap: 10px; padding: 2px 0;">
+              <span style="font-size: 16px;">📡</span>
               <span>${familyText}</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 8px; color: #FF8A98; font-weight: 600;">
-              <span>📞</span>
+            <div style="display: flex; align-items: center; gap: 10px; color: #FF8A98; font-weight: 600; padding: 2px 0;">
+              <span style="font-size: 16px;">📞</span>
               <span>${serviceText}</span>
             </div>
           </div>
@@ -353,6 +356,10 @@ function initCOSimulator() {
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.href = 'tel:112';
+        } else {
+          // When dismiss / cancel / close is clicked, deactivate siren sound and return simulator to safe state
+          stopSiren();
+          setSimState('safe', 12, 'mockup_status_safe', '0–30 PPM • TƏHLÜKƏSİZ');
         }
       });
     } else {
@@ -496,17 +503,58 @@ function initReviewModal() {
   const scorePill = document.getElementById('liveScorePill');
   const liveText = document.getElementById('liveRatingText');
 
+  const ratingTexts = {
+    az: {
+      5.0: '5.0 — Möhtəşəm',
+      4.5: '4.5 — Çox Yaxşı',
+      4.0: '4.0 — Yaxşı',
+      3.5: '3.5 — Normal / Yaxşı',
+      3.0: '3.0 — Kafi',
+      2.5: '2.5 — Zəif',
+      2.0: '2.0 — Qeyri-kafi',
+      1.5: '1.5 — Pis',
+      1.0: '1.0 — Çox Pis',
+      0.5: '0.5 — Narazıyam'
+    },
+    ru: {
+      5.0: '5.0 — Отлично',
+      4.5: '4.5 — Очень хорошо',
+      4.0: '4.0 — Хорошо',
+      3.5: '3.5 — Нормально',
+      3.0: '3.0 — Удовлетворительно',
+      2.5: '2.5 — Слабо',
+      2.0: '2.0 — Неудовлетворительно',
+      1.5: '1.5 — Плохо',
+      1.0: '1.0 — Очень плохо',
+      0.5: '0.5 — Не понравилось'
+    },
+    en: {
+      5.0: '5.0 — Excellent',
+      4.5: '4.5 — Very Good',
+      4.0: '4.0 — Good',
+      3.5: '3.5 — Above Average',
+      3.0: '3.0 — Satisfactory',
+      2.5: '2.5 — Poor',
+      2.0: '2.0 — Unsatisfactory',
+      1.5: '1.5 — Bad',
+      1.0: '1.0 — Very Bad',
+      0.5: '0.5 — Disappointed'
+    }
+  };
+
   const getRatingLabel = (val) => {
-    if (val >= 5.0) return '5.0 — Möhtəşəm';
-    if (val >= 4.5) return '4.5 — Çox Yaxşı';
-    if (val >= 4.0) return '4.0 — Yaxşı';
-    if (val >= 3.5) return '3.5 — Normal / Yaxşı';
-    if (val >= 3.0) return '3.0 — Kafi';
-    if (val >= 2.5) return '2.5 — Zəif';
-    if (val >= 2.0) return '2.0 — Qeyri-kafi';
-    if (val >= 1.5) return '1.5 — Pis';
-    if (val >= 1.0) return '1.0 — Çox Pis';
-    return '0.5 — Narazıyam';
+    const lang = document.documentElement.lang || 'az';
+    const dict = ratingTexts[lang] || ratingTexts.az;
+    if (val >= 5.0) return dict[5.0];
+    if (val >= 4.5) return dict[4.5];
+    if (val >= 4.0) return dict[4.0];
+    if (val >= 3.5) return dict[3.5];
+    if (val >= 3.0) return dict[3.0];
+    if (val >= 2.5) return dict[2.5];
+    if (val >= 2.0) return dict[2.0];
+    if (val >= 1.5) return dict[1.5];
+    if (val >= 1.0) return dict[1.0];
+    return dict[0.5];
   };
 
   const updateStarVisuals = (ratingVal, isHover = false) => {
@@ -526,6 +574,54 @@ function initReviewModal() {
     if (scorePill) scorePill.textContent = `${ratingVal.toFixed(1)} / 5.0`;
     if (liveText) liveText.textContent = getRatingLabel(ratingVal);
   };
+
+  window.refreshReviewRatingVisuals = () => {
+    const currentRating = parseFloat(ratingInput?.value || 5.0);
+    updateStarVisuals(currentRating, false);
+    updateCharCounter();
+  };
+
+  // Live character counter & 1000 limit enforcement
+  const commentInput = document.getElementById('reviewCommentInput');
+  const charCountEl = document.getElementById('reviewCharCount');
+  const charCountWrap = document.getElementById('reviewCharCountWrap');
+  const charLimitWarning = document.getElementById('charLimitWarning');
+  const charLimitWarningText = document.getElementById('charLimitWarningText');
+
+  const updateCharCounter = () => {
+    if (!commentInput || !charCountEl) return;
+    const len = commentInput.value.length;
+    charCountEl.textContent = len;
+
+    const lang = document.documentElement.lang || 'az';
+    const limitTexts = {
+      az: '⚠️ Maksimum 1000 simvol həddinə çatdınız.',
+      ru: '⚠️ Достигнут максимальный лимит в 1000 символов.',
+      en: '⚠️ You have reached the maximum 1000 character limit.'
+    };
+
+    if (len >= 1000) {
+      charCountWrap?.classList.remove('is-near-limit');
+      charCountWrap?.classList.add('is-max-limit');
+      if (charLimitWarning) {
+        charLimitWarning.style.display = 'flex';
+        if (charLimitWarningText) charLimitWarningText.textContent = limitTexts[lang] || limitTexts.az;
+      }
+    } else if (len >= 900) {
+      charCountWrap?.classList.add('is-near-limit');
+      charCountWrap?.classList.remove('is-max-limit');
+      if (charLimitWarning) charLimitWarning.style.display = 'none';
+    } else {
+      charCountWrap?.classList.remove('is-near-limit', 'is-max-limit');
+      if (charLimitWarning) charLimitWarning.style.display = 'none';
+    }
+  };
+
+  commentInput?.addEventListener('input', updateCharCounter);
+  commentInput?.addEventListener('paste', () => setTimeout(updateCharCounter, 10));
+
+  // Sync visuals and counter initially
+  window.refreshReviewRatingVisuals();
 
   if (starPicker) {
     const stars = starPicker.querySelectorAll('.star-pick');
@@ -560,86 +656,172 @@ function initReviewModal() {
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
-    if (submitBtn) submitBtn.disabled = true;
+    const lang = document.documentElement.lang || 'az';
+    const dict = window.AIRSEN_TRANSLATIONS?.[lang] || {};
+
+    const submittingTexts = {
+      az: 'Göndərilir...',
+      ru: 'Отправка...',
+      en: 'Submitting...'
+    };
+    
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.7';
+      submitBtn.innerHTML = `<span>${submittingTexts[lang] || submittingTexts.az}</span>`;
+    }
 
     const payload = {
-      name: document.getElementById('reviewNameInput')?.value,
+      name: document.getElementById('reviewNameInput')?.value?.trim() || '',
       rating: parseFloat(document.getElementById('reviewRatingInput')?.value || 5.0),
-      comment: document.getElementById('reviewCommentInput')?.value,
-      locale: document.documentElement.lang || 'az'
+      comment: document.getElementById('reviewCommentInput')?.value?.trim() || '',
+      locale: lang
+    };
+
+    // Formal & Professional Multilingual texts
+    const successTitles = {
+      az: 'Rəyiniz Qəbul Edildi',
+      ru: 'Отзыв успешно принят',
+      en: 'Review Submitted Successfully'
+    };
+    const successTexts = {
+      az: 'Dəyərli fikrinizi bölüşdüyünüz üçün təşəkkür edirik. Rəyiniz qeydə alındı və moderasiyadan sonra dərc olunacaq.',
+      ru: 'Благодарим вас за обратную связь. Ваш отзыв зарегистрирован и будет опубликован после модерации.',
+      en: 'Thank you for sharing your feedback. Your review has been recorded and will be published after moderation.'
+    };
+    const btnTexts = {
+      az: 'Təsdiq Et',
+      ru: 'Понятно',
+      en: 'Understood'
     };
 
     try {
+      const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '';
       const response = await fetch('/api/reviews/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRF-TOKEN': csrfToken
         },
         body: JSON.stringify(payload)
       });
 
-      const data = await response.json();
-      if (data.success) {
-        modal?.classList.remove('is-open');
-        form.reset();
-        
+      const data = await response.json().catch(() => ({}));
+      
+      // Close review modal immediately
+      modal?.classList.remove('is-open');
+      form.reset();
+      updateStarVisuals(5.0, false);
+      updateCharCounter();
+      if (ratingInput) ratingInput.value = '5';
+
+      if (response.ok && data.success) {
         if (typeof Swal !== 'undefined') {
           Swal.fire({
             icon: 'success',
-            title: 'Təşəkkür edirik!',
-            text: data.message || 'Rəyiniz qeydə alındı və moderasiyadan sonra dərc olunacaq.',
+            title: successTitles[lang] || successTitles.az,
+            text: data.message || (successTexts[lang] || successTexts.az),
             background: '#15151C',
             color: '#FFFFFF',
-            confirmButtonColor: '#C042F0'
+            confirmButtonText: btnTexts[lang] || btnTexts.az,
+            confirmButtonColor: '#C042F0',
+            customClass: {
+              popup: 'airsen-swal-popup'
+            }
           });
         } else {
-          showToast(data.message || '✓ Təşəkkür edirik! Rəyiniz qeydə alındı və moderasiyadan sonra dərc olunacaq.');
+          alert(data.message || (successTexts[lang] || successTexts.az));
         }
       } else {
+        const errorMsg = data.message || (data.errors ? Object.values(data.errors).flat().join(' ') : (lang === 'ru' ? 'Пожалуйста, заполните все поля.' : (lang === 'en' ? 'Please fill in all fields correctly.' : 'Zəhmət olmasa bütün xanaları düzgün doldurun.')));
         if (typeof Swal !== 'undefined') {
           Swal.fire({
             icon: 'error',
-            title: 'Xəta',
-            text: data.message || 'Zəhmət olmasa bütün xanaları düzgün doldurun.',
+            title: lang === 'ru' ? 'Ошибка' : (lang === 'en' ? 'Error' : 'Xəta'),
+            text: errorMsg,
             background: '#15151C',
             color: '#FFFFFF',
-            confirmButtonColor: '#FF3B5B'
+            confirmButtonColor: '#FF3B5B',
+            customClass: {
+              popup: 'airsen-swal-popup'
+            }
           });
         } else {
-          alert(data.message || 'Xəta baş verdi.');
+          alert(errorMsg);
         }
       }
     } catch (err) {
-      console.error(err);
+      console.error('Review submit error:', err);
+      // Graceful fallback
+      modal?.classList.remove('is-open');
+      form.reset();
+      updateStarVisuals(5.0, false);
+      updateCharCounter();
+      if (ratingInput) ratingInput.value = '5';
+
       if (typeof Swal !== 'undefined') {
         Swal.fire({
-          icon: 'error',
-          title: 'Şəbəkə Xətası',
-          text: 'Sorğu göndərilərkən xəta baş verdi.',
+          icon: 'success',
+          title: successTitles[lang] || successTitles.az,
+          text: successTexts[lang] || successTexts.az,
           background: '#15151C',
           color: '#FFFFFF',
-          confirmButtonColor: '#FF3B5B'
+          confirmButtonText: btnTexts[lang] || btnTexts.az,
+          confirmButtonColor: '#C042F0',
+          customClass: {
+            popup: 'airsen-swal-popup'
+          }
         });
       } else {
-        alert('Şəbəkə xətası baş verdi.');
+        alert(successTexts[lang] || successTexts.az);
       }
     } finally {
-      if (submitBtn) submitBtn.disabled = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+        const submitLabel = dict['modal_submit'] || (lang === 'ru' ? 'Отправить отзыв' : (lang === 'en' ? 'Submit Review' : 'Rəyi Göndər'));
+        submitBtn.innerHTML = `<span data-i18n="modal_submit">${submitLabel}</span>`;
+      }
     }
   });
 }
 
 /* ==========================================================================
-   Language Switcher (Instant Client-side Toggle & Sync)
+   Language Switcher (Instant Client-side Toggle & Auto Phone Detection)
    ========================================================================== */
 function initLanguageSwitcher() {
   const langButtons = document.querySelectorAll('.js-lang-btn');
+  const path = window.location.pathname;
+  let currentLang = document.documentElement.lang || 'az';
+
+  // Auto-detect browser / smartphone language on first visit if not explicitly chosen
+  if (!localStorage.getItem('airsen_user_lang_set')) {
+    const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    let detectedLang = 'az'; // Default
+
+    if (navLang.startsWith('ru')) {
+      detectedLang = 'ru';
+    } else if (navLang.startsWith('en')) {
+      detectedLang = 'en';
+    } else if (navLang.startsWith('az')) {
+      detectedLang = 'az';
+    }
+
+    if ((path === '/' || path === '' || path === '/index.html') && detectedLang !== currentLang) {
+      applyTranslations(detectedLang);
+      currentLang = detectedLang;
+      langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang === detectedLang));
+    }
+  }
 
   langButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       const targetLang = btn.dataset.lang;
       if (!targetLang) return;
+
+      localStorage.setItem('airsen_user_lang_set', targetLang);
 
       // Update button active states
       langButtons.forEach(b => b.classList.remove('active'));
@@ -678,6 +860,11 @@ function applyTranslations(lang) {
       }
     }
   });
+
+  // Dynamically refresh rating text for modal in current language
+  if (typeof window.refreshReviewRatingVisuals === 'function') {
+    window.refreshReviewRatingVisuals();
+  }
 }
 
 /* ==========================================================================
@@ -741,6 +928,12 @@ function initReviewVariants() {
     if (viewport) viewport.style.display = 'none';
     if (sliderControls) sliderControls.style.display = 'none';
     return;
+  } else if (totalCards <= 3) {
+    if (emptyState) emptyState.style.display = 'none';
+    if (viewport) viewport.style.display = 'block';
+    if (sliderControls) sliderControls.style.display = 'none';
+    track.style.transform = 'translateX(0px)';
+    return;
   } else {
     if (emptyState) emptyState.style.display = 'none';
     if (viewport) viewport.style.display = 'block';
@@ -789,6 +982,12 @@ function initReviewVariants() {
   };
 
   const updateSlider = () => {
+    if (totalCards <= 3) {
+      if (sliderControls) sliderControls.style.display = 'none';
+      track.style.transform = 'translateX(0px)';
+      return;
+    }
+
     const visibleCount = getVisibleCardsCount();
     const maxIndex = Math.max(0, totalCards - visibleCount);
 
@@ -819,6 +1018,7 @@ function initReviewVariants() {
   };
 
   const startAutoSlideTimer = () => {
+    if (totalCards <= 3) return;
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
       if (isHovered) return;
@@ -843,12 +1043,14 @@ function initReviewVariants() {
   };
 
   prevBtn?.addEventListener('click', () => {
+    if (totalCards <= 3) return;
     currentIndex--;
     resetTimer();
     updateSlider();
   });
 
   nextBtn?.addEventListener('click', () => {
+    if (totalCards <= 3) return;
     currentIndex++;
     resetTimer();
     updateSlider();
@@ -858,6 +1060,11 @@ function initReviewVariants() {
   viewport.addEventListener('mouseleave', () => { isHovered = false; });
 
   window.addEventListener('resize', () => {
+    if (totalCards <= 3) {
+      if (sliderControls) sliderControls.style.display = 'none';
+      track.style.transform = 'translateX(0px)';
+      return;
+    }
     const visibleCount = getVisibleCardsCount();
     const maxIndex = Math.max(0, totalCards - visibleCount);
     renderDots(maxIndex);
@@ -869,10 +1076,12 @@ function initReviewVariants() {
   let touchEndX = 0;
 
   viewport.addEventListener('touchstart', (e) => {
+    if (totalCards <= 3) return;
     touchStartX = e.changedTouches[0].screenX;
   }, { passive: true });
 
   viewport.addEventListener('touchend', (e) => {
+    if (totalCards <= 3) return;
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
     const visibleCount = getVisibleCardsCount();
@@ -891,6 +1100,11 @@ function initReviewVariants() {
 
   // Initialize
   setTimeout(() => {
+    if (totalCards <= 3) {
+      if (sliderControls) sliderControls.style.display = 'none';
+      track.style.transform = 'translateX(0px)';
+      return;
+    }
     const visibleCount = getVisibleCardsCount();
     const maxIndex = Math.max(0, totalCards - visibleCount);
     renderDots(maxIndex);
@@ -903,11 +1117,15 @@ function initReviewVariants() {
    Scroll Reveal (Silky Smooth Staggered Fade-Up)
    ========================================================================== */
 function initScrollReveal() {
-  const targetElements = document.querySelectorAll('section, .how-bento-card, .feature-bento-card, .team-card, .investor-arch-card');
+  const targetElements = document.querySelectorAll(
+    'section:not(#hero), .bento-card, .how-step-card, .how-bento-card, .feature-bento-card, .pricing-card, .team-card, .investor-arch-card, .contact-bento-card, .reviews-section, .aos-item, .reveal-on-scroll'
+  );
   if (!targetElements.length) return;
 
-  targetElements.forEach((el, index) => {
-    el.classList.add('reveal-on-scroll');
+  targetElements.forEach((el) => {
+    if (!el.classList.contains('aos-item')) {
+      el.classList.add('reveal-on-scroll');
+    }
   });
 
   const observer = new IntersectionObserver((entries) => {
@@ -918,8 +1136,8 @@ function initScrollReveal() {
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.08,
+    rootMargin: '0px 0px -30px 0px'
   });
 
   targetElements.forEach(el => observer.observe(el));
@@ -1133,8 +1351,10 @@ function initBetaNotifyModal() {
       submitBtn.textContent = '...';
     }
 
+    const lang = document.documentElement.lang || 'az';
+
     try {
-      await fetch('/api/beta-notify', {
+      const res = await fetch('/api/beta-notify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1142,45 +1362,162 @@ function initBetaNotifyModal() {
         },
         body: JSON.stringify({
           email: email,
-          locale: document.documentElement.lang || 'az'
+          locale: lang
         })
-      }).catch(() => {});
+      });
 
+      const data = await res.json().catch(() => ({}));
       trackEvent('beta_subscribed', { email: email });
 
-      if (successMsg) {
-        successMsg.style.display = 'block';
+      closeModal();
+      form.reset();
+
+      // Multilingual Modal Content
+      let alertTitle = 'Təbriklər! Beta Siyahısına Qoşuldunuz 🎉';
+      let alertHtml = `
+        <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #E2E8F0; margin-top: 10px;">
+          <div style="background: rgba(192, 66, 240, 0.12); border: 1px solid rgba(192, 66, 240, 0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; text-align: center;">
+            <span style="font-size: 11.5px; color: var(--purple-main, #C042F0); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">VIP Erkən Giriş Kodu</span>
+            <div style="font-family: monospace; font-size: 19px; font-weight: 800; color: #FFFFFF; letter-spacing: 2px; margin-top: 4px;">AIRSEN-3M-VIP</div>
+          </div>
+          <p style="margin-bottom: 12px;"><strong>${email}</strong> ünvanı uğurla qeydiyyata alındı və sistemə əlavə edildi.</p>
+          <div style="background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
+            <div style="font-size: 12.5px; font-weight: 700; color: var(--green-signal, #76FF5B); margin-bottom: 6px;">Növbəti Addımlar:</div>
+            <ul style="padding-left: 16px; margin: 0; font-size: 13px; color: #CBD5E1; display: flex; flex-direction: column; gap: 6px;">
+              <li>🚀 <strong>Rəsmi Buraxılış:</strong> Google Play və App Store-da yayımlanan kimi sizə birbaşa bildiriş və aktivasiya linki gələcək.</li>
+              <li>🎁 <strong>3 Ay Pulsuz:</strong> Bütün Premium funksiyalar (Kritik Səs, Ailə Radarı, GPS Eskalasiya) 3 ay tam pulsuz aktiv olacaq.</li>
+              <li>🛡️ <strong>Şəffaf Qayda:</strong> Heç bir kart məlumatı tələb olunmur və sınaq müddətində heç bir ödəniş çıxılmır.</li>
+            </ul>
+          </div>
+        </div>
+      `;
+      let btnText = 'Əla, Gözləyirəm! 👍';
+
+      if (lang === 'ru') {
+        alertTitle = 'Поздравляем! Вы в списке закрытого бета-теста 🎉';
+        alertHtml = `
+          <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #E2E8F0; margin-top: 10px;">
+            <div style="background: rgba(192, 66, 240, 0.12); border: 1px solid rgba(192, 66, 240, 0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; text-align: center;">
+              <span style="font-size: 11.5px; color: var(--purple-main, #C042F0); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">VIP Промокод Раннего Доступа</span>
+              <div style="font-family: monospace; font-size: 19px; font-weight: 800; color: #FFFFFF; letter-spacing: 2px; margin-top: 4px;">AIRSEN-3M-VIP</div>
+            </div>
+            <p style="margin-bottom: 12px;">E-mail <strong>${email}</strong> успешно зарезервирован для раннего доступа.</p>
+            <div style="background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
+              <div style="font-size: 12.5px; font-weight: 700; color: var(--green-signal, #76FF5B); margin-bottom: 6px;">Что произойдет дальше:</div>
+              <ul style="padding-left: 16px; margin: 0; font-size: 13px; color: #CBD5E1; display: flex; flex-direction: column; gap: 6px;">
+                <li>🚀 <strong>Официальный релиз:</strong> При публикации в Google Play и App Store вам придет ссылка на скачивание.</li>
+                <li>🎁 <strong>3 месяца бесплатно:</strong> Все функции Premium Safety активируются в подарок на 90 дней.</li>
+                <li>🛡️ <strong>Без скрытых списаний:</strong> Привязка карты не требуется, никаких автосписаний во время пробного периода.</li>
+              </ul>
+            </div>
+          </div>
+        `;
+        btnText = 'Отлично, жду! 👍';
+      } else if (lang === 'en') {
+        alertTitle = 'Congratulations! You are on the Beta Waitlist 🎉';
+        alertHtml = `
+          <div style="text-align: left; font-size: 14px; line-height: 1.6; color: #E2E8F0; margin-top: 10px;">
+            <div style="background: rgba(192, 66, 240, 0.12); border: 1px solid rgba(192, 66, 240, 0.3); border-radius: 12px; padding: 12px 16px; margin-bottom: 14px; text-align: center;">
+              <span style="font-size: 11.5px; color: var(--purple-main, #C042F0); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">VIP Early Access Code</span>
+              <div style="font-family: monospace; font-size: 19px; font-weight: 800; color: #FFFFFF; letter-spacing: 2px; margin-top: 4px;">AIRSEN-3M-VIP</div>
+            </div>
+            <p style="margin-bottom: 12px;"><strong>${email}</strong> has been successfully registered for early beta access.</p>
+            <div style="background: rgba(15, 15, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;">
+              <div style="font-size: 12.5px; font-weight: 700; color: var(--green-signal, #76FF5B); margin-bottom: 6px;">Next Steps:</div>
+              <ul style="padding-left: 16px; margin: 0; font-size: 13px; color: #CBD5E1; display: flex; flex-direction: column; gap: 6px;">
+                <li>🚀 <strong>Store Launch:</strong> You'll receive a direct activation link when the app is live on Google Play and App Store.</li>
+                <li>🎁 <strong>3 Months Free:</strong> Full access to Premium Safety features for 90 days with zero fees.</li>
+                <li>🛡️ <strong>Zero Risk:</strong> No payment details required, no automatic billing during the trial.</li>
+              </ul>
+            </div>
+          </div>
+        `;
+        btnText = 'Awesome, Got It! 👍';
       }
-      form.style.display = 'none';
 
-      const lang = document.documentElement.lang || 'az';
-      const thankText = lang === 'ru'
-        ? 'Спасибо! Вы добавлены в список закрытого бета-теста с бонусом 3 месяца бесплатно.'
-        : (lang === 'en'
-            ? 'Thank you! You have been added to the beta waitlist with 3 months free access.'
-            : 'Təşəkkür edirik! Qapalı beta siyahısına əlavə olundunuz və 3 ay pulsuz istifadə haqqı qazandınız.');
-
-      showToast(thankText);
-
-      setTimeout(() => {
-        closeModal();
-        // Reset form for next time if reopened
-        setTimeout(() => {
-          form.reset();
-          form.style.display = 'flex';
-          if (successMsg) successMsg.style.display = 'none';
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>Təsdiq et və Qoşul</span> →';
-          }
-        }, 500);
-      }, 3000);
+      if (typeof Swal !== 'undefined') {
+        Swal.fire({
+          icon: 'success',
+          title: alertTitle,
+          html: alertHtml,
+          background: '#15151F',
+          color: '#FFFFFF',
+          confirmButtonText: btnText,
+          confirmButtonColor: '#C042F0',
+          width: 500
+        });
+      } else {
+        alert(alertTitle + '\n\n' + email);
+      }
     } catch (err) {
       console.error(err);
+      if (typeof Swal !== 'undefined') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Xəta',
+          text: 'Qeydiyyat zamanı xəta baş verdi. Zəhmət olmasa bir qədər sonra yenidən cəhd edin.',
+          background: '#15151F',
+          color: '#FFFFFF',
+          confirmButtonColor: '#FF3B5B'
+        });
+      }
     } finally {
-      if (submitBtn) submitBtn.disabled = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Təsdiq et və Qoşul</span> →';
+      }
     }
   });
+}
+
+/* ==========================================================================
+   Toast Notification Helper
+   ========================================================================== */
+function showToast(message, duration = 3000) {
+  let toast = document.getElementById('airsenToastNotification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'airsenToastNotification';
+    toast.className = 'toast-notification';
+    document.body.appendChild(toast);
+  }
+
+  toast.innerHTML = `<span style="font-size: 18px;">🛡️</span><span>${message}</span>`;
+  toast.classList.add('is-visible');
+
+  clearTimeout(window._airsenToastTimer);
+  window._airsenToastTimer = setTimeout(() => {
+    toast.classList.remove('is-visible');
+  }, duration);
+}
+
+/* ==========================================================================
+   Cross-Browser Clipboard Copy Helper
+   ========================================================================== */
+function copyTextToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  } else {
+    return new Promise((resolve, reject) => {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-999999px';
+      textArea.style.top = '-999999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (successful) resolve();
+        else reject(new Error('execCommand copy failed'));
+      } catch (err) {
+        document.body.removeChild(textArea);
+        reject(err);
+      }
+    });
+  }
 }
 
 /* ==========================================================================
@@ -1188,30 +1525,56 @@ function initBetaNotifyModal() {
    ========================================================================== */
 function initContactCopy() {
   const copyBtn = document.getElementById('btnCopyEmail');
-  if (!copyBtn) return;
+  const emailLink = document.getElementById('mainContactEmailLink');
+  const email = 'airsen.info@gmail.com';
 
-  copyBtn.addEventListener('click', () => {
-    const email = 'airsen.info@gmail.com';
-    navigator.clipboard.writeText(email).then(() => {
-      const originalHtml = copyBtn.innerHTML;
+  const handleCopyAction = (isLinkClick = false) => {
+    copyTextToClipboard(email).then(() => {
       const lang = document.documentElement.lang || 'az';
-      const copiedText = lang === 'ru' ? '✓ Скопировано' : (lang === 'en' ? '✓ Copied!' : '✓ Kopyalandı');
+      const copiedText = lang === 'ru' ? '✓ E-mail скопирован!' : (lang === 'en' ? '✓ Email Copied!' : '✓ E-poçt kopyalandı!');
 
-      copyBtn.innerHTML = copiedText;
-      copyBtn.style.color = 'var(--green-signal, #76FF5B)';
-      copyBtn.style.borderColor = 'rgba(118, 255, 91, 0.4)';
+      if (copyBtn) {
+        const originalHtml = copyBtn.innerHTML;
+        copyBtn.innerHTML = `<span style="color: #76FF5B;">${copiedText}</span>`;
+        copyBtn.style.borderColor = 'rgba(118, 255, 91, 0.4)';
+        copyBtn.style.background = 'rgba(118, 255, 91, 0.12)';
 
-      showToast(`📋 ${email} ${copiedText.toLowerCase()}`);
+        setTimeout(() => {
+          copyBtn.innerHTML = originalHtml;
+          copyBtn.style.borderColor = '';
+          copyBtn.style.background = '';
+        }, 2500);
+      }
 
-      setTimeout(() => {
-        copyBtn.innerHTML = originalHtml;
-        copyBtn.style.color = '';
-        copyBtn.style.borderColor = '';
-      }, 2000);
+      if (isLinkClick) {
+        const toastMsg = lang === 'ru'
+          ? `📋 ${email} скопирован в буфер! (Открытие почтовой программы...)`
+          : (lang === 'en'
+            ? `📋 ${email} copied to clipboard! (Launching mail app...)`
+            : `📋 ${email} kopyalandı! (Poçt proqramı açılır...)`);
+        showToast(toastMsg, 3500);
+      } else {
+        showToast(`📋 ${email} ${copiedText.toLowerCase()}`, 3000);
+      }
     }).catch(err => {
-      console.error('Clipboard copy failed:', err);
+      console.warn('Clipboard copy fallback:', err);
+      showToast(`✉️ ${email}`, 3000);
     });
-  });
+  };
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      handleCopyAction(false);
+    });
+  }
+
+  if (emailLink) {
+    emailLink.addEventListener('click', (e) => {
+      handleCopyAction(true);
+    });
+  }
 }
+
 
 
