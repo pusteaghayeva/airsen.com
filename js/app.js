@@ -49,9 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 13. Beta Modal & Early Access Handler
   initBetaNotifyModal();
-
-  // 14. Contact Info Copy Helper
-  initContactCopy();
 });
 
 /* ==========================================================================
@@ -1520,61 +1517,7 @@ function copyTextToClipboard(text) {
   }
 }
 
-/* ==========================================================================
-   Contact Email Copy to Clipboard Helper
-   ========================================================================== */
-function initContactCopy() {
-  const copyBtn = document.getElementById('btnCopyEmail');
-  const emailLink = document.getElementById('mainContactEmailLink');
-  const email = 'airsen.info@gmail.com';
 
-  const handleCopyAction = (isLinkClick = false) => {
-    copyTextToClipboard(email).then(() => {
-      const lang = document.documentElement.lang || 'az';
-      const copiedText = lang === 'ru' ? '✓ E-mail скопирован!' : (lang === 'en' ? '✓ Email Copied!' : '✓ E-poçt kopyalandı!');
-
-      if (copyBtn) {
-        const originalHtml = copyBtn.innerHTML;
-        copyBtn.innerHTML = `<span style="color: #76FF5B;">${copiedText}</span>`;
-        copyBtn.style.borderColor = 'rgba(118, 255, 91, 0.4)';
-        copyBtn.style.background = 'rgba(118, 255, 91, 0.12)';
-
-        setTimeout(() => {
-          copyBtn.innerHTML = originalHtml;
-          copyBtn.style.borderColor = '';
-          copyBtn.style.background = '';
-        }, 2500);
-      }
-
-      if (isLinkClick) {
-        const toastMsg = lang === 'ru'
-          ? `📋 ${email} скопирован в буфер! (Открытие почтовой программы...)`
-          : (lang === 'en'
-            ? `📋 ${email} copied to clipboard! (Launching mail app...)`
-            : `📋 ${email} kopyalandı! (Poçt proqramı açılır...)`);
-        showToast(toastMsg, 3500);
-      } else {
-        showToast(`📋 ${email} ${copiedText.toLowerCase()}`, 3000);
-      }
-    }).catch(err => {
-      console.warn('Clipboard copy fallback:', err);
-      showToast(`✉️ ${email}`, 3000);
-    });
-  };
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      handleCopyAction(false);
-    });
-  }
-
-  if (emailLink) {
-    emailLink.addEventListener('click', (e) => {
-      handleCopyAction(true);
-    });
-  }
-}
 
 
 
