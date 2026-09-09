@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirSen — Admin & Analitika İdarəetmə Mərkəzi</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+    
+    <!-- Google Fonts (Plus Jakarta Sans & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    
+    <!-- Chart.js & SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="dashboard-body">
+    <div class="dashboard-layout">
+        
+        <!-- Mobile Sidebar Backdrop Overlay -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeMobileSidebar()"></div>
+
+        <!-- ============================================================
+             LEFT SIDEBAR (Horizon & DashDark X Tabbed Navigation)
+             ============================================================ -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="admin.html" class="sidebar-logo">
+                    <img src="images/logo.png" alt="AirSen" class="sidebar-logo-img">
+                    <div class="sidebar-brand-text">
+                        <span class="brand-name">AirSen</span>
+                        <span class="brand-badge">CONTROL HUB</span>
+                    </div>
+                </a>
+                <button type="button" class="sidebar-close-btn" onclick="closeMobileSidebar()" aria-label="Menyunu Bağla">✕</button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-title">ƏSAS MENYU</div>
+                <button type="button" class="nav-item active" data-tab="overview">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                    <span>Əsas Səhifə</span>
+                </button>
+
+                <button type="button" class="nav-item" data-tab="charts">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+                    <span>Ziyarət Qrafikləri</span>
+                </button>
+
+                <button type="button" class="nav-item" data-tab="reviews">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span>Rəylərin İdarə Edilməsi</span>
+                    <span class="nav-badge-pill badge-warn" id="sidebarPendingReviewsBadge" style="display: none;">0</span>
+                </button>
+
+                <button type="button" class="nav-item" data-tab="traffic">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                    <span>Canlı Ziyarətçi Logları</span>
+                </button>
+
+                <button type="button" class="nav-item" data-tab="beta">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <span>Beta Abunəçiləri</span>
+                    <span class="nav-badge-pill badge-green">3</span>
+                </button>
+
+                <div class="nav-section-title" style="margin-top: 24px;">İDARƏETMƏ & TƏHLÜKƏSİZLİK</div>
+                <button type="button" class="nav-item" data-tab="team">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span>Admin & İcazələr</span>
+                </button>
+
+                <button type="button" class="nav-item" data-tab="settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <span>Google Play & Ayarlar</span>
+                </button>
+            </nav>
+
+            <!-- User Profile Widget at Sidebar Bottom -->
+            <div class="sidebar-user-widget">
+                <div class="user-avatar-box">
+                    <span>TS</span>
+                </div>
+                <div class="user-info-box">
+                    <span class="user-name">Turan Səfərli</span>
+                    <span class="user-role-badge role-badge-super">
+                        Super Admin
+                    </span>
+                </div>
+                <button type="button" class="sidebar-logout-btn" onclick="handleLogout()" title="Çıxış et">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- ============================================================
+             MAIN CONTENT AREA
+             ============================================================ -->
+        <main class="dashboard-main">
+            
+            <!-- Topbar Header -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button type="button" class="btn-sidebar-toggle" id="sidebarToggleBtn" onclick="toggleMobileSidebar()" aria-label="Menyunu Aç">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div class="topbar-title-wrap">
+                        <h1 class="topbar-page-title" id="topbarTitle">Əsas Səhifə</h1>
+                        <div class="topbar-breadcrumbs">
+                            <span>AirSen Hub</span>
+                            <span class="crumb-separator">/</span>
+                            <span class="crumb-active" id="topbarCrumb">Əsas Səhifə</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="live-status-indicator">
+                        <span class="status-pulse-dot"></span>
+                        <span class="status-label">Sistem Aktivdir</span>
+                    </div>
+
+                    <a href="index.html" target="_blank" class="btn-topbar-link">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="14" y1="14" x2="21" y2="3"/></svg>
+                        <span class="topbar-btn-text">Saytı Aç</span>
+                    </a>
+
+                    <button type="button" class="btn-topbar-logout" onclick="handleLogout()" title="Sistemdən çıxış et">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                        <span class="topbar-btn-text">Çıxış</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content-scroll">
+                
+                <!-- ========================================================
+                     TAB 1: Overview & Key Metric Cards
+                     ======================================================== -->
+                <div id="tab-overview" class="dash-tab-pane active">
+                    <div class="metrics-grid">
+                        <!-- Card 1: Total Visits (Clickable -> Traffic Logs) -->
+                        <div class="metric-card card-purple-glow clickable-metric" onclick="switchDashboardTab('traffic')" title="Canlı loglara baxmaq üçün klikləyin">
+                            <div class="metric-icon-box icon-purple">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">ÜMUMİ BAXIŞ SAYI</span>
+                                <span class="metric-number counter-animate" data-target="14850">14 850</span>
+                                <span class="metric-footer-text">Bütün səhifə baxışları</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Unique Visitors (Clickable -> Charts) -->
+                        <div class="metric-card card-cyan-glow clickable-metric" onclick="switchDashboardTab('charts')" title="Ziyarət qrafiklərinə baxmaq üçün klikləyin">
+                            <div class="metric-icon-box icon-cyan">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">UNİKAL ZİYARƏTÇİLƏR</span>
+                                <span class="metric-number counter-animate" data-target="4210">4 210</span>
+                                <span class="metric-footer-text">Fərqli IP ünvanları</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Google Play CTA Clicks (Clickable -> Settings) -->
+                        <div class="metric-card card-green-glow clickable-metric" onclick="switchDashboardTab('settings')" title="Google Play tənzimləmələrinə keçid">
+                            <div class="metric-icon-box icon-green">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">GOOGLE PLAY KLİKLƏRİ</span>
+                                <span class="metric-number counter-animate" data-target="960">960</span>
+                                <span class="metric-footer-text">Tətbiq marağı və CTA</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: CO Gas Simulations Run -->
+                        <div class="metric-card card-red-glow static-metric" title="İnteraktiv test sayı göstəricisi">
+                            <div class="metric-icon-box icon-red">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">QAZ SİMULYASİYASI</span>
+                                <span class="metric-number counter-animate" data-target="3120">3 120</span>
+                                <span class="metric-footer-text">İnteraktiv testlər</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Approved Reviews -->
+                        <div class="metric-card card-yellow-glow clickable-metric" onclick="switchDashboardTab('reviews')" title="Dərc olunmuş rəylərə keçid">
+                            <div class="metric-icon-box icon-yellow">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">DƏRC OLUNMUŞ RƏYLƏR</span>
+                                <span class="metric-number counter-animate" id="approvedReviewsCountDisplay" data-target="0">0</span>
+                                <span class="metric-footer-text">Saytda görünən rəylər</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Pending Premoderation Reviews -->
+                        <div class="metric-card card-purple-glow clickable-metric" onclick="switchDashboardTab('reviews')" title="Təsdiq gözləyən rəylərə keçid">
+                            <div class="metric-icon-box icon-purple">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">GÖZLƏYƏN RƏYLƏR</span>
+                                <span class="metric-number counter-animate" id="pendingReviewsCountDisplay" data-target="0">0</span>
+                                <span class="metric-footer-text">Təsdiq gözləyən rəylər</span>
+                            </div>
+                        </div>
+
+                        <!-- Card 7: Beta Waitlist Subscribers -->
+                        <div class="metric-card card-green-glow clickable-metric" onclick="switchDashboardTab('beta')" title="Beta abunəçilərini idarə etmək üçün keçid">
+                            <div class="metric-icon-box icon-green">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div class="metric-content">
+                                <span class="metric-label">BETA ABUNƏÇİLƏRİ</span>
+                                <span class="metric-number counter-animate" data-target="3">3</span>
+                                <span class="metric-footer-text">3 ay pulsuz qeydiyyatlar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Overview Summary Box -->
+                    <div class="dash-card" style="margin-top: 24px;">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">⚡ Sürətli Keçidlər & Sistem Vəziyyəti</h3>
+                                <p class="dash-card-subtitle">Menyudan istənilən bölməyə keçid edərək ətraflı idarəetmə apara bilərsiniz.</p>
+                            </div>
+                        </div>
+                        <div class="quick-nav-cards-grid">
+                            <button type="button" class="quick-nav-card" onclick="switchDashboardTab('charts')">
+                                <span class="quick-nav-icon">📈</span>
+                                <div>
+                                    <strong class="quick-nav-title">Ziyarət Qrafikləri</strong>
+                                    <p class="quick-nav-desc">7 günlük dinamika və cihaz analitikası</p>
+                                </div>
+                            </button>
+
+                            <button type="button" class="quick-nav-card" onclick="switchDashboardTab('reviews')">
+                                <span class="quick-nav-icon">📝</span>
+                                <div>
+                                    <strong class="quick-nav-title">Rəylərin İdarə Edilməsi</strong>
+                                    <p class="quick-nav-desc">Təsdiq və silinmə premoderasiyası</p>
+                                </div>
+                            </button>
+
+                            <button type="button" class="quick-nav-card" onclick="switchDashboardTab('traffic')">
+                                <span class="quick-nav-icon">🌐</span>
+                                <div>
+                                    <strong class="quick-nav-title">Canlı Loglar</strong>
+                                    <p class="quick-nav-desc">Real-time daxilolma və hadisə axını</p>
+                                </div>
+                            </button>
+
+                            <button type="button" class="quick-nav-card" onclick="switchDashboardTab('team')">
+                                <span class="quick-nav-icon">👥</span>
+                                <div>
+                                    <strong class="quick-nav-title">Admin Heyəti & İcazələr</strong>
+                                    <p class="quick-nav-desc">2 aktiv idarəçi hesabı</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================
+                     TAB 2: Interactive Charts & Analytics
+                     ======================================================== -->
+                <div id="tab-charts" class="dash-tab-pane">
+                    <div class="charts-row">
+                        <!-- Traffic Dynamics Chart -->
+                        <div class="dash-card chart-large-card">
+                            <div class="dash-card-header">
+                                <div>
+                                    <h3 class="dash-card-title">📈 Son 7 Günün Ziyarətçi Dinamikası</h3>
+                                    <p class="dash-card-subtitle">Gündəlik ümumi baxış və unikal ziyarətçilərin qrafiki</p>
+                                </div>
+                                <div class="chart-legend-custom">
+                                    <span class="legend-item"><span class="legend-dot dot-purple"></span> Ümumi Baxış</span>
+                                    <span class="legend-item"><span class="legend-dot dot-cyan"></span> Unikal Ziyarətçi</span>
+                                </div>
+                            </div>
+                            <div class="chart-canvas-container">
+                                <canvas id="trafficDynamicsChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Device & Language Distribution Doughnut -->
+                        <div class="dash-card chart-small-card">
+                            <div class="dash-card-header">
+                                <div>
+                                    <h3 class="dash-card-title">📱 Cihazlar & Dillər</h3>
+                                    <p class="dash-card-subtitle">İstifadəçi avadanlıqları bölgüsü</p>
+                                </div>
+                            </div>
+                            <div class="donut-chart-container">
+                                <canvas id="deviceDistributionChart"></canvas>
+                            </div>
+                            <div class="device-stats-list">
+                                <div class="device-stat-row">
+                                    <span class="device-name">📱 Smartfon (iOS & Android)</span>
+                                    <span class="device-count">11 200 baxış (75%)</span>
+                                </div>
+                                <div class="device-stat-row">
+                                    <span class="device-name">💻 Kompüter / Noutbuk</span>
+                                    <span class="device-count">3 150 baxış (21%)</span>
+                                </div>
+                                <div class="device-stat-row">
+                                    <span class="device-name">📟 Planşet (iPad & Digər)</span>
+                                    <span class="device-count">500 baxış (4%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================
+                     TAB 3: Review Premoderation Queue
+                     ======================================================== -->
+                <div id="tab-reviews" class="dash-tab-pane">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">📝 Təsdiq Gözləyən Rəylər</h3>
+                                <p class="dash-card-subtitle">Saytda dərc edilməzdən əvvəl yoxlanılmalı olan yeni rəylər.</p>
+                            </div>
+                            <span class="status-pill pill-pending" id="pendingReviewsPill">0 Gözləyən</span>
+                        </div>
+
+                        <div id="pendingReviewsContainer">
+                            <div class="empty-state-box" id="pendingEmptyState">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green-signal)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                                <p>Bütün rəylər nəzərdən keçirilib! Hazırda təsdiq gözləyən yeni rəy yoxdur.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Approved Reviews List -->
+                    <div class="dash-card" style="margin-top: 24px;">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">⭐ Saytda Dərc Olunmuş Rəylər</h3>
+                                <p class="dash-card-subtitle">Hazırda ana səhifədə aktiv görünən təsdiqlənmiş rəylər.</p>
+                            </div>
+                            <span class="status-pill pill-approved" id="approvedReviewsPill">0 Dərc edilmiş</span>
+                        </div>
+
+                        <div id="approvedReviewsContainer">
+                            <div class="empty-state-box" id="approvedEmptyState">
+                                <p>Hələlik heç bir rəy dərc edilməyib.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================
+                     TAB 4: Real-Time Traffic Stream Logs
+                     ======================================================== -->
+                <div id="tab-traffic" class="dash-tab-pane">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">🌐 Son Hadisələr Axını</h3>
+                                <p class="dash-card-subtitle">Real vaxt daxilolmalar və hadisə qeydləri.</p>
+                            </div>
+                            <span class="status-pill pill-cyan">Canlı Axın</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="dash-table">
+                                <thead>
+                                    <tr>
+                                        <th>Hadisə Növü</th>
+                                        <th>Cihaz</th>
+                                        <th>Brauzer & ƏS</th>
+                                        <th>Dil</th>
+                                        <th>Səhifə / Keçid</th>
+                                        <th>Tarix</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="event-pill event-green">google_play_click</span></td>
+                                        <td>Mobile</td>
+                                        <td>Chrome 128 (Android)</td>
+                                        <td><strong class="lang-tag">AZ</strong></td>
+                                        <td class="url-cell">/</td>
+                                        <td class="date-cell">Canlı (1 dəq əvvəl)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="event-pill event-purple">beta_signup</span></td>
+                                        <td>Desktop</td>
+                                        <td>Safari 17.5 (macOS)</td>
+                                        <td><strong class="lang-tag">EN</strong></td>
+                                        <td class="url-cell">/#pricing</td>
+                                        <td class="date-cell">Canlı (5 dəq əvvəl)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="event-pill event-dim">page_view</span></td>
+                                        <td>Mobile</td>
+                                        <td>Safari (iOS)</td>
+                                        <td><strong class="lang-tag">AZ</strong></td>
+                                        <td class="url-cell">/</td>
+                                        <td class="date-cell">Canlı (12 dəq əvvəl)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="event-pill event-dim">page_view</span></td>
+                                        <td>Desktop</td>
+                                        <td>Chrome (Windows)</td>
+                                        <td><strong class="lang-tag">RU</strong></td>
+                                        <td class="url-cell">/</td>
+                                        <td class="date-cell">Canlı (25 dəq əvvəl)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================
+                     TAB: Beta Test Early Access Subscribers
+                     ======================================================== -->
+                <div id="tab-beta" class="dash-tab-pane">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">🎁 Qapalı Beta Abunəçiləri & Erkən Giriş</h3>
+                                <p class="dash-card-subtitle">AirSen Premium 3 ay pulsuz istifadə hüququ qazanan istifadəçilərin qeydiyyat siyahısı.</p>
+                            </div>
+                            <span class="status-pill pill-green">3 Abunəçi</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="dash-table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>E-poçt Ünvanı</th>
+                                        <th>Dil</th>
+                                        <th>IP Ünvanı</th>
+                                        <th>Qeydiyyat Tarixi</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>#1</strong></td>
+                                        <td><strong style="color: var(--blue-neon); font-size: 14.5px;">turan@airsen.com</strong></td>
+                                        <td><span class="lang-tag">AZ</span></td>
+                                        <td style="font-family: monospace; font-size: 13px;">185.122.45.10</td>
+                                        <td class="date-cell">09.09.2026 11:20</td>
+                                        <td><span class="status-pill pill-green">🎁 3 Ay Pulsuz Aktiv</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#2</strong></td>
+                                        <td><strong style="color: var(--blue-neon); font-size: 14.5px;">tamerlan@airsen.com</strong></td>
+                                        <td><span class="lang-tag">EN</span></td>
+                                        <td style="font-family: monospace; font-size: 13px;">172.56.21.90</td>
+                                        <td class="date-cell">09.09.2026 11:45</td>
+                                        <td><span class="status-pill pill-green">🎁 3 Ay Pulsuz Aktiv</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>#3</strong></td>
+                                        <td><strong style="color: var(--blue-neon); font-size: 14.5px;">investor@stanford.edu</strong></td>
+                                        <td><span class="lang-tag">EN</span></td>
+                                        <td style="font-family: monospace; font-size: 13px;">128.12.122.1</td>
+                                        <td class="date-cell">09.09.2026 12:15</td>
+                                        <td><span class="status-pill pill-green">🎁 3 Ay Pulsuz Aktiv</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================
+                     TAB 5: Team & Admin User Management
+                     ======================================================== -->
+                <div id="tab-team" class="dash-tab-pane">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">👥 Mövcud Admin Heyəti</h3>
+                                <p class="dash-card-subtitle">Qeydiyyatdan keçmiş idarəçi və moderatorlar.</p>
+                            </div>
+                            <span class="status-pill pill-purple">2 İstifadəçi</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="dash-table">
+                                <thead>
+                                    <tr>
+                                        <th>İstifadəçi</th>
+                                        <th>Email</th>
+                                        <th>Rol</th>
+                                        <th>Qeydiyyat Tarixi</th>
+                                        <th>Əməliyyat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <div class="user-mini-avatar">TS</div>
+                                                <strong>Turan Səfərli</strong>
+                                            </div>
+                                        </td>
+                                        <td>admin@airsen.com</td>
+                                        <td><span class="user-role-badge role-badge-super">Super Admin</span></td>
+                                        <td class="date-cell">01.09.2026</td>
+                                        <td><span style="font-size: 11px; color: var(--text-dim);">(Siz)</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <div class="user-mini-avatar">TS</div>
+                                                <strong>Tamerlan Səfərli</strong>
+                                            </div>
+                                        </td>
+                                        <td>tamerlan@airsen.com</td>
+                                        <td><span class="user-role-badge role-badge-analyst">Ko-Təsisçi & İdarəçi</span></td>
+                                        <td class="date-cell">01.09.2026</td>
+                                        <td><button type="button" class="btn-action-edit" title="Redaktə et" onclick="Swal.fire({title: 'Tamerlan Səfərli', text: 'Ko-Təsisçi hesabı aktivdir.', icon: 'info', background: '#16161C', color: '#FFF'});">✏️</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========================================================
+                     TAB 6: Google Play & App Settings
+                     ======================================================== -->
+                <div id="tab-settings" class="dash-tab-pane">
+                    <div class="dash-card">
+                        <div class="dash-card-header">
+                            <div>
+                                <h3 class="dash-card-title">🚀 Google Play Düyməsi İdarəetməsi</h3>
+                                <p class="dash-card-subtitle">Tətbiq yoxlanışda olduqda "Moderasiya Rejimi", çıxdıqda "Aktiv Rejim" seçin.</p>
+                            </div>
+                            <span class="status-pill pill-pending" id="gpStatusPill">Status: MODERATION</span>
+                        </div>
+
+                        <form id="gpSettingsForm" class="settings-form" onsubmit="handleSaveGPSettings(event)">
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label class="form-label">Düymə Rejimi</label>
+                                    <select id="gpStatusSelect" class="form-input">
+                                        <option value="moderation" selected>🟡 Moderasiya Rejimi (Məlumatlandırıcı Modal Açılır)</option>
+                                        <option value="active">🟢 Aktiv Rejim (Birbaşa Google Play Linki Açılır)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Google Play Linki (URL)</label>
+                                    <input type="url" id="gpUrlInput" value="https://play.google.com/store/apps/details?id=com.airsen.app" class="form-input" required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-primary-glow" style="margin-top: 10px;">
+                                Tənzimləmələri Yadda Saxla
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- ============================================================
+         Chart.js Initialization & Tab Switching Scripts
+         ============================================================ -->
+    <script>
+        // Mobile Sidebar Drawer Controls
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('dashboardSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if (sidebar) {
+                const isActive = sidebar.classList.toggle('show');
+                if (backdrop) backdrop.classList.toggle('show', isActive);
+                document.body.classList.toggle('sidebar-locked', isActive);
+            }
+        }
+
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('dashboardSidebar');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if (sidebar) sidebar.classList.remove('show');
+            if (backdrop) backdrop.classList.remove('show');
+            document.body.classList.remove('sidebar-locked');
+        }
+
+        // Custom Styled SweetAlert for Logout Confirmation
+        function handleLogout() {
+            Swal.fire({
+                title: 'Çıxış etmək istəyirsiniz?',
+                text: 'Admin panel sessiyanız sonlandırılacaq.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#dc3545',
+                cancelButtonColor: '#24242F',
+                confirmButtonText: 'Bəli, Çıxış et',
+                cancelButtonText: 'Qal',
+                background: '#16161C',
+                color: '#FFFFFF',
+                borderRadius: '18px'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    sessionStorage.removeItem('airsen_admin_auth');
+                    window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // Save Google Play Settings Simulation
+        function handleSaveGPSettings(e) {
+            e.preventDefault();
+            const status = document.getElementById('gpStatusSelect').value;
+            const pill = document.getElementById('gpStatusPill');
+            if (pill) {
+                pill.className = status === 'active' ? 'status-pill pill-approved' : 'status-pill pill-pending';
+                pill.textContent = `Status: ${status.toUpperCase()}`;
+            }
+            Swal.fire({
+                icon: 'success',
+                title: 'Uğurlu Əməliyyat',
+                text: 'Google Play tənzimləmələri yadda saxlanıldı!',
+                background: '#16161C',
+                color: '#FFFFFF',
+                confirmButtonColor: '#C042F0',
+                borderRadius: '18px'
+            });
+        }
+
+        // Tab titles mapping
+        const tabTitles = {
+            'overview': { title: 'Əsas Səhifə', crumb: 'Əsas Səhifə' },
+            'charts': { title: 'Ziyarət Qrafikləri & Analitika', crumb: 'Qrafiklər' },
+            'reviews': { title: 'Rəylərin İdarə Edilməsi', crumb: 'Rəylər' },
+            'traffic': { title: 'Canlı Ziyarətçi Logları', crumb: 'Loglar' },
+            'beta': { title: 'Qapalı Beta Abunəçiləri', crumb: 'Beta' },
+            'team': { title: 'Admin & İcazələr', crumb: 'Adminlər' },
+            'settings': { title: 'Google Play & Ayarlar', crumb: 'Ayarlar' }
+        };
+
+        let trafficChartInstance = null;
+        let deviceChartInstance = null;
+
+        // Modular Tab Switcher Function
+        function switchDashboardTab(tabKey) {
+            closeMobileSidebar();
+            if (!tabTitles[tabKey]) tabKey = 'overview';
+
+            // 1. Update Sidebar Active Button
+            document.querySelectorAll('.sidebar-nav .nav-item').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-tab') === tabKey);
+            });
+
+            // 2. Update Content Panes
+            document.querySelectorAll('.dash-tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            const targetPane = document.getElementById(`tab-${tabKey}`);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+
+            // 3. Update Topbar Header Text
+            const titleEl = document.getElementById('topbarTitle');
+            const crumbEl = document.getElementById('topbarCrumb');
+            if (titleEl && tabTitles[tabKey]) titleEl.textContent = tabTitles[tabKey].title;
+            if (crumbEl && tabTitles[tabKey]) crumbEl.textContent = tabTitles[tabKey].crumb;
+
+            // 4. Update URL Hash
+            window.location.hash = tabKey;
+
+            // 5. Scroll to top of content
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // 6. Resize Chart.js if switching to charts tab
+            if (tabKey === 'charts' || tabKey === 'overview') {
+                setTimeout(() => {
+                    trafficChartInstance?.resize();
+                    deviceChartInstance?.resize();
+                }, 50);
+            }
+        }
+
+        // Attach Click to Sidebar Items
+        document.querySelectorAll('.sidebar-nav .nav-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabKey = btn.getAttribute('data-tab');
+                switchDashboardTab(tabKey);
+            });
+        });
+
+        // Initialize from URL Hash on page load (e.g. #reviews)
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentHash = window.location.hash.replace('#', '');
+            if (currentHash && tabTitles[currentHash]) {
+                switchDashboardTab(currentHash);
+            }
+        });
+
+        // -------------------------------------------------------------
+        // Chart 1: 7-Day Traffic Dynamics (Area Gradient Line Chart)
+        // -------------------------------------------------------------
+        const trafficCtx = document.getElementById('trafficDynamicsChart');
+        if (trafficCtx) {
+            const ctx = trafficCtx.getContext('2d');
+            
+            const purpleGrad = ctx.createLinearGradient(0, 0, 0, 300);
+            purpleGrad.addColorStop(0, 'rgba(192, 66, 240, 0.28)');
+            purpleGrad.addColorStop(1, 'rgba(192, 66, 240, 0.0)');
+
+            const cyanGrad = ctx.createLinearGradient(0, 0, 0, 300);
+            cyanGrad.addColorStop(0, 'rgba(105, 229, 255, 0.25)');
+            cyanGrad.addColorStop(1, 'rgba(105, 229, 255, 0.0)');
+
+            trafficChartInstance = new Chart(trafficCtx, {
+                type: 'line',
+                data: {
+                    labels: ['03 Sen', '04 Sen', '05 Sen', '06 Sen', '07 Sen', '08 Sen', '09 Sen'],
+                    datasets: [
+                        {
+                            label: 'Ümumi Baxış',
+                            data: [1200, 1850, 2400, 2100, 2900, 3400, 4200],
+                            borderColor: '#C042F0',
+                            backgroundColor: purpleGrad,
+                            borderWidth: 2.5,
+                            fill: true,
+                            tension: 0.35,
+                            pointBackgroundColor: '#C042F0',
+                            pointBorderColor: '#16161C',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Unikal Ziyarətçi',
+                            data: [450, 680, 920, 810, 1100, 1350, 1720],
+                            borderColor: '#69E5FF',
+                            backgroundColor: cyanGrad,
+                            borderWidth: 2.5,
+                            fill: true,
+                            tension: 0.35,
+                            pointBackgroundColor: '#69E5FF',
+                            pointBorderColor: '#16161C',
+                            pointBorderWidth: 2,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#16161C',
+                            titleColor: '#FFFFFF',
+                            bodyColor: '#D1D5DB',
+                            borderColor: 'rgba(255, 255, 255, 0.1)',
+                            borderWidth: 1,
+                            padding: 12,
+                            cornerRadius: 10
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                            ticks: { color: '#6B7280', font: { family: 'Plus Jakarta Sans', size: 12 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.04)' },
+                            ticks: { color: '#6B7280', font: { family: 'Plus Jakarta Sans', size: 12 }, precision: 0 },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // -------------------------------------------------------------
+        // Chart 2: Device Distribution (Donut Chart)
+        // -------------------------------------------------------------
+        const deviceCtx = document.getElementById('deviceDistributionChart');
+        if (deviceCtx) {
+            deviceChartInstance = new Chart(deviceCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['📱 Smartfon', '💻 Kompüter', '📟 Planşet'],
+                    datasets: [{
+                        data: [75, 21, 4],
+                        backgroundColor: ['#C042F0', '#69E5FF', '#76FF5B'],
+                        borderColor: '#16161C',
+                        borderWidth: 3,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '74%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#9CA3AF',
+                                font: { family: 'Plus Jakarta Sans', size: 12 },
+                                padding: 14,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
