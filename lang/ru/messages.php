@@ -123,15 +123,15 @@ return [
     'team_label' => 'Команда',
     'team_title' => 'Команда',
     'team_turan_name' => 'Туран Сафарли',
-    'team_turan_role' => 'Founder & CTO',
-    'team_turan_desc' => 'Product Architecture, IoT Protocol Integration & Engineering. Multiple National & International Olympiad Medalist | Azercosmos Space Academy Intern.',
+    'team_turan_role' => 'Основатель и CTO',
+    'team_turan_desc' => 'Архитектура продукта, интеграция IoT-протоколов и инженерия. Призёр республиканских и международных олимпиад | Стажёр Космической Академии Азеркосмос.',
     'team_turan_quote' => 'Мы создали AirSen для того, чтобы безопасность перестала быть дорогой. Больше не нужно покупать громоздкие закрытые системы — всё необходимое для защиты близких теперь в вашем смартфоне.',
-    'team_turan_tag' => 'IoT Architecture & Engineering',
+    'team_turan_tag' => 'IoT-архитектура и инженерия',
     'team_tamerlan_name' => 'Тамерлан Сафарли',
-    'team_tamerlan_role' => 'Co-founder & CEO',
-    'team_tamerlan_desc' => 'Business Strategy, Financial Operations & International Scalability. Stanford University M.S. Candidate.',
+    'team_tamerlan_role' => 'Сооснователь и CEO',
+    'team_tamerlan_desc' => 'Бизнес-стратегия, финансовые операции и международное масштабирование. Магистрант Стэнфордского университета.',
     'team_tamerlan_quote' => 'Наша цель — сделать систему финансово доступной для каждой семьи за счет прозрачной бизнес-модели, эффективной логистики датчиков и устойчивого масштабирования проекта.',
-    'team_tamerlan_tag' => 'Business Strategy & Scalability',
+    'team_tamerlan_tag' => 'Бизнес-стратегия и масштабирование',
 
     // Block 6: Status & Investors
     'investors_label' => 'Инвесторам',
@@ -174,7 +174,7 @@ return [
     'contact_global_title' => 'Распределенная разработка и стратегия',
     'contact_hub_baku_desc' => 'Hardware IoT разработка и R&D центр',
     'contact_hub_stanford_desc' => 'Бизнес-стратегия и глобальное масштабирование',
-    'contact_location_line' => 'Baku, Azerbaijan | Distributed Team (Stanford, CA / Baku)',
+    'contact_location_line' => 'Баку, Азербайджан | Распределенная команда (Стэнфорд, США / Баку)',
 
     // Footer & Admin
     'footer_copyright' => 'Все права защищены.',

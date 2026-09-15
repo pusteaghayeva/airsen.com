@@ -123,15 +123,15 @@ return [
     'team_label' => 'Komanda',
     'team_title' => 'Komanda',
     'team_turan_name' => 'Turan Səfərli',
-    'team_turan_role' => 'Founder & CTO',
-    'team_turan_desc' => 'Product Architecture, IoT Protocol Integration & Engineering. Multiple National & International Olympiad Medalist | Azercosmos Space Academy Intern.',
+    'team_turan_role' => 'Təsisçi & CTO',
+    'team_turan_desc' => 'Məhsul Arxitekturası, IoT Protokol İnteqrasiyası və Mühəndislik. Respublika və Beynəlxalq Olimpiada Mükafatçısı | Azərkosmos Kosmik Akademiyası Təcrübəçisi.',
     'team_turan_quote' => 'Biz AirSen-i təhlükəsizliyin baha olmaması üçün yaratdıq. Artıq həcmli qapalı sistemlər almağa ehtiyac yoxdur — yaxınlarınızı qorumaq üçün lazım olan hər şey artıq smartfonunuzdadır.',
-    'team_turan_tag' => 'IoT Architecture & Engineering',
+    'team_turan_tag' => 'IoT Arxitekturası və Mühəndislik',
     'team_tamerlan_name' => 'Tamerlan Səfərli',
-    'team_tamerlan_role' => 'Co-founder & CEO',
-    'team_tamerlan_desc' => 'Business Strategy, Financial Operations & International Scalability. Stanford University M.S. Candidate.',
+    'team_tamerlan_role' => 'Həmtəsisçi & CEO',
+    'team_tamerlan_desc' => 'Biznes Strategiyası, Maliyyə Əməliyyatları və Beynəlxalq Miqyaslanma. Stanford Universiteti Magistr Namizədi.',
     'team_tamerlan_quote' => 'Bizim məqsədimiz şəffaf biznes modeli, effektiv sensor logistikası və dayanıqlı layihə miqyası quraraq sistemi hər bir ailə üçün maliyyə baxımından əlçatan etməkdir.',
-    'team_tamerlan_tag' => 'Business Strategy & Scalability',
+    'team_tamerlan_tag' => 'Biznes Strategiyası və Miqyaslanma',
 
     // Block 6: Status & Investors
     'investors_label' => 'İnvestorlar',
@@ -174,7 +174,7 @@ return [
     'contact_global_title' => 'Paylanmış Mühəndislik & Strategiya',
     'contact_hub_baku_desc' => 'Hardware IoT Mühəndisliyi & Əsas R&D Mərkəzi',
     'contact_hub_stanford_desc' => 'Biznes Strategiyası & Beynəlxalq Miqyaslama',
-    'contact_location_line' => 'Baku, Azerbaijan | Distributed Team (Stanford, CA / Baku)',
+    'contact_location_line' => 'Bakı, Azərbaycan | Paylanmış Komanda (Stanford, ABŞ / Bakı)',
 
     // Footer & Admin
     'footer_copyright' => 'Bütün hüquqlar qorunur.',
