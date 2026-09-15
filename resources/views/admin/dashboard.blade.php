@@ -984,7 +984,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Şifrə</label>
-                                        <input type="password" name="password" class="form-input" placeholder="Minimum 12 simvol" required minlength="12">
+                                        <div style="position: relative; display: flex; align-items: center;">
+                                            <input type="password" name="password" id="createUserPassword" class="form-input" placeholder="Minimum 12 simvol" required minlength="12" style="width: 100%; padding-right: 42px;">
+                                            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('createUserPassword', this)" aria-label="Şifrəni göstər/gizlət">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                            </button>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">İcazə Rolu</label>
@@ -1131,7 +1136,12 @@
                             <div class="form-grid-3">
                                 <div class="form-group">
                                     <label class="form-label">Cari Şifrə</label>
-                                    <input type="password" name="current_password" class="form-input" placeholder="Dəyişikliyi təsdiqləyin" required autocomplete="current-password">
+                                    <div style="position: relative; display: flex; align-items: center;">
+                                        <input type="password" name="current_password" id="profileCurrentPassword" class="form-input" placeholder="Dəyişikliyi təsdiqləyin" required autocomplete="current-password" style="width: 100%; padding-right: 42px;">
+                                        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('profileCurrentPassword', this)" aria-label="Şifrəni göstər/gizlət">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Adınız</label>
@@ -1143,7 +1153,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">Yeni Şifrə (Dəyişmək istəmirsinizsə boş buraxın)</label>
-                                    <input type="password" name="password" class="form-input" placeholder="Yeni şifrə (min 12 simvol)" minlength="12">
+                                    <div style="position: relative; display: flex; align-items: center;">
+                                        <input type="password" name="password" id="profileNewPassword" class="form-input" placeholder="Yeni şifrə (min 12 simvol)" minlength="12" style="width: 100%; padding-right: 42px;">
+                                        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('profileNewPassword', this)" aria-label="Şifrəni göstər/gizlət">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1162,6 +1177,24 @@
          Chart.js Initialization & Tab Switching Scripts
          ============================================================ -->
     <script>
+        // Password Visibility Toggle Helper (Eye icon)
+        window.togglePasswordVisibility = function(inputId, btn) {
+            const input = typeof inputId === 'string' ? document.getElementById(inputId) : inputId;
+            if (!input) return;
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            
+            if (btn) {
+                if (isPassword) {
+                    btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>`;
+                    btn.style.color = '#C042F0';
+                } else {
+                    btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
+                    btn.style.color = '#9CA3AF';
+                }
+            }
+        };
+
         // Modal Handlers for Edit User
         window.openEditUserModal = function(target, event) {
             if (event) {
@@ -1220,7 +1253,12 @@
                     </div>
                     <div class="form-group" style="margin-bottom: 6px;">
                         <label class="form-label" style="display: block; font-size: 12.5px; font-weight: 700; color: #9CA3AF; margin-bottom: 6px;">Yeni Şifrə (Dəyişmək istəmirsinizsə boş saxlayın)</label>
-                        <input type="password" name="password" id="swalEditPassword" class="form-input" style="width: 100%; box-sizing: border-box; background: #0F0F14; border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; color: #FFF; padding: 11px 14px; font-size: 14px;" placeholder="Dəyişmək istəmirsinizsə boş saxlayın" minlength="6">
+                        <div style="position: relative; display: flex; align-items: center;">
+                            <input type="password" name="password" id="swalEditPassword" class="form-input" style="width: 100%; box-sizing: border-box; background: #0F0F14; border: 1px solid rgba(255,255,255,0.14); border-radius: 12px; color: #FFF; padding: 11px 42px 11px 14px; font-size: 14px;" placeholder="Dəyişmək istəmirsinizsə boş saxlayın" minlength="6">
+                            <button type="button" onclick="togglePasswordVisibility('swalEditPassword', this)" style="position: absolute; right: 8px; background: transparent; border: none; color: #9CA3AF; cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; border-radius: 6px;" aria-label="Şifrəni göstər/gizlət">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </button>
+                        </div>
                     </div>
                 </form>
             `;
